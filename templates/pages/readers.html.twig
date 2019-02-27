@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets '<link rel="stylesheet" href="http://pasvupaslu.com/css/7.css">' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/readers.css') }}">
+{% endblock %}
 
 {% block title 'Lecteurs' %}
 
@@ -44,7 +46,7 @@
             </div>
 
             <div id="wb_element_instance1527" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
+                <div class="wb_shp" style="background: url('{{ asset('assets/images/gallery/2d6e46375f3f865d8c5497e6fbd6d521.jpg') }}'); repeat scroll center center; background-size: cover; border: 5px none #c0c0c0; opacity: 1; border-radius: 0px 0px 0px 0px; -moz-border-radius: 0px 0px 0px 0px; -webkit-border-radius: 0px 0px 0px 0px; width: 1200px; height: 490px;"></div>
             </div>
 
             <div id="wb_element_instance1528" class="wb_element wb-elm-orient-horizontal">

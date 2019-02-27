@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets '<link rel="stylesheet" href="http://pasvupaslu.com/css/5.css">' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/books.css') }}">
+{% endblock %}
 
 {% block title 'Livres' %}
 
@@ -75,7 +77,7 @@
             </div>
 
             <div id="wb_element_instance224" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
+                <div class="wb_shp" style="background: url('{{ asset('assets/images/gallery/0e06c74fe110bf97659d4e96c8b4c3e5.jpg') }}') repeat scroll center center; background-size: cover; border: 5px none #c0c0c0; opacity: 1; border-radius: 0px 0px 0px 0px; -moz-border-radius: 0px 0px 0px 0px; -webkit-border-radius: 0px 0px 0px 0px; width: 1200px; height: 348px;"></div>
             </div>
 
             <div id="wb_element_instance225" class="wb_element" style="width: 100%; display: none;">

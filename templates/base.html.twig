@@ -8,11 +8,11 @@
         <meta name="description" content="">
         <meta name="author" content="">
         {# a editer #}
-        <link rel="stylesheet" href="http://pasvupaslu.com/css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://pasvupaslu.com/css/1.css">
-        <link rel="stylesheet" href="http://pasvupaslu.com/css/common.css">
-        <link rel="stylesheet" href="http://pasvupaslu.com/css/site.css">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style1.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/search.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/common.css') }}">
         {# Fien #}
         {% block stylesheets '' %}
     </head>
@@ -21,9 +21,9 @@
         {% include("components/_menu.html.twig") %}
         {% block body %}{% endblock %}
         {% include("components/_footer.html.twig") %}
-        <script src="http://pasvupaslu.com/js/jquery-1.11.3.min.js"></script>
-        <script src="http://pasvupaslu.com/js/bootstrap.min.js"></script>
-        <script src="http://pasvupaslu.com/js/main.js"></script>
+        <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+        <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('assets/js/main.js') }}"></script>
         {% block javascripts '' %}
     </body>
 </html>
