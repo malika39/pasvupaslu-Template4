@@ -1,0 +1,110 @@
+<div id="wb_element_instance9" class="wb_element wb-menu">
+    <ul class="hmenu">
+        <li class="{% if current_menu is defined and current_menu == 'home' %}active{% endif %}">
+            <a href="{{ path('home') }}" target="_self">Accueil</a>
+        </li>
+
+        <li class="{% if current_menu is defined and current_menu == 'about' %}active{% endif %}">
+            <a href="{{ path('about') }}" target="_self">A propos de nous</a>
+        </li>
+
+        <li class="{% if current_menu is defined and current_menu == 'authors' %}active{% endif %}">
+            <a href="{{ path('authors') }}" target="_self">Auteurs</a>
+        </li>
+
+        <li class="{% if current_menu is defined and current_menu == 'readers' %}active{% endif %}">
+            <a href="{{ path('readers') }}" target="_self">Lecteurs</a>
+        </li>
+        {# Liste déroulante #}
+        <li class="{% if current_menu is defined and current_menu == 'books' %}active{% endif %}">
+            <a href="{{ path('books') }}" target="_self">Livres</a>
+            <ul>
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Nouvelles</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Romans</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Essais</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Science-fiction</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Thrillers</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Poésies</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Mangas</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Bandes-dessinées</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Jeunesse</a>
+                </li>
+
+                <li>
+                    <a href="{{ path('category') }}" target="_self">Bien-être &amp; Vie pratique</a>
+                </li>
+            </ul>
+        </li>
+        {# Fin de la liste déroulante #}
+        <li class="{% if current_menu is defined and current_menu == 'editors' %}active{% endif %}">
+            <a href="#!" target="_self">Editeurs</a>
+        </li>
+
+        {# Liste déroulante #}
+        <li>
+            <a href="#!" target="_self">Interviews</a>
+            <ul>
+                <li>
+                    <a href="#!" target="_self">Christine Deviers Joncour</a>
+                </li>
+
+                <li>
+                    <a href="#!" target="_self">Correction Occitane</a>
+                </li>
+            </ul>
+        </li>
+        {# Fin de la iste déroulante #}
+
+        {# Liste déroulante #}
+        <li class="{% if current_menu is defined and current_menu == '...' %}active{% endif %}">
+            <a href="#!" target="_self">Nos Evénements</a>
+            <ul>
+                <li>
+                    <a href="#!" target="_self">Salon Pas Vu, Pas Lu</a>
+                </li>
+
+                <li>
+                    <a href="#!" target="_self">Revue de presse</a>
+                </li>
+
+                <li>
+                    <a href="#!" target="_self">Un auteur émerge !</a>
+                </li>
+
+                <li>
+                    <a href="#!" target="_self">Rendez-vous Pas vu, Pas lu</a>
+                </li>
+            </ul>
+        </li>
+        {# Fin la liste déroulante #}
+        <li class="{% if current_menu is defined and current_menu == '...' %}active{% endif %}">
+            <a href="http://terhoma.org/Contact/" target="_blank">Contact</a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
