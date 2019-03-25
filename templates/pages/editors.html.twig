@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Editeurs' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/editeurs.png') }});">
+            <div class="editors-title">Un métier aux multiples facettes !</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="row mx-auto">
+            <div class="col-md-6">
+                <div class="editors-desc-img">
+                    Entrez dans un univers de passion !
+                    <div class="passion" style="background-image: url({{ asset('assets/images/illustration/editors.jpg') }});"></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="editors-desc">
+                    <p>Chaque mois, nous vous invitons à découvrir une maison d'édition,  ses dirigeants, son équipe, son histoire, son organisation, son quotidien, sa philosophie, son approche métier, son catalogue et bien évidemment, ses auteurs.</p>
+                    <img src="{{ asset('assets/images/illustration/editors-port.jpg') }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-rose" style="height: 100%">
+            <div class="editors-title-2">
+                R&nbsp;E&nbsp;N&nbsp;D&nbsp;E&nbsp;Z&nbsp;-&nbsp;V&nbsp;O&nbsp;U&nbsp;S&nbsp;&nbsp;2&nbsp;0&nbsp;1&nbsp;9
+            </div>
+            <div class="editors-box">
+                <div class="list-editors mb-5">
+                    <div class="img-editors" style="background-image: url({{ asset('assets/images/illustration/port.jpg') }});"></div>
+                    <div class="row mx-auto p-1">
+                        <div class="col-md-5 p-0 pl-3">
+                            <img src="{{ asset('assets/images/uploads/logo-1.png') }}" class="mx-auto">
+                        </div>
+                        <div class="col-md-7 pt-3">
+                            <div class="name-editors">Nathalie JAUSSAUD-OBITZ</div>
+                            <div class="desc-editors">vous parle de son métier ...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-editors mb-5">
+                    <div class="img-editors" style="background-image: url({{ asset('assets/images/illustration/port.jpg') }});"></div>
+                    <div class="row mx-auto p-1">
+                        <div class="col-md-5 p-0 pl-3">
+                            <img src="{{ asset('assets/images/uploads/logo-2.png') }}" class="mx-auto">
+                        </div>
+                        <div class="col-md-7 pt-3">
+                            <div class="name-editors">Christèle Deschamps,</div>
+                            <div class="desc-editors">éditrice chez Terhoma...</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-editors mb-5">
+                    <div class="img-editors" style="background-image: url({{ asset('assets/images/illustration/port.jpg') }});"></div>
+                    <p>Vous souhaitez présenter votre société d'édition ! Contactez-nous !</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+

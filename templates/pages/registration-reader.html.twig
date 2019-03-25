@@ -1,92 +1,87 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/pages/register-reader.css') }}">
-{% endblock %}
-
-{% block title 'Inscription lecteur' %}
+{% block title 'Inscription Lecteur' %}
 
 {% block body %}
-
-    <div class="vbox wb_container" id="wb_main" style="height: 910px;">
-
-        <div class="wb_cont_inner">
-            <div id="wb_element_instance1201" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><b>&nbsp; &nbsp;</b><strong> <em>&nbsp;Inscription Lecteur</em></strong></p>
-
-                <p class="wb-stl-normal" style="text-align: center;"><em><span style="color:rgba(255,255,255,1);">(Enregistrement des inscriptions à compter du 1er Mars 2019)</span></em><span style="color:rgba(255,255,255,1);">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
-            </div>
-
-            <div id="wb_element_instance1202" class="wb_element wb_text_element" style=" line-height: normal;">
-                <h3 class="wb-stl-heading3" style="text-align: center;"><span style="color:rgba(13,9,13,1);">Inscription Lecteur</span></h3>
-            </div>
-
-            <div id="wb_element_instance1203" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance1204" class="wb_element wb-elm-orient-horizontal">
-                <div class="wb-elm-line"></div>
-            </div>
-
-            <div id="wb_element_instance1205" class="wb_element wb-elm-orient-horizontal">
-                <div class="wb-elm-line"></div>
-            </div>
-
-            <div id="wb_element_instance1206" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance1207" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance1208" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance1209" class="wb_element wb_element_picture" title="">
-                <img alt="gallery/bandeaueven" src="{{ asset('assets/images/gallery/d651114c26c8d0d079a962200d92886a_1200x303.jpg') }}">
-            </div>
-
-            <div id="wb_element_instance1210" class="wb_element wb-elm-orient-horizontal">
-                <div class="wb-elm-line"></div>
-            </div>
-
-            <div id="wb_element_instance1211" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance1212" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal"><em><strong>Devenir membre lecteur, c'est facile !</strong></em></p>
-
-                <p class="wb-stl-normal">1/ Remplissez le questionnaire ci-dessous,</p>
-
-                <p class="wb-stl-normal">2/ Effectuez votre paiement,</p>
-
-                <p class="wb-stl-normal">3/ Vérifiez votre inscription sur votre boite mail.</p>
-
-                <p class="wb-stl-normal">4/ Commencez votre activité en vous connectant à votre espace.</p>
-
-                <p class="wb-stl-normal">&nbsp;</p>
-            </div>
-
-            <div id="wb_element_instance1213" class="wb_element wb_element_picture" title="">
-                <img alt="gallery/livre ouvert" src="{{ asset('assets/images/gallery/12cf4fa08fd84de973e92eb82ace7134_150x109.png') }}">
-            </div>
-
-            <div id="wb_element_instance1214" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;">Tarif Annuel TTC</p>
-                <p class="wb-stl-normal" style="text-align: center;"><strong>12 Euros</strong></p>
-            </div>
-
-            <div id="wb_element_instance1215" class="wb_element wb_element_picture" title="">
-                <img alt="gallery/visuelinscriplecteur" src="{{ asset('assets/images/gallery/5f905d7dda1b419a1f706cff4b0f02d9_444x309.jpg') }}">
-            </div>
-
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/login.jpg') }});">
+            <span class="illustration-title about-title login-tilte" style="width: 22.2rem;">Inscription Lecteur</span>
         </div>
-        <div class="wb_cont_outer"></div>
-        <div class="wb_cont_bg"></div>
-    </div>
 
+        <div class="separator"></div>
+
+        <div class="row mx-auto">
+            <div class="col-md-6 p-0">
+                <div class="box-register-title">
+                    Inscription Lecteur
+                    <p>(Enregistrement des inscriptions à compter du 1er Mars 2019)</p>
+                </div>
+            </div>
+            <div class="col-md-6 p-0">
+                <div class="box-register-title-2">
+                    Tarif Annuel TTC
+                    <p>12 Euros</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote register-box">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ asset('assets/images/illustration/left.jpg') }}" class="w-100">
+                </div>
+                <div class="col-md-8 p-3">
+                    <div class="register-text-title pb-1">Devenir membre lecteur, c'est facile !</div>
+                    <p class="text-white">
+                        1/ Remplissez le questionnaire ci-dessous,<br>
+                        2/ Effectuez votre paiement,<br>
+                        3/ Vérifiez votre inscription sur votre boite mail.<br>
+                        4/ Commencez votre activité en vous connectant à votre espace.
+                    </p>
+                    <img src="{{ asset('assets/images/illustration/livre-2.png') }}" class="livre-2">
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-purple text-white" style="height: auto;">
+            <form method="POST" action="" class="register mx-auto w-50">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="name">Nom</label>
+                        <input type="text" class="form-control" id="name" autocomplete="off" placeholder="Votre nom">
+                    </div>
+                    <div class="col">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" class="form-control" id="firstname" autocomplete="off" placeholder="Votre prénom">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" class="form-control" id="pseudo" autocomplete="off" placeholder="Pseudo ou nom de Plume">
+                    </div>
+                    <div class="col">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Votre adresse email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Votre mot de passe">
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" id="box-3">
+                        <label for="box-3">J’accepte les termes et <a href="#!">conditions de ventes et d'utilisation</a> du site Internet.</label>
+                    </div>
+                </div>
+                <div class="text-center">METTEZ LE BUTTON PAYPAL ICI</div>
+            </form>
+        </div>
+
+    </div>
 {% endblock %}

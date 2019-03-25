@@ -75,6 +75,17 @@ class HomeController extends AbstractController {
     }
 
     /**
+     * @Route("editeurs", name="editors")
+     */
+    public function editors() {
+
+        return $this->render("pages/editors.html.twig", [
+            'current_menu' => 'editors',
+        ]);
+
+    }
+
+    /**
      * @Route("identification", name="identification")
      */
     public function identification() {
@@ -101,7 +112,27 @@ class HomeController extends AbstractController {
 
     }
 
+    /**
+     * @Route("interviews", name="interviews")
+     */
+    public function interviews() {
 
+        return $this->render("pages/interviews.html.twig", [
+            'current_menu' => 'interviews',
+        ]);
+
+    }
+
+    /**
+    * @Route("evenements", name="events")
+    */
+    public function events() {
+
+        return $this->render("pages/events.html.twig", [
+            'current_menu' => 'events',
+        ]);
+
+    }
 
 
 }

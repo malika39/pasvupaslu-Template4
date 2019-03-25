@@ -1,63 +1,73 @@
-<div class="vbox wb_container" id="wb_header">
+<!-- HEADER -->
+<header class="row">
 
-    <div class="wb_cont_inner">
-        <div id="wb_element_instance0" class="wb_element wb_text_element" style=" line-height: normal;">
-            <h3 class="wb-stl-heading3" style="text-align: center;">P A S &nbsp; &nbsp;V U , &nbsp;P A S &nbsp; L U</h3>
+    <div class="user-header {% if app.user %}user-connect{% endif %}">
+        <div class="d-inline-block img-header">
+            <img src="{{ asset('assets/images/illustration/logo-header.png') }}">
         </div>
 
-        <div id="wb_element_instance1" class="wb_element wb_element_shape">
-            <div class="wb_shp"></div>
-        </div>
-
-        <div id="wb_element_instance2" class="wb_element wb_text_element" style=" line-height: normal;">
-            <p style="text-align: center;"><em><span style="color:rgba(255,255,255,1);">Le marque-page des nouveaux&nbsp;talents &nbsp;!</span></em></p>
-        </div>
-
-        <div id="wb_element_instance3" class="wb_element wb_text_element" style=" line-height: normal;">
-            <p class="wb-stl-custom2" style="text-align: center;">
-                <em><span style="color:rgba(255,255,255,1);">"Toute littérature est assaut contre la frontière."</span></em>
-            </p>
-
-            <p style="text-align: right;">
-                <strong>
-                    <span style="color:rgba(255,255,255,1);">
-                        Franz Kafka
-                    </span>
-                </strong>
-            </p>
-        </div>
-
-        <div id="wb_element_instance4" class="wb_element wb_element_picture" title="">
-            <img alt="gallery/regard" src="{{ asset('assets/images/gallery/e69ff87e577716586d3788dbc8ed6728_142x150.png') }}">
-        </div>
-
-        <div id="wb_element_instance5" class="wb_element">
-            <a class="wb_button" href="{{ path('identification') }}">
+        <div class="d-sm-inline-block position-absolute text-center block-responsive {% if app.user %}line-user{% endif %}">
+            <h3 class="text-spacing header-h3 mb-0">pas vu, pas lu</h3>
+            <em><span class="sub-title">Le marque-page des nouveaux talents !</span></em>
+            <a class="btn-default mt-3" href="{{ path('identification') }}">
                 <span>Inscription / Connexion</span>
             </a>
+            {# Block à affichier pour les personnes connecter #}
+            {#<div class="navbar box-user text-left">#}
+                {#<div class="dropdown show">#}
+                    {#<a class="droplists" href="#" role="button">#}
+					    {#<span class="online">#}
+					    		{#<img src="https://www.w3schools.com/w3images/avatar6.png">#}
+					    {#</span>#}
+                    {#</a>#}
+                {#</div>#}
+
+                {#<div class="notify">#}
+                    {#<div class="notification mr-4"><i class="fas fa-bell"></i> <p>0</p></div>#}
+                    {#<div class="message"><i class="fas fa-comments"></i> <p>0</p></div>#}
+                {#</div>#}
+
+            {#</div>#}
+            {# FIN - du block#}
+
+        </div>
+        <div class="d-inline-block position-absolute img-header-2" style="right: -10rem">
+            <img src="{{ asset('assets/images/illustration/header-books.png') }}">
         </div>
 
-        <div id="wb_element_instance6" class="wb_element wb_element_picture" title="">
-            <img alt="gallery/apple-157250" src="{{ asset('assets/images/gallery/dc5d33387ea6ac4c97b176b4740b02b7_165x110.png') }}">
-        </div>
+        {# Block à affichier pour les personnes connecter #}
+        {#<div class="menu-user">#}
+            {#<div class="dropdown-menu text-center">#}
+                {#<a class="dropdown-item" href="#">Ajouter un livre</a>#}
+                {#<a class="dropdown-item" href="#">Mon Profil</a>#}
+                {#<a class="dropdown-item" href="#">Se déconnecter</a>#}
+            {#</div>#}
+        {#</div>#}
+        {# FIN - du block #}
 
-        <div id="wb_element_instance7" class="wb_element wb_element_picture" title="">
-            <img alt="gallery/livresrange" src="{{ asset('assets/images/gallery/7ef4155aeeab14b16525dce3aba54790_297x170.png') }}">
-        </div>
+    </div>
 
-        <div id="wb_element_instance8" class="wb_element" style=" overflow: hidden;">
-            <div style="height: 100%;">
-                <div class="recherche_p">
-                    <form action="" id="searchthis" method="POST">
-                        <input id="search" name="q" type="text" placeholder="Rechercher">
-                        <input id="search-btn" type="submit" value="Rechercher">
-                    </form>
-                </div>
+    <!-- Bare de recherche -->
+    <div class="col-12 col-sm col-md-6 p-0">
+        <div class="recherche_p float-sm-right">
+
+            <div class="position-absolute" style="top: -74px; right: 0;">
+                <img src="{{ asset('assets/images/illustration/bare-search.png') }}">
             </div>
+
+            <form action="" id="searchthis" method="GET">
+                <input id="search" name="q" type="text" placeholder="Rechercher" autocomplete="off">
+                <input id="search-btn" type="submit" value="Rechercher">
+            </form>
+
+        </div>
+
+        <div class="search-sub-text float-right mt-3 text-right">
+            <em>"Toute littérature est assaut contre la frontière."</em>
+            <strong><span style="color:rgba(255,255,255,1);">Franz Kafka</span></strong>
         </div>
 
     </div>
-</div>
-
-{# Contenu du site la div et fermer dans le footer #}
-<div class="wb_cont_inner">
+    <!-- Fin de la bare de recherche -->
+</header>
+<!-- FIN HEADER -->
