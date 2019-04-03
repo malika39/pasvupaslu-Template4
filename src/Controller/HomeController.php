@@ -86,6 +86,17 @@ class HomeController extends AbstractController {
     }
 
     /**
+     * @Route("interview_editeurs", name="interview_editeurs")
+     */
+    public function interview_editeurs() {
+
+        return $this->render("pages/interview-editors.html.twig", [
+            'current_menu' => 'editors',
+        ]);
+
+    }
+
+    /**
      * @Route("identification", name="identification")
      */
     public function identification() {
@@ -124,6 +135,17 @@ class HomeController extends AbstractController {
     }
 
     /**
+     * @Route("interviews-view", name="interviews_view")
+     */
+    public function interviews_view() {
+
+        return $this->render("pages/interviews-view.html.twig", [
+            'current_menu' => 'interviews',
+        ]);
+
+    }
+
+    /**
     * @Route("evenements", name="events")
     */
     public function events() {
@@ -131,6 +153,33 @@ class HomeController extends AbstractController {
         return $this->render("pages/events.html.twig", [
             'current_menu' => 'events',
         ]);
+
+    }
+
+    /**
+     * @Route("forum", name="forum")
+     */
+    public function forum() {
+
+        return $this->render("pages/forum.html.twig");
+
+    }
+
+    /**
+     * @Route("forum/topic", name="forum_topic")
+     */
+    public function topic() {
+
+        return $this->render("pages/topic.html.twig");
+
+    }
+
+    /**
+     * @Route("forum/add-topic", name="forum_addTopic")
+     */
+    public function add_topic() {
+
+        return $this->render("pages/add_topic.html.twig");
 
     }
 

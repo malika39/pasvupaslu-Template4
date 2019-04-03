@@ -1,0 +1,228 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'Dashboard' %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Editeurs inscrit</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">30</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Lecteurs inscrit</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">15</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total des livres</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">20</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-book-open fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pending Requests Card Example -->
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Total des commentaires</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">10</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+
+            <!-- Content Column -->
+            <div class="col-lg-6 mb-4">
+
+                <!-- Project Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Les nouveautés de la semaine</h6>
+                    </div>
+                    <div class="card-body">
+                        <!-- boucle -->
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin de la boucle -->
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 mb-4">
+
+                <!-- Illustrations -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Les mieux notés</h6>
+                    </div>
+                    <div class="card-body">
+                        <!-- boucle -->
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="list-five">
+                            <div class="list-five-info p-4">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                                <div class="list-five-desc-d">
+                                    <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                    <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                    <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                    <div class="list-five-authors">Éditeur : Terhoma</div>
+                                    <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                    <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin de la boucle -->
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+{% endblock %}
