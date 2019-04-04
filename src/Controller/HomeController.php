@@ -64,6 +64,15 @@ class HomeController extends AbstractController {
     }
 
     /**
+     * @Route("livres/nom", name="book_view")
+     */
+    public function book_view() {
+
+        return $this->render("pages/book-view.html.twig");
+
+    }
+
+    /**
      * @Route("categories", name="category")
      */
     public function category() {
