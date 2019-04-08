@@ -21,7 +21,7 @@ class EditeurController extends AbstractController
      */
     public function listEditeur(EditeurRepository $editeurs): Response
     {
-        return $this->render('backoffice/editeurs/list.html.twig', [
+        return $this->render('admin/editeurs/list.html.twig', [
             'editeurs' => $editeurs->findAll(),
         ]);
     }
@@ -75,7 +75,7 @@ class EditeurController extends AbstractController
 
             $this->addFlash('success', 'Editeur ajouté');
 
-            return $this->redirect($this->generateUrl('admin_editeur-editor', [
+            return $this->redirect($this->generateUrl('editeur_edit', [
                 'id' => $editeur->getId(),
             ]));
         }
@@ -98,7 +98,7 @@ class EditeurController extends AbstractController
 
         $this->addFlash('success', 'Editeur supprimé');
 
-        return $this->redirectToRoute('admin_dashboard');
+        return $this->redirectToRoute('admin-home');
     }
 
 

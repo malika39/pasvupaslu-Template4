@@ -33,7 +33,7 @@ class ImageAdmin
     private $alt;
 
     /**
-     * @var UploadedFile
+     * @var  [UploadedFile]
      *
      * @Assert\Image(
      *     mimeTypes={"image/png", "image/jpeg"},
@@ -74,20 +74,11 @@ class ImageAdmin
         return $this->id;
     }
 
-    /**
-     * @return UploadedFile|null
-     * @var [UploaderFile]
-     */
-
     public function getFile(): ?UploadedFile
     {
         return $this->file;
     }
 
-    /**
-     * @param Uploader|null $file
-     * @return ImageAdmin
-     */
     public function setFile(UploadedFile $file)
     {
         $this->file = $file;
