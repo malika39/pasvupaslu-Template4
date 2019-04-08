@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Pas vu Pas lu - Lecteurs' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/readers.jpg') }});">
+            <span class="illustration-title">Lecteurs</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="readers-bando bg-rose">
+            Rejoindre pas vu, pas lu, c'est :
+        </div>
+        <div class="illustration readers" style="background-image: url({{ asset('assets/images/illustration/people.jpg') }});padding-top: 43.64%">
+            <div class="readers-box">
+                <p>
+                    Découvrir de nouveaux auteurs et de petites maisons d'édition<br>
+                    Donner son avis et noter les textes mis en ligne,<br>
+                    Avoir la possibilite de participer à un comité de lecture ,<br>
+                    Avoir la possibilité de devenir membre d'un jury,<br>
+                    Pouvoir être Interviewé(e) ,<br>
+                    Recevoir des livres gratuits ( En fonction des actions menées par les maisons d'éditions, les auteurs et le département édition de Terhoma.<br>
+                    Avoir des réductions sur certains livres,<br>
+                    Rencontrer des auteurs, des éditeurs et d'autres lecteurs pour Echanger et partager,<br>
+                    Participer à nos évènements ( Dans la limite des places disponibles)<br>
+                    Recevoir gratuitement son entrée au salon Pas vu, pas lu, dès la 1ère édition.
+                </p>
+                <a href="{{ path('identification') }}" class="btn-default">Inscription !</a>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

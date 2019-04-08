@@ -1,0 +1,60 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/admin/vendor/ckeditor/ckeditor.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title 'Ajouter une interview' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle interview</h6>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" class="user">
+                            <div class="form-group row m-1 pb-4">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" placeholder="Titre de l'interview">
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" placeholder="Tres courte description">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                    <textarea name="interview" id="interview" rows="10" cols="80">
+                                        This is my textarea to be replaced with CKEditor.
+                                    </textarea>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary btn-user btn-block w-50 mx-auto">
+                                Ajouter l'interview
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        {# Remplace le textarea par le plugin Ckeditor #}
+        CKEDITOR.replace('interview', {
+            language: 'fr'
+        });
+    </script>
+{% endblock %}
+
+

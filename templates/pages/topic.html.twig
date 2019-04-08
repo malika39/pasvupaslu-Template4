@@ -1,0 +1,155 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Nom de la personne' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/admin/vendor/ckeditor/ckeditor.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="content">
+
+        <div class="p-3" style="background: #dfdfdf;">
+            <div class="">
+                <div class="col-sm-12 pt-3 pb-2 forum">
+                    <div class="card post">
+                        <div class="row">
+                            <div class="col-sm-3 user-forum">
+                                <span class="forum-raport"><i class="fas fa-flag"></i></span>
+                                <div class="text-center">
+                                    <img src='https://avataaars.io/?avatarStyle=Circle&topType=LongHairBob&accessoriesType=Prescription02&hairColor=PastelPink&facialHairType=MoustacheMagnum&facialHairColor=Platinum&clotheType=ShirtScoopNeck&clotheColor=Pink&eyeType=WinkWacky&eyebrowType=RaisedExcitedNatural&mouthType=Serious&skinColor=Pale'
+                                         width="90" height="140" class="img-fluid center-block"/>
+                                    <h3>tlauer</h3>
+                                    <p>Sep 27, 2018</p>
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="" class="profile-link">Profile</a></td>
+                                            <td><a href="" class="profile-link">Message</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 post-content">
+                                <p>I've always loved photography and taking pictures, but I'm only just getting started with
+                                    learning how to
+                                    take good pictures and that includes the camera that's used. I have been thinking of getting a
+                                    good DSLR
+                                    camera (and stop using my smartphone's crappy one), but since it's very expensive, I've been
+                                    pushing it
+                                    off.</p>
+                                <p>
+                                    I have recently seen some pictures posted online where someone uses her iPhone camera, and the
+                                    pictures
+                                    look great (plus she has specific lenses to along with it for certain situations) - I was amazed
+                                    how
+                                    advanced iPhone cameras are these days. My husband has an iPhone X, so I wondered if it would be
+                                    a good
+                                    option to start with that or if learning how to use a DSLR is better. Are there advantages to
+                                    using DSLR
+                                    over iPhone and if so, what are they? Any other advice on what camera would be good to use/how
+                                    to avoid
+                                    spending too much?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- post 2 -->
+                <div class="col-sm-12 pt-2 pb-3 forum">
+                    <div class="card post">
+                        <div class="row">
+                            <div class="col-sm-3 user-forum">
+                                <span class="forum-raport"><i class="fas fa-flag"></i></span>
+                                <div class="text-center">
+                                    <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Wayfarers&hairColor=Blonde&facialHairType=BeardMagestic&facialHairColor=Black&clotheType=Hoodie&clotheColor=Gray01&eyeType=Default&eyebrowType=SadConcerned&mouthType=Sad&skinColor=Brown'
+                                         width="90" height="140" class="img-fluid center-block"/>
+                                    <h3>Garry A.</h3>
+                                    <p>Sep 27, 2018</p>
+                                    <table style="width:100%">
+                                        <tr>
+                                            <td><a href="" class="profile-link">Profile</a></td>
+                                            <td><a href="" class="profile-link">Message</a></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 post-content">
+                                <p>The usual path from camera-phone to top level dSLR is:
+                                <ol>
+                                    <li>Camera Phone;</li>
+                                    <li>Point and Shoot (non-interchangeable lens digital camera);</li>
+                                    <li>Entry Level dSLR camera with 'kit' lens (kit lenses typically are inexpensive and low
+                                        quality);
+                                    </li>
+                                    <li>Mid level dSLR and mid level lenses; and finally</li>
+                                    <li>Top/Pro Level dSLR and top/pro level lenses. (if so impassioned and if you have the
+                                        budget)
+                                    </li>
+                                </ol>
+                                </p>
+                                <p>Knowing/having an expectation of your level of photographic passion would help you skip
+                                    intermediate steps to equipment acquisition. Not knowing how you would use the equipment and for
+                                    what subject(s) would help in determining hardware needs.
+                                </p>
+                                <p> One of the principle differences between a camera phone, point & shoot, entry level dSLR and Pro
+                                    level dSLR is sensor size. Sensor size, generally, will increase the image quality of the photo
+                                    and allow the photographer to shoot is low light situations. All else being similar, the larger
+                                    the sensor the greater the detail and the greater the ability to shoot in low and extreme low
+                                    light situations. Generally, the better the camera the better the autofocus system which
+                                    increases the photographers ability to shoot action.
+                                </p>
+                                <p> In general, in the hands of an experienced and skilled photographer, the more expensive the
+                                    equipment the easier to capture the desired image. With ease comes greater consistency ... and
+                                    consistency is one trait separating pro skill level from amateur level skill level.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- repley -->
+                <div class="col-sm-12 pt-2 pb-3 forum">
+                    <div class="card post">
+                        <div class="row">
+                            <div class="col-sm-3 user-forum">
+                                <div class="text-center">
+                                    <img src='https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Wayfarers&hairColor=Blonde&facialHairType=BeardMagestic&facialHairColor=Black&clotheType=Hoodie&clotheColor=Gray01&eyeType=Default&eyebrowType=SadConcerned&mouthType=Sad&skinColor=Brown'
+                                         width="90" height="140" class="img-fluid center-block"/>
+                                    <h3>Garry A.</h3>
+                                </div>
+                            </div>
+                            <textarea name="message" id="message" style="resize:none;border:none;outline-style:none;" placeholder="Votre message ici ...." class="col-sm-9 post-content post-message"></textarea>
+                        </div>
+                    </div>
+                    <div class="text-right mt-4">
+                        <a href="#!" class="btn-default btn-forum" style="color: white;">
+                            Répondre à la discussion
+                        </a>
+                    </div>
+                </div>
+                {##}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        {# Remplace le textarea par le plugin Ckeditor #}
+        CKEDITOR.replace('message', {
+            width: '73.7%',
+            removePlugins : 'elementspath',
+            enterMode: CKEDITOR.ENTER_BR,
+            shiftEnterMode:CKEDITOR.ENTER_P,
+            toolbar: [{ name: 'basicstyles', groups: [ 'basicstyles' ], items: [ 'Bold', 'Italic', 'Underline', "-", 'TextColor', 'BGColor' ] },
+                { name: 'styles', items: [ 'Format', 'Font', 'FontSize' ] },
+                { name: 'scripts', items: [ 'Subscript', 'Superscript' ] },
+                { name: 'justify', groups: [ 'blocks', 'align' ], items: [ 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock' ] },
+                { name: 'paragraph', groups: [ 'list', 'indent' ], items: [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent'] },
+                { name: 'links', items: [ 'Link', 'Unlink' ] }
+            ],
+        });
+    </script>
+{% endblock %}
+
+

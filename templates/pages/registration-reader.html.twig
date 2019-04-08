@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Inscription Lecteur' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/login.jpg') }});">
+            <span class="illustration-title about-title login-tilte" style="width: 22.2rem;">Inscription Lecteur</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="row mx-auto">
+            <div class="col-md-6 p-0">
+                <div class="box-register-title">
+                    Inscription Lecteur
+                    <p>(Enregistrement des inscriptions à compter du 1er Mars 2019)</p>
+                </div>
+            </div>
+            <div class="col-md-6 p-0">
+                <div class="box-register-title-2">
+                    Tarif Annuel TTC
+                    <p>12 Euros</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote register-box">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ asset('assets/images/illustration/left.jpg') }}" class="w-100">
+                </div>
+                <div class="col-md-8 p-3">
+                    <div class="register-text-title pb-1">Devenir membre lecteur, c'est facile !</div>
+                    <p class="text-white">
+                        1/ Remplissez le questionnaire ci-dessous,<br>
+                        2/ Effectuez votre paiement,<br>
+                        3/ Vérifiez votre inscription sur votre boite mail.<br>
+                        4/ Commencez votre activité en vous connectant à votre espace.
+                    </p>
+                    <img src="{{ asset('assets/images/illustration/livre-2.png') }}" class="livre-2">
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-purple text-white" style="height: auto;">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="register mx-auto w-50">
+                {{ form_start(form) }}
+
+                <div class="form-row">
+                    <div class="col">
+
+                        <label for="name">Nom</label>
+
+                        <div type="text" class="form-control" id="name">
+                            {{ form_widget(form.lastName, {'attr': {'class': 'input', 'placeholder': 'entrez votre nom'}}) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="firstname">Prénom</label>
+                        <div type="text" class="form-control" id="firstname">
+                            {{ form_widget(form.firstName, {'attr': {'class': 'input', 'placeholder': 'entrez votre prenom'}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="pseudo">le pseudo</label>
+                        <div type="text" class="form-control" id="pseudo">
+                            {{ form_widget(form.username, {'attr': {'class': 'input', 'placeholder': 'Pseudo ou nom de Plume'}}) }}
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="email">Email</label>
+                        <div type="email" class="form-control" id="email">
+                            {{ form_widget(form.email, {'attr': {'class': 'input', 'placeholder': 'test@mail.com'}}) }}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Mot de passe</label>
+                        <div type="password" class="form-control" id="password">
+                            {{ form_widget(form.plainPassword.first, {'attr': {'class': 'input', 'placeholder': 'votre mot de passe'}})}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe Confirmé</label>
+                        <div type="password" class="form-control" id="password">
+                            {{ form_widget(form.plainPassword.second, {'attr': {'class': 'input', 'placeholder': 'ecrire le meme  mot de passe'}})}}
+                        </div>
+
+                    </div>
+                    <div class="help is-danger has-text-left">
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="box-3">
+                    <label for="box-3">J’accepte les termes et <a href="#!">conditions de ventes et d'utilisation</a> du site Internet.</label>
+                </div>
+
+
+                <div class="form-row">
+
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="TZ7ZMNVD2VUCY">
+                        <input type="image" src="https://www.paypalobjects.com/fr_XC/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/fr_XC/i/scr/pixel.gif" width="1" height="1">
+
+
+
+
+                </div>
+
+                {{ form_end(form) }}
+
+            </form>
+        </div>
+
+        {% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Pas Vu pas Lu - Les Auteurs' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/authors.png') }});">
+            <span class="illustration-title">Auteurs</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="bare-author">
+            <div class="color-author" style="background-color: #991b4f">Ils ont besoin de vous pour émerger</div>
+            <div class="color-author" style="background-color: #e0881d">Choisissez un auteur & lisez un extrait de son oeuvre</div>
+            <div class="color-author" style="background-color: #17908a">
+                <img src="{{ asset('assets/images/illustration/success.png') }}" class="hidden-response" style="position: absolute;top: 36%;">
+                Attribuez une note à cet extrait et commentez-la
+                <img src="{{ asset('assets/images/illustration/logo.png') }}" class="hidden-response" style="position: absolute;top: 0;right: 2.8rem;">
+            </div>
+            <div class="color-author" style="background-color: #15457c">Grâce à vous des auteurs émergent</div>
+            <div class="color-author" style="background-color: #659934">Suivez-leurs premiers pas sur Pas vu, pas lu</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote pt-3" style="background-color: #0c5366;height: 100%;">
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="#!" class="nom-category">
+                    Roman
+                </a>
+            </div>
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/7d995b89b261a76da2ea46c07f5291bd.jpg);">
+                <a href="#!" class="nom-category">
+                    Thrillers
+                </a>
+            </div>
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/805c33fcfdd07bd84b33080acd154ec9.jpg);">
+                <a href="#!" class="nom-category">
+                    Mangas
+                </a>
+            </div>
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/872aaecd4930690d181720ffbea348fc.jpg);">
+                <a href="#!" class="nom-category">
+                    Science-fiction
+                </a>
+            </div>
+            <div class="smartphone">
+                <div class="smartphone-box">
+                    <div class="smartphone-img"></div>
+                    <p class="title">Nouveaux auteurs de la semaine !</p>
+                    <div class="round"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

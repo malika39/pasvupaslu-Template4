@@ -1,0 +1,8 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    globals:
+        image_article_coverage_directory: '%image_articles_coverages_directory%'
+        image_article_coverage_display: '%image_articles_coverages_display%'
+       # image_Admin_coverage_directory: '%image_Admin_coverages_directory%'

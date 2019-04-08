@@ -1,0 +1,260 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Bienvenue sur Pas vu Pas Lu !' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/home.jpg') }});">
+            <span class="illustration-title">Accueil</span>
+            <div class="illustration-quote text-center">
+                <p class="illustration-quoteDay">Citation du jour</p>
+                <p class="illustration-quoteMessage">"Chaque jour mes certitudes me remplissent de doute, j'avance !"</p>
+                <p class="illustration-quoteAuthor">Stéphane Théri</p>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="row block-ct">
+            <div class="col-md-6 pr-0">
+                <div class="content-block bg-bleu">
+                    <h3 class="content-block-title bg-rose text-center">Auteur, Editeur, faites-vous connaître !</h3>
+                    <div class="p-2">
+                        <p class="text-center pt-2">Lecteur, Venez découvrir de nouveaux auteurs,</p>
+
+                        <ul>
+                            <li class="pb-3">
+                                Découvrez, dans la catégorie qui vous intéresse ( Roman, Essai, Thriller, Science-fiction, Bande-Dessinée, Littérature Jeunesse, Manga, Bien-etre & Vie Pratique ) un auteur et un extrait de son oeuvre.
+                            </li>
+                            <li class="pb-3">
+                                Donnez une note d'émotion sur votre lecture et justifiez-la par vos commentaires.
+                            </li>
+                            <li class="pb-3">
+                                Votre note et vos commentaires offriront aux auteurs les premières réactions sur leurs oeuvres.
+                            </li>
+                            <li class="pb-3">
+                                La somme de toutes les notes permettra aux auteurs les plus appréciés d'être mis en avant par un classement de satisfaction.
+                            </li>
+                            <li class="pb-3">
+                                Grâce à vous, de nouveaux auteurs sont édités
+                            </li>
+                        </ul>
+                        <p class="font-weight-bold pb-4 text-center">Devenez acteur de l'émergence de nouveaux talents !</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 pl-0">
+                <div class="content-block bg-img" style="background-image: url({{ asset('assets/images/illustration/home-register.jpg') }});">
+                    <h3 class="content-block-title bg-transparent text-center">Rejoindre les acteurs de  Pas vu, pas lu !</h3>
+                    <a href="{{ path('login') }}" class="btn-default btn-register b-1">Inscription</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-rose">
+            <div class="quote-1">
+                <div class="pad-1">
+                    <img src="{{ asset('assets/images/illustration/plume.png') }}">
+                    <p>"Qui que vous soyez qui voulez cultiver, vivifier, édifier, attendrir, apaiser, mettez des livres partout."</p>
+                    <div class="quote-nobody">Victor Hugo</div>
+                </div>
+            </div>
+            <div class="bg-quote" style="background-image: url({{ asset('assets/images/illustration/pasvupaslu.png') }});"></div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-purple custom-b">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="box-quote-2">
+                        <a href="#!" class="color-blue">Nouveaux auteurs de la semaine...</a>
+                        <a href="#!" class="color-purple pl-3">Un éditeur vous ouvre ses portes</a>
+                        <a href="#!" class="color-black pl-5">Prochain Rendez-vous, pas vu, pas lu</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="text-center item-category pl-5">
+                        <p class="m-0">
+                            <a href="#!">
+                                <span>Auteurs</span>
+                            </a>
+                            <a href="Livres/">
+                                <span>LIVRES</span>
+                            </a>
+                            <a href="Science-fiction/">
+                                <span> Science-fiction</span>
+                            </a>
+                        </p>
+
+                        <p class="m-0">
+                            <a href="Interviews/">
+                                <span>INTERVIEWS</span>
+                            </a>
+                            <a href="Bien-%C3%AAtre-Vie-pratique/">
+                                <span>bien-être vie pratique </span>
+                            </a>
+                        </p>
+
+                        <p class="m-0">
+                            <a href="Nos-Ev%C3%A9nements/">
+                                <span>Evènements</span>
+                            </a>
+                            <a href="Editeurs/">
+                                <span>Editeurs</span>
+                            </a>
+                            <a href="Rendez-vous-Pas-vu-Pas-lu/">
+                                <span>RENDEZ-VOUS</span>
+                            </a>
+                            <a href="{{ path('login') }}">
+                                <span>Inscription</span>
+                            </a>
+                            <a href="Romans/">
+                                <span >Romans</span>
+                            </a>
+                            <a href="A-propos-de-nous/">
+                                <span>A propos de Nous</span>
+                            </a>
+                        </p>
+
+                        <p class="m-0">
+                            <a href="5d14e62b_107/">
+                                <span>LECTEURS&nbsp;</span>
+                            </a>
+                            <a href="Salon-Pas-Vu-Pas-Lu/">
+                                <span>SALON PAS VU, PAS LU</span>
+                            </a>
+                        </p>
+
+                        <p class="m-0">
+                            <a href="Bandes-dessin%C3%A9es/">
+                                <span>Bandes-dessinées</span>
+                            </a>
+                            <a href="Jeunesse/">
+                                <span>Jeunesse</span>
+                            </a>
+                        </p>
+
+                        <p class="m-0">
+                            <a href="Un-auteur-%C3%A9merge/">
+                                <span>Emergence </span>
+                            </a>
+                            <a href="Po%C3%A9sies/">
+                                <span>Poésies </span>
+                            </a>
+                            <a href="Revue-de-presse/">
+                                <span>Revue de presse</span>
+                            </a>
+                            <a href="Thrillers/">
+                                <span> Thrillers </span>
+                            </a>
+                        </p>
+
+                        <p class="m-0">
+                            <a href="http://terhoma.org/Accueil/">
+                                <span>Association Terhoma </span>
+                            </a>
+                            <a href="http://terhoma.org/Notre-mission/">
+                                <span>Partage</span>
+                            </a>
+                            <a href="Mangas/">
+                                <span>Mangas</span>
+                            </a>
+                        </p>
+
+                        <p class="m-0">
+                            <a href="http://terhoma.org/Faire-un-don/">
+                                <span >FAIRE UN DON</span>
+                            </a>
+                            <a href="http://terhoma.org/Devenir-M%C3%A9c%C3%A8ne/">
+                                <span> Devenir Mécène </span>
+                            </a>
+                            <a href="Essais/">
+                                <span>Essais</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="box-quote-2 box-quote-3">
+                        <a style="text-decoration:none;line-height: 1.2;" href="https://www.zeitverschiebung.net/fr/city/2988507">
+                            <div style="color:gray;">Heure actuelle</div>Paris, France
+                        </a>
+                        <iframe src="https://www.zeitverschiebung.net/clock-widget-iframe-v2?language=fr&amp;size=small&amp;timezone=Europe%2FParis" width="100%" height="90" frameborder="0" seamless=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-purple block-favorites custom-t custom-b" style="height: 14rem;">
+            <div class="row mx-auto">
+                <div class="col-md-4">
+                    <img src="{{ asset('assets/images/illustration/home-gif.gif') }}">
+                </div>
+                <div class="col-md-5 pl-0">
+                    <p class="p-favorites">Les coups de coeur de la rédaction...</p>
+                </div>
+                <div class="col-md-3">
+                    <img src="{{ asset('assets/images/illustration/home-love.png') }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-purple custom-t pb-0" style="height: 100%;">
+            <div class="row mx-auto block-entrevue">
+                <div class="col-md-4 p-0">
+                    <div class="bg-black text-center">
+                        <div class="entrevue-title p-2">Interview ! ! !</div>
+                        <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="bg-black text-center">
+                        <div class="entrevue-title p-2">Interview ! ! !</div>
+                        <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="bg-black text-center">
+                        <div class="entrevue-title p-2">Interview ! ! !</div>
+                        <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 p-0">
+                    <div class="bg-black text-center">
+                        <div class="entrevue-title p-2">Interview ! ! !</div>
+                        <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="bg-black text-center">
+                        <div class="entrevue-title p-2">Interview ! ! !</div>
+                        <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="bg-black text-center">
+                        <div class="entrevue-title p-2">Interview ! ! !</div>
+                        <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block flashmessage %}
+    {% include 'pages/flashMessage.html.twig' %}
+{% endblock %}
