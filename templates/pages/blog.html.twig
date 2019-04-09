@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Revue de presse' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/news-2.jpg') }});">
+            <span class="illustration-title about-title" style="width: 16.2rem;">Revue de presse</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="blog-content">
+            <div class="post-outer">
+                <div class="post">
+                    <div class="block-image"><div class="thumb">
+                            <a href="{{ path('article') }}" style="background:url(https://images.unsplash.com/photo-1541695101816-728a7d3cf491?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat center center;background-size:cover"></a>
+                        </div>
+                    </div>
+                    <article>
+                        <h2 class="post-title entry-title"><span>
+                            <a href="{{ path('article') }}">
+                                Apple’s new ipad lets you play the latest games for a fraction of the price
+                            </a>
+                            </span>
+                        </h2>
+                        <div class="date-header">
+                            <div id="meta-post">Par
+                                <a class="g-profile" href="#!">
+                                    <span itemprop="name">
+                                        <strong>Abdel</strong>
+                                    </span>
+                                </a>
+                                <abbr class="published"> Le 09/04/2019</abbr>
+                            </div>
+                            <div class="meta-border"></div>
+                            <div class="resumo">
+                                <span> Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ullamcorper suscipit lobortis nisl ut aliquip  ex ea commodo cons...</span>
+                                <a href="{{ path('article') }}">Lire la suite</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            {# supprimer apres la boucle #}
+            <div class="post-outer">
+                <div class="post">
+                    <div class="block-image"><div class="thumb">
+                            <a href="{{ path('article') }}" style="background:url(https://images.unsplash.com/photo-1541695101816-728a7d3cf491?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat center center;background-size:cover"></a>
+                        </div>
+                    </div>
+                    <article>
+                        <h2 class="post-title entry-title"><span>
+                            <a href="{{ path('article') }}">
+                                Apple’s new ipad lets you play the latest games for a fraction of the price
+                            </a>
+                            </span>
+                        </h2>
+                        <div class="date-header">
+                            <div id="meta-post">Par
+                                <a class="g-profile" href="#!">
+                                    <span itemprop="name">
+                                        <strong>Abdel</strong>
+                                    </span>
+                                </a>
+                                <abbr class="published"> Le 09/04/2019</abbr>
+                            </div>
+                            <div class="meta-border"></div>
+                            <div class="resumo">
+                                <span> Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ullamcorper suscipit lobortis nisl ut aliquip  ex ea commodo cons...</span>
+                                <a href="{{ path('article') }}">Lire la suite</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="post-outer">
+                <div class="post">
+                    <div class="block-image"><div class="thumb">
+                            <a href="{{ path('article') }}" style="background:url(https://images.unsplash.com/photo-1541695101816-728a7d3cf491?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80) no-repeat center center;background-size:cover"></a>
+                        </div>
+                    </div>
+                    <article>
+                        <h2 class="post-title entry-title"><span>
+                            <a href="{{ path('article') }}">
+                                Apple’s new ipad lets you play the latest games for a fraction of the price
+                            </a>
+                            </span>
+                        </h2>
+                        <div class="date-header">
+                            <div id="meta-post">Par
+                                <a class="g-profile" href="#!">
+                                    <span itemprop="name">
+                                        <strong>Abdel</strong>
+                                    </span>
+                                </a>
+                                <abbr class="published"> Le 09/04/2019</abbr>
+                            </div>
+                            <div class="meta-border"></div>
+                            <div class="resumo">
+                                <span> Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ullamcorper suscipit lobortis nisl ut aliquip  ex ea commodo cons...</span>
+                                <a href="{{ path('article') }}">Lire la suite</a></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            {# Fin #}
+        </div>
+    </div>
+{% endblock %}

@@ -4,7 +4,7 @@
     <link href="{{ asset('assets/admin/vendor/ckeditor/ckeditor.css') }}" rel="stylesheet">
 {% endblock %}
 
-{% block title 'Ajouter une interview' %}
+{% block title 'Editeurs' %}
 
 {% block body %}
     <div class="container">
@@ -14,22 +14,26 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle interview</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau editeur</h6>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST" class="user field_wrapper form-horizontal">
                             <div class="form-group row m-1 pb-4">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" placeholder="Nom de la personne interviewée">
+                                    <input type="text" class="form-control form-control-user" placeholder="Titre de l'editeur">
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" placeholder="Courte description ex : Auteur Ghost Writer & Illustratrice">
+                                    <div class="form-group">
+                                        <div class="input-group input-file" name="Fichier1">
+                                            <input type="text" class="form-control form-control-user" placeholder="Télécharger le logo de l'editeur">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group row m-1 pb-4">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
                                     <div class="form-group">
-                                        <div class="input-group input-file" name="Fichier1">
+                                        <div class="input-group input-file" name="Fichier2">
                                             <input type="text" class="form-control form-control-user" placeholder='Télécharger une image de profil' />
                                         </div>
                                     </div>
@@ -40,25 +44,36 @@
                             </div>
                             <div class="form-group row m-1 pb-4">
                                 <div class="col-md-6 mb-3 mb-sm-0">
-                                    <textarea name="interview" id="interview" rows="10" cols="80">
-                                        Première biographie
+                                    <textarea name="editor" id="editor" rows="10" cols="80">
+                                        <p><strong>Fiche d&rsquo;identité :</strong></p>
+                                        <p><strong>Date de démarrage activité&nbsp;: --</strong></p>
+                                        <p><strong>Contact :</strong>&nbsp;<strong>--</strong></p>
+                                        <p><strong>Adresse :</strong>&nbsp;<strong>--</strong></p>
+                                        <p><strong>T&eacute;l&eacute;phone :&nbsp;--</strong></p>
+                                        <p><strong>Champ d&rsquo;activité :&nbsp;</strong>&nbsp;<strong>--</strong><br />
                                     </textarea>
                                 </div>
                                 <div class="col-md-6 mb-3 mb-sm-0">
-                                    <textarea name="interview-2" id="interview-2" rows="10" cols="80">
-                                        Deuxième biographie
-                                    </textarea>
+                                    <div class="form-group">
+                                        <label>Ajouter une photo de couverture</label>
+                                        <div class="input-group">
+                                            <span class="input-group-btn w-100 position-absolute" style="background: #eaecf4;">
+                                                <span class="btn btn-default btn-file">
+                                                    Télècharger une image… <input type="file" id="imgInp">
+                                                </span>
+                                            </span>
+                                            <input type="text" class="form-control invisible" readonly>
+                                        </div>
+                                        <img id='img-upload'/>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="pb-4 bg">
                                 <div class="menu_item">
                                     <div class="form-group">
-                                        <label class="p-4 control-label">Interview </label>
+                                        <label class="p-4 control-label">Interview editeur </label>
                                         <div class="row pb-4 m-1">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" id="titre" class="form-control form-control-user" name="title[0]" placeholder="Titre">
-                                            </div>
                                             <div class="col-md-6 mb-3">
                                                 <input type="text" id="question" class="form-control form-control-user" name="question[0]" placeholder="Question">
                                             </div>
@@ -112,10 +127,7 @@
     <script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
     <script>
         {# Remplace le textarea par le plugin Ckeditor #}
-        CKEDITOR.replace('interview', {
-            language: 'fr'
-        });
-        CKEDITOR.replace('interview-2', {
+        CKEDITOR.replace('editor', {
             language: 'fr'
         });
 
@@ -188,11 +200,8 @@
                     x++;
                     index++;
                     var fieldHTML = '<div class="form-group removeGroup bg position-relative">\n'
-                        +'<label class="p-4 control-label">Interview </label>\n'
+                        +'<label class="p-4 control-label">Interview editeur </label>\n'
                         +'<div class="row pb-4 m-1">\n'
-                        +'<div class="col-md-6 mb-3">\n'
-                        +'<input type="text" id="titre" class="form-control form-control-user" name="title[0]" placeholder="Titre">\n'
-                        +'</div>\n'
                         +'<div class="col-md-6 mb-3">\n'
                         +'<input type="text" id="question" class="form-control form-control-user" name="question[0]" placeholder="Question">\n'
                         +'</div>\n'

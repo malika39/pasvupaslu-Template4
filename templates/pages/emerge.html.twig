@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Rendez-vous PasvuPasLu' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/emerge.jpg') }});background-size: cover; background-position: center;">
+            <span class="illustration-title about-title">Emergence</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="title-book" style="font-size: 1.7rem;padding: 1rem;">Un auteur émerge !</div>
+
+        <div class="block-quote bg-rose mb-5" style="height: auto;">
+            <div class="row mx-auto">
+                <div class="col-md-10 p-0">
+                    <p style="font: normal normal 1.19rem 'Open Sans',sans-serif; color: #ffffff; font-style: italic; line-height: 2rem; margin: 4rem 2rem;">
+                        Chaque mois, vos notes propulsent un ou plusieurs auteurs.
+                        <br>
+                        Sur cette page, suivez l'évolution de leur parcours sur Pas vu, pas lu et après !
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <img src="{{ asset('assets/images/illustration/avatar.png') }}" alt="" style="top: -4rem; position: absolute; right: 3rem;">
+                </div>
+            </div>
+        </div>
+
+        ....???
+
+    </div>
+{% endblock %}

@@ -12068,13 +12068,8 @@ body.sidebar-toggled footer.sticky-footer {
   }
 }
 .materialSelect {
-  height: 70px;
   position: relative;
   text-align: center;
-  margin-bottom: 10px;
-}
-.materialSelect.error .select:not(.isOpen) {
-  border: 1px solid #DD2C00 !important;
 }
 .materialSelect.error .message {
   display: block;
@@ -12109,6 +12104,7 @@ body.sidebar-toggled footer.sticky-footer {
   transform: translate(-50%, 0);
 }
 .materialSelect .select {
+  overflow: overlay!important;
   position: absolute;
   margin: 0;
   padding: 0;
@@ -12123,9 +12119,6 @@ body.sidebar-toggled footer.sticky-footer {
   z-index: 9999;
   height: 48px;
   overflow: hidden;
-  border: 1px solid rgba(0, 0, 0, 0);
-  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  background-color: #fff;
   margin-left: 0;
   -webkit-transform: none;
   transform: none;
@@ -12181,16 +12174,8 @@ body.sidebar-toggled footer.sticky-footer {
 .materialSelect .select.isOpen li[data-selected] {
   color: #E91E63;
 }
-.materialSelect .select.isOpen li:hover {
-  background-color: #eeeeee;
-}
 .materialSelect .select.isOpen li:active {
   background-color: #dbdbdb;
-}
-.materialSelect .select:not(.isOpen):hover {
-  background-color: #f7f7f7;
-  border-top: 1px solid #CDCDCD;
-  border-bottom: 1px solid #CDCDCD;
 }
 .materialSelect .select:not(.isOpen):active {
   box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.3);

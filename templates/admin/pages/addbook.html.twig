@@ -1,0 +1,122 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'NOM DU LIVRE' %}
+
+{% block body %}
+    <div class="container">
+        <form class="row user" method="POST" action="">
+
+            <div class="col-xl-8 col-lg-7">
+
+                {# Menu du header #}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Informations sur ce livre</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row m-1 pb-4">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input type="text" class="form-control form-control-user" placeholder="Titre du livre" value="Lucky Luke">
+                            </div>
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="form-group">
+                                    <div class="col-xs-5 materialSelect form-control form-control-user inline empty w-100">
+                                        <ul class="select">
+                                            <li data-selected="true">Catégorie</li>
+                                            <li data-value="0">Nom</li>
+                                            <li data-value="0">Nom</li>
+                                            <li data-value="0">Nom</li>
+                                            <li data-value="0">Nom</li>
+                                            <li data-value="0">Nom</li>
+                                            <li data-value="0">Nom</li>
+                                            <li data-value="0">Nom</li>
+                                            <li data-value="0">Nom</li>
+                                        </ul>
+                                        <div class="message">Sélectionner l'emplacement de la page</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3 mb-sm-0">
+                            <textarea name="livre" id="livre" rows="10" cols="80">
+                                Tagada, tagada, voilà Lucky Luke ! Il est entré dans le hall de notre groupe de presse sur son fameux cheval, Jolly Jumper, cool, comme à son habitude. Puis il est monté dans l’ascenseur qui mène à la rédaction, mâchouillant sa brindille, silencieux mais souriant. Peut-être pensait-il encore à son dernier séjour à Paris, lorsqu’il avait dû venir chercher la statue de la Liberté pour la rapporter en Amérique. Car, pendant ce périple maritime et terrestre, le cow-boy qui tire plus vite que son ombre n’avait pas eu le temps de s’ennuyer. Traversée houleuse en bateau, installation cocasse dans un hôtel parisien de la Plaine-Monceau, dans le 17e arrondissement, rencontres savoureuses avec madame Bovary (le personnage de Gustave Flaubert), Gustave Eiffel et Victor Hugo. Le cow-boy que rien ne semble jamais déstabiliser va de surprise en étonnement pour son premier séjour en dehors des Etats-Unis.
+                            </textarea>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <div class="card text-white border-primary bg-primary p-1 mb-3">
+                                <div class="card-body">
+                                    <a href="#!">
+                                        <img style="width:7rem;height:7rem;border-radius:60%;" class="float-left mr-3" src="https://static.fnac-static.com/multimedia/Images/FR/NR/63/9c/a2/10656867/1507-0/tsp20181105222802/Les-aventures-de-Lucky-Luke-d-apres-Morris-tome-8-Un-cow-boy-a-Paris.jpg" alt="">
+                                    </a>
+                                    <div class="float-left">
+                                        <h2 class="card-title ml-2" style="font-size: .97rem;font-weight: 600;"> Abdelkarim</h2>
+                                        <p class="card-text ml-2" style="font-size: .759rem;"> Le livre à été mis en ligne le 25 Avril 2019 à 10h30 </p>
+                                        <a href="#!" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                            Télécharger le pdf du livre
+                                        </a>
+                                        <a href="#!" class="btn btn-primary btn-sm">
+                                            <i class="far fa-eye"></i>
+                                            Voir la page du livre
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Couverture du livre</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="input-group">
+                           <span class="input-group-btn w-100 position-absolute" style="background: #eaecf4;">
+                               <span class="btn btn-default btn-file">
+                                   Changer la coverture photo
+                                   <input type="file" id="imgInp">
+                               </span>
+                           </span>
+                           <input type="text" class="form-control invisible" readonly>
+                        </div>
+                        <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/63/9c/a2/10656867/1507-0/tsp20181105222802/Les-aventures-de-Lucky-Luke-d-apres-Morris-tome-8-Un-cow-boy-a-Paris.jpg" id='img-upload'/>
+                        <div class="col-md-12 mt-4">
+                            <button class="btn btn-primary w-100">
+                                Mettre à jour le livre
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        tbody {
+            background: #f8f9fc;
+        }
+        .desc {
+            font-size: .75rem;
+            color: #858796;
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+<script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
+<script>
+    {# Remplace le textarea par le plugin Ckeditor #}
+    CKEDITOR.replace('livre', {
+        language: 'fr'
+    });
+</script>
+{% endblock %}
+
+

@@ -192,5 +192,68 @@ class HomeController extends AbstractController {
 
     }
 
+    /**
+     * @Route("salon-pas-vu-pas-lu", name="salon")
+     */
+    public function salon() {
+
+        return $this->render("pages/salon.html.twig");
+
+    }
+
+    /**
+     * @Route("revue-de-presse/", name="blog")
+     */
+    public function blog() {
+
+        return $this->render("pages/blog.html.twig");
+
+    }
+
+    /**
+     * @Route("article", name="article")
+     */
+    public function article() {
+
+        return $this->render("pages/article.html.twig");
+
+    }
+
+    /**
+     * @Route("rendez-vous", name="rendez_vous")
+     */
+    public function rendezvous() {
+
+        return $this->render("pages/rendez-vous.html.twig");
+
+    }
+
+    /**
+     * @Route("un-auteur-emerge", name="emerge")
+     */
+    public function emerge() {
+
+        return $this->render("pages/emerge.html.twig");
+
+    }
+
+    /**
+     * @Route("lecteurs-lu", name="allbooks")
+     */
+    public function allbooks() {
+
+        return $this->render("pages/all-books.html.twig");
+
+    }
+
+    /**
+     * @Route("Informations-legales", name="legal")
+     */
+    public function legal() {
+
+        return $this->render("pages/legal.html.twig");
+
+    }
+
 
 }
