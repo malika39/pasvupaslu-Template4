@@ -46,7 +46,9 @@
             <div class="col-md-6 pl-0">
                 <div class="content-block bg-img" style="background-image: url({{ asset('assets/images/illustration/home-register.jpg') }});">
                     <h3 class="content-block-title bg-transparent text-center">Rejoindre les acteurs de  Pas vu, pas lu !</h3>
+                    {% if app.user is null %}
                     <a href="{{ path('identification') }}" class="btn-default btn-register b-1">Inscription</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
