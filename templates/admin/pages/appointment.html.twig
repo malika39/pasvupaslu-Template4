@@ -1,0 +1,68 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'Rendez-vous PasvuPasLu' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-8 col-lg-7">
+
+                {# Menu du header #}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Rendes-vous PasvuPasLu
+                            <span class="badge badge-primary float-right">Il y a 1 rendes-vous</span>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Titre</th>
+                                <th scope="col" style="text-align: right">Options</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Rendez-vous PasVuPasLu Paris </td>
+                                <th scope="row" style="text-align: right">
+                                    <a href="{{ path('admin_add_appointment') }}" class="btn btn-primary btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-info btn-circle btn-sm">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet article ?\n');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau rendez-vous</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <a href="{{ path('admin_add_appointment') }}" class="btn btn-primary btn-user btn-block">
+                            Créer un nouveau rendez-vous PasvuPasLu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -1,0 +1,100 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('assets/admin/vendor/ckeditor/ckeditor.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block title 'Liste des editeurs' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Liste des editeurs inscrits
+                            <span class="badge badge-primary float-right">Il y a 10 editeur(s) inscrit(s)</span>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+
+                        <a href="{{ path('admin_user_info') }}" class="row bg mb-4">
+                            <div class="col-md-10">
+                                <img src="https://gravatar.com/avatar/ff3265b13420b9d301d0005ef494385a?s=80&d=https://codepen.io/assets/avatars/user-avatar-80x80-bdcd44a3bfb9a5fd01eb8b86f9e033fa1a9897c3a15b33adfc2649a002dab1b6.png" class="float-left photo">
+                                <div class="d">
+                                    <h4 class="list-group-item-heading name">Alyssa Porambo</h4>
+                                    <p class="list-group-item-text title m-0">alyssa@gmail.com</p>
+                                    <p class="list-group-item-text title m-0">Inscrit le 25 avril 2019</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="expertise">
+                                    <div class="read-more">
+                                        <button type="button" class="btn btn-primary btn-more">
+                                            Voir le profil &nbsp;
+                                            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="{{ path('admin_user_info') }}" class="row bg mb-4">
+                            <div class="col-md-10">
+                                <img src="https://gravatar.com/avatar/ff3265b13420b9d301d0005ef494385a?s=80&d=https://codepen.io/assets/avatars/user-avatar-80x80-bdcd44a3bfb9a5fd01eb8b86f9e033fa1a9897c3a15b33adfc2649a002dab1b6.png" class="float-left photo">
+                                <div class="d">
+                                    <h4 class="list-group-item-heading name">Alyssa Porambo</h4>
+                                    <p class="list-group-item-text title m-0">alyssa@gmail.com</p>
+                                    <p class="list-group-item-text title m-0">Inscrit le 25 avril 2019</p>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="expertise">
+                                    <div class="read-more">
+                                        <button type="button" class="btn btn-primary btn-more">
+                                            Voir le profil &nbsp;
+                                            <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+    <style>
+        .photo {
+            border-radius: 45px;
+            margin-right: 20px;
+            width: 90px;
+            height:90px
+        }
+        .name {
+            font-weight: 700;
+        }
+        .bg {
+            text-decoration: none!important;
+            color: #000000b0!important;
+            font-size: .87rem;
+            background: #f8f9fc;
+            padding: 1rem;
+            border-radius: .3rem;
+            transition: .2s;
+        }
+        .bg:hover {
+            opacity: .94;
+        }
+    </style>
+{% endblock %}
+
+

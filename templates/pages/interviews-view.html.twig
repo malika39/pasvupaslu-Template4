@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Nom de la personne' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/interviews.jpg') }});">
+            <span class="illustration-title">Interviews</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-purple" style="background-color:#8a1844;opacity:1;height:100%;padding:0;">
+            <div class="interviews-bare">CHRISTINE&nbsp;DEVIERS&nbsp;JONCOUR</div>
+            <div class="row mx-auto">
+                <div class="col-md-3 p-0">
+                    <img src="http://www.pasvupaslu.com/gallery_gen/ccc767b4d9ce970673c92e44dfa105e5_250x210.jpg" class="picture-block-i">
+                </div>
+                <div class="col-md-9">
+                    <div class="block-i">
+                        <img src="{{ asset('assets/images/illustration/stylo-big.png') }}" alt="">
+                        <p> Auteur Ghost Writer & Illustratrice</p>
+                        <div class="img-illus" style="background-image: url('{{ asset('assets/images/illustration/illust.jpg') }}')"></div>
+                        <div class="text-center link-s">
+                            <a href="#!">http://christinedeviersjoncour.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="row mx-auto custom-b">
+            <div class="col-md-6 block-i-rose">
+                <div class="bg-gris p-5" style="background-image: url('{{ asset('assets/images/illustration/bg-gris.jpg') }}')">
+                    <h3 style="text-transform: uppercase">BIBLIOGRAPHIE</h3>
+                    <p>
+                        LORGWYN LE JEUNE ALCHIMISTE / Ennead Publishing en cours<br>
+                        LA CITÉ D’AIRAIN / Ennead Publishing / 2016<br>
+                        BIS REPETITA / Ennead Publishing / 2013<br>
+                        ECLAIRS DE VIE /Ennead Publishing/ 2008<br>
+                        CES MESSIEURS D’EN HAUT / JC Gawsewitch/ 2012<br>
+                        NUITS BLANCHES / JM LAFFONT /2008<br>
+                        LES AMANTS MAUDITS DE LA RÉPUBLIQUE / JM Laffont /2006<br>
+                        CORRUPTION UNE AFFAIRE D’ÉTAT / Le Rocher/2005<br>
+                        TOI MASCULIN MON FÉMININ / Le Rocher/2003<br>
+                        TRIO / Pauvert Fayard/2001 OPERATION BRAVO / Plon/2000<br>
+                        RELATION PUBLIQUE / Fayard/1999<br>
+                        LA PUTAIN DE LA RÉPUBLIQUE Calman Levy/1998
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 p-0">
+                <div class="block-quote bg-rose" style="background:#9d184c;opacity:1;height:100%;">
+                    <img src="{{ asset('assets/images/illustration/oo.png') }}" class="float-right hidden-response-2" style="margin-top: -1rem;">
+                    <div class="block-cadre text-block-i">
+                        <h3 style="text-transform: uppercase">BIBLIOGRAPHIE</h3>
+                        <p>
+                            Christine Deviers-Joncour est née à La Cassage  petit village en Périgord Noir,  de parents enseignant et artiste peintre.
+                            <br><br>
+                            Elle est devenue célèbre du fait de son implication dans le volet de l'affaire Elf-Roland Dumas, qui fut ministre de François Mitterrand.
+                            <br><br>
+                            "L'affaire Dumas et CDJ ne fut qu'un écran de fumée pour protéger l'énorme scandale des Frégates à Taiwan pour un montant de plus de quatre milliards de francs de rétro commissions:
+                            <br><br>
+                            "Un des plus gros scandales politico financier de la Cinquième République en volume d'argent et nombre de décès, dixit le juge Van Ruymbecke, et Christine Deviers Joncour le fusible idéal !"
+                            <br><br>
+                            Grâce à son combat courageux pour sa défense et sa survie cette affaire fut mise en lumière.
+                            <br><br>
+                            ﻿ En 2002, Jean-Pierre Thiollet écrit dans son livre Les Dessous d'une Présidence: « Que cela plaise ou non, Christine Deviers-Joncour est l'une des femmes clés de notre époque qu'elle incarne »." (Jean-Pierre Thiollet, dans " Les dessous d'une Présidence" 2002)
+                            <br><br>
+                            <b><i>​Aujourd'hui elle se consacre à l'écriture, l'illustration et la musique.</i></b>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-rose pt-5 pb-5 custom-t" style="background:#9d184c;opacity:1;height:100%;">
+            <div class="interviews-content block-2-i">
+                {# boucle #}
+                <div class="interviews-2-block" style="margin: 3% 0;">
+                    <div class="sub-title-block-i">Mémoire Universelle</div>
+                    <div class="title-interview pb-2">Quelle définition donnez-vous d’un livre ? Pour vous, que représente un livre ?</div>
+                    <div class="desc-interview">C’est un support de l’écriture depuis des siècles et pour longtemps encore... Ouvrir un livre c’est toujours le début d’une nouvelle aventure! Le livre continuera à exister quand l’auteur et l’éditeur auront disparu de la Terre... C’est aussi un vecteur d’émancipation, de culture et de construction personnelle.</div>
+                </div>
+                {# Fin de la boucle #}
+
+                {# A supprimer quand la boucle et faite #}
+                <div class="interviews-2-block" style="margin: 1% 0;">
+                    <div class="sub-title-block-i">Mémoire Universelle</div>
+                    <div class="title-interview pb-2">Pour vous, Qu’est-ce que le métier d’éditeur ?</div>
+                    <div class="desc-interview">C’est un intermédiaire important dans la chaîne du livre. Il déniche des talents et les fait éclore en les portant à la connaissance du grand public.</div>
+                </div>
+
+                <div class="interviews-2-block" style="margin: 1% 0;">
+                    <div class="sub-title-block-i">Mémoire Universelle</div>
+                    <div class="title-interview pb-2">Pour vous, Qu’est-ce que le métier d’éditeur ?</div>
+                    <div class="desc-interview">C’est un intermédiaire important dans la chaîne du livre. Il déniche des talents et les fait éclore en les portant à la connaissance du grand public.</div>
+                </div>
+
+                <div class="interviews-2-block" style="margin: 1% 0;">
+                    <div class="sub-title-block-i">Mémoire &nbsp; &nbsp;Universelle</div>
+                    <div class="title-interview pb-2">Au nom de l'équipe et de tous les visiteurs et utilisateurs du site, <br>je vous remercie.</div>
+                    <div class="desc-interview float-right">Bonne continuation et à bientôt !</div>
+                </div>
+                {# Fin #}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+

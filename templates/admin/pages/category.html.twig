@@ -1,0 +1,84 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'Gestion des catégoris' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-8 col-lg-7">
+
+                {# Menu du header #}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Listes des catégories
+                            <span class="badge badge-primary float-right">Il y a 10 catégorie(s)</span>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Options</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Image</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <a href="#id_supprime_categorie" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet catégorie ?\n');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                    <a href="{{ path('admin_edit_category') }}" class="btn btn-primary btn-circle btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                </th>
+                                <td>Romans</td>
+                                <td><img src="https://lecourrieraustralien.cdnartwhere.eu/wp-content/uploads/2017/03/van-du-livre-cover.jpg" class="position-absolute rounded d-block" style="width: 14%;"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle catégorie </h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <form class="user position-relative">
+                            <div class="form-group">
+                                <input type="text" class="form-control form-control-user" placeholder="Nom de la catégorie">
+                            </div>
+                            <div class="form-group">
+                                <label>Ajouter une image</label>
+                                <div class="input-group">
+                                    <span class="input-group-btn w-100 position-absolute" style="background: #eaecf4;">
+                                        <span class="btn btn-default btn-file">
+                                            Télècharger une image… <input type="file" id="imgInp">
+                                        </span>
+                                    </span>
+                                    <input type="text" class="form-control invisible" readonly>
+                                </div>
+                                <img id='img-upload'/>
+                            </div>
+                            <button class="btn btn-primary btn-user btn-block">
+                                Ajouter la categorie
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

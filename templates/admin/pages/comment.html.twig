@@ -1,0 +1,142 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'Liste des Commentaires' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+
+                {# Menu du header #}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Commentaires signaler
+                            <span class="badge badge-primary float-right">Il y a 1 commentaire(s) signaler</span>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Notes</th>
+                                <th scope="col">Commentaires</th>
+                                <th scope="col" style="text-align: right">Options</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    1/10
+                                </td>
+                                <td>
+                                    <div class="desc mt-1">
+                                        <a href="#!" style="font-size: .89rem">Lucky Luke - Tome 8 : Un Cow-boy à Paris</a>
+                                        <p class="m-0 pt-2">Commentaire de : <a href="#!" style="font-size: .89rem">Alexandra</a></p>
+                                    </div>
+                                    <div class="desc mt-1">
+                                        Tagada, tagada, voilà Lucky Luke ! Il est entré dans le hall de notre groupe de presse sur son fameux cheval, Jolly Jumper, cool, comme à son habitude. Puis il est monté dans l’ascenseur qui mène à la rédaction, mâchouillant sa brindille, silencieux mais souriant. Peut-être pensait-il encore à son dernier séjour à Paris, lorsqu’il avait dû venir chercher la statue de la Liberté pour la rapporter en Amérique. Car, pendant ce périple maritime et terrestre, le cow-boy qui tire plus vite que son ...
+                                    </div>
+                                </td>
+                                <th scope="row" style="text-align: right">
+                                    <a href="#" class="btn btn-info btn-circle btn-sm mb-1">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                    <a href="#" onclick="return confirm('Êtes-vous sûr de bien vouloir approuvé ce commentaire ?\n');" class="btn btn-success btn-circle btn-sm mb-1">
+                                        <i class="fas fa-check"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm mb-1" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer ce commentaire ?\n');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Commentaires valider
+                            <span class="badge badge-primary float-right">Il y a 2 commentaire(s) valider</span>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Notes</th>
+                                <th scope="col">Commentaires</th>
+                                <th scope="col" style="text-align: right">Options</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    5/10
+                                </td>
+                                <td>
+                                    <div class="desc mt-1">
+                                        <a href="#!" style="font-size: .89rem">Lucky Luke - Tome 8 : Un Cow-boy à Paris</a>
+                                        <p class="m-0 pt-2">Commentaire de : <a href="#!" style="font-size: .89rem">Alexandra</a></p>
+                                    </div>
+                                    <div class="desc mt-1">
+                                        Tagada, tagada, voilà Lucky Luke ! Il est entré dans le hall de notre groupe de presse sur son fameux cheval, Jolly Jumper, cool, comme à son habitude. Puis il est monté dans l’ascenseur qui mène à la rédaction, mâchouillant sa brindille, silencieux mais souriant. Peut-être pensait-il encore à son dernier séjour à Paris, lorsqu’il avait dû venir chercher la statue de la Liberté pour la rapporter en Amérique. Car, pendant ce périple maritime et terrestre, le cow-boy qui tire plus vite que son ...
+                                    </div>
+                                </td>
+                                <th scope="row" style="text-align: right">
+                                    <a href="#" class="btn btn-info btn-circle btn-sm mb-1">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm mb-1" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer ce livre ?\n');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    2/10
+                                </td>
+                                <td>
+                                    <div class="desc mt-1">
+                                        <a href="#!" style="font-size: .89rem">Lucky Luke - Tome 8 : Un Cow-boy à Paris</a>
+                                        <p class="m-0 pt-2">Commentaire de : <a href="#!" style="font-size: .89rem">Abdel</a></p>
+                                    </div>
+                                    <div class="desc mt-1">
+                                        Tagada, tagada, voilà Lucky Luke ! Il est entré dans le hall de notre groupe de presse sur son fameux cheval, Jolly Jumper, cool, comme à son habitude. Puis il est monté dans l’ascenseur qui mène à la rédaction, mâchouillant sa brindille, silencieux mais souriant. Peut-être pensait-il encore à son dernier séjour à Paris, lorsqu’il avait dû venir chercher la statue de la Liberté pour la rapporter en Amérique. Car, pendant ce périple maritime et terrestre, le cow-boy qui tire plus vite que son ...
+                                    </div>
+                                </td>
+                                <th scope="row" style="text-align: right">
+                                    <a href="#" class="btn btn-info btn-circle btn-sm mb-1">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm mb-1" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer ce livre ?\n');">
+                                        <i class="fas fa-trash"></i>
+                                    </a>
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <style>
+        tbody {
+            background: #f8f9fc;
+        }
+        .desc {
+            font-size: .75rem;
+            color: #858796;
+        }
+    </style>
+{% endblock %}
+
+

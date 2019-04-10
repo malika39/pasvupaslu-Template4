@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Paramétre du compte' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/login.jpg') }});">
+            <span class="illustration-title about-title login-tilte" style="width: 22.2rem;">Paramétre du compte</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-purple text-white" style="height: auto;">
+            <h3 style="font-size: 1.26rem; font-style: italic; margin: 2rem 0 4rem; color: white; text-align: center; text-decoration: underline;">Editer le profil</h3>
+            <form method="POST" action="" class="register mx-auto w-50">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="name">Nom</label>
+                        <input type="text" class="form-control" id="name" autocomplete="off" value="Lardose">
+                    </div>
+                    <div class="col">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" class="form-control" id="firstname" autocomplete="off" value="jean">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" class="form-control" id="pseudo" autocomplete="off" value="Jean Luc">
+                    </div>
+                    <div class="col">
+                        <label for="email">Email</label>
+                        <input type="email" disabled class="form-control" id="email" autocomplete="off" placeholder="jean@gmail.com">
+                    </div>
+                    <div class="col-12 mt-4">
+                        <label for="adresse">Adresse</label>
+                        <input type="adresse" class="form-control" id="adresse" autocomplete="off" placeholder="Adresse ...">
+                    </div>
+                    <div class="col-12 mt-4">
+                        <label for="about">A propos</label>
+                        <textarea type="about" class="form-control" id="about" autocomplete="off" placeholder="à propos ..." style="height: 6rem; resize: none;"></textarea>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <label>Changer d'avatar</label>
+                        ...
+                   </div>
+                </div>
+                <div class="text-center mb-5">
+                    <button class="login btn-default">Sauvegarder</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="block-quote bg-purple text-white" style="height: auto;border-top: 1px solid white;">
+            <h3 style="font-size: 1.26rem; font-style: italic; margin: 2rem 0 4rem; color: white; text-align: center; text-decoration: underline;">Modifier votre mot de passe</h3>
+            <form method="POST" action="" class="register mx-auto w-50">
+                <div class="form-row">
+                    <div class="col-12 mb-4">
+                        <label for="password">Mot de passe actuelle</label>
+                        <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Mot de passe actuelle">
+                    </div>
+                    <div class="col">
+                        <label for="password-1">Nouveau mot de passe</label>
+                        <input type="password" class="form-control" id="password-1" autocomplete="off" placeholder="Nouveau mot de passe">
+                    </div>
+                    <div class="col">
+                        <label for="password-2">Confirmer le nouveau mot de passe</label>
+                        <input type="password" class="form-control" id="password-2" autocomplete="off" placeholder="Confirmer le nouveau mot de passe">
+                    </div>
+                </div>
+                <div class="text-center mb-5">
+                    <button class="login btn-default">Sauvegarder</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+{% endblock %}

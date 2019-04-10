@@ -1,63 +1,101 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets '<link rel="stylesheet" href="http://pasvupaslu.com/css/24.css">' %}
-
-{% block title 'Categories' %}
+{% block title 'TITRE DE LA CATEGORIE !' %}
 
 {% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+            <span class="illustration-title">Romans</span>
+        </div>
 
-    <div class="vbox wb_container" id="wb_main" style="height: 970px;">
+        <div class="separator"></div>
 
-        <div class="wb_cont_inner">
-            <div id="wb_element_instance1082" class="wb_element wb_text_element" style=" line-height: normal;">
-                <h3 class="wb-stl-heading3" style="text-align: center;">
-                    <font color="#0a030a"><span style="caret-color: rgb(10, 3, 10);">Nouvelles</span></font>
-                </h3>
+        <div class="row mx-auto text-white category-title pt-2 pb-3" style="background-color: #a80d49;">
+            <div class="col-md-10">
+                Vous êtes l'auteur d'un roman, vous souhaitez donner de la visibilité à votre oeuvre, rendez-vous à la page<br> <a href="">inscription</a> et remplissez le formulaire. Un membre de notre équipe reviendra vers vous.
             </div>
+            <a href="{{ path('registration-author') }}"><img src="{{ asset('assets/images/illustration/btn-register.jpg') }}"></a>
+        </div>
 
-            <div id="wb_element_instance1083" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
+        <div class="container pb-5 pt-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card text-center mb-3" style="margin-top: 0!important">
+                        <div class="card-body">
 
-            <div id="wb_element_instance1084" class="wb_element wb-elm-orient-horizontal">
-                <div class="wb-elm-line"></div>
-            </div>
+                            <a href="{{ path('book_view') }}" class="d-block">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/45/34/a0/10499141/1507-1/tsp20190201145259/Le-gout-de-la-mort.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
+                            </a>
 
-            <div id="wb_element_instance1085" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
+                            <h6><a href="{{ path('book_view') }}" class="text-dark">Tome 23 : Le goût de la mort</a></h6>
 
-            <div id="wb_element_instance1086" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
+                            <div class="text-muted small mb-3">
+                                Alyana a réveillé les géants qui parcouraient jadis les terres d’Arran...
+                            </div>
 
-            <div id="wb_element_instance1087" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
+                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
 
-            <div id="wb_element_instance1088" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal"><span style="color:rgba(255,255,255,1);"><em>Vous êtes auteur de nouvelles, vous souhaitez donner de la visibilité à vos créations, rendez-vous à la page<a data-finalurl="mi:5d14e62b_126/" data-name="Inscription Auteur" href="Inscription-Auteur/"> inscription </a>et remplissez le formulaire. Un membre de notre équipe reviendra vers vous.</em></span></p>
-            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center mb-3" style="margin-top: 0!important">
+                        <div class="card-body">
 
-            <div id="wb_element_instance1089" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
+                            <a href="{{ path('book_view') }}" class="d-block">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/58/d4/99/10081368/1507-1/tsp20180920112651/La-poie.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
+                            </a>
 
-            <div id="wb_element_instance1090" class="wb_element wb_element_picture" title="">
-                <a href="Inscription-Auteur/"><img alt="gallery/visuelcorrection" src="{{ asset('assets/images/gallery/6f1a0adae718b8f5f34d8fced72e3f21_113x80.jpg') }}"></a>
-            </div>
+                            <h6><a href="{{ path('book_view') }}" class="text-dark">Orcs et Gobelins - Tome 5 : La poisse</a></h6>
 
-            <div id="wb_element_instance1091" class="wb_element" style="width: 100%; display: none;">
-                <script type="text/javascript">
-                    $(function() {
-                        $("#wb_element_instance1091").hide();
-                    });
-                </script>
+                            <div class="text-muted small mb-3">
+                                La Poisse attire les coups du sort comme personne. Rien d’étonnant donc...
+                            </div>
+
+                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center mb-3" style="margin-top: 0!important">
+                        <div class="card-body">
+
+                            <a href="{{ path('book_view') }}" class="d-block">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/b2/97/9f/10459058/1507-1/tsp20181024081614/Zakariel.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
+                            </a>
+
+                            <h6><a href="{{ path('book_view') }}" class="text-dark">Les Maîtres inquisiteurs - Tome 11 : Zakariel</a></h6>
+
+                            <div class="text-muted small mb-3">
+                                Assinya s’est réincarnée et Adrael ne peut se résoudre à l’abandonner à son sort...
+                            </div>
+
+                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-center mb-3" style="margin-top: 0!important">
+                        <div class="card-body">
+
+                            <a href="{{ path('book_view') }}" class="d-block">
+                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/0f/51/a6/10899727/1507-1/tsp20190306164220/La-vie-secrete-des-ecrivains.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
+                            </a>
+
+                            <h6><a href="{{ path('book_view') }}" class="text-dark">La vie secrète des écrivains</a></h6>
+
+                            <div class="text-muted small mb-3">
+                                En 1999, après avoir publié trois romans  devenus cultes, le célèbre écrivain Nathan...
+                            </div>
+
+                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="wb_cont_outer"></div>
-        <div class="wb_cont_bg"></div>
     </div>
-
 {% endblock %}
-

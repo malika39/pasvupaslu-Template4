@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Nom de la personne' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/editeurs.png') }});">
+            <div class="editors-title" style="width: 100%;">Les éditions In Octavo</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="row mx-auto">
+            <div class="col-md-6 pl-0">
+                <div class="row mx-auto">
+                    <div class="col-md-6 p-0 port-interview">
+                        <img src="{{ asset('assets/images/illustration/interview-port.jpg') }}">
+                    </div>
+                    <div class="col-md-6 p-0">
+                        <img src="{{ asset('assets/images/uploads/logo-1-big.png') }}" class="mx-auto">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="box-interview">
+                    <div class="img-picture float-left" style="background-image: url('http://pasvupaslu.com/gallery_gen/3f8cc8b4e6da8f43cba644b045897232.jpg');"></div>
+                    <div class="box-interview-desc float-right mr-5">
+                        <div class="name">Nathalie JAUSSAUD-OBITZ</div>
+                        <div class="desc">vous parle de son métier  ...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="row mx-auto">
+            <div class="col-md-6 p-0">
+                <div class="bg-gris p-5" style="background-image: url('{{ asset('assets/images/illustration/bg-gris.jpg') }}')">
+                    <h3>Fiche d’identité :</h3>
+                    <p>
+                        <b>Date de démarrage activité :</b> 01/01/2016<br>
+                        <b>Contact :</b> Madame Nathalie JAUSSAUD-OBITZ<br>
+                        <b>Adresse :</b> 1, avenue de la Tranquillité 78000 VERSAILLES<br>
+                        <b>Téléphone :</b> 07 84 92 93 48<br>
+                        <br>
+                        <b>Champ d’activité :</b>s  LITTERATURE GENERALE<br>
+                        <b>Catalogue :</b>s Cliquer ici pour l'ouvrir<br>
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 p-0">
+                <div class="block-quote bg-rose" style="background-color:#a30b46;height: 100%;">
+                    <img src="{{ asset('assets/images/illustration/oo.png') }}" class="float-right hidden-response-2" style="margin-top: -1rem;">
+                    <div class="block-cadre">
+                        <div class="cadre">
+                            <img src="http://pasvupaslu.com/gallery_gen/2a1a9a389d3289f4cb8966be108e1494.jpeg">
+                            <a href="https://m.facebook.com/pg/InOctavoEd/photos/?ref=page_internal&mt_nav=0" target="_blank">Visiter la page Facebook </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="block-quote bg-rose pt-5 pb-5" style="height: 100%;">
+            <div class="interviews-content">
+                {# boucle #}
+                <div class="interviews-2-block">
+                    <div class="title-interview pb-2">Quelle définition donnez-vous d’un livre ? Pour vous, que représente un livre ?</div>
+                    <div class="desc-interview">C’est un support de l’écriture depuis des siècles et pour longtemps encore... Ouvrir un livre c’est toujours le début d’une nouvelle aventure! Le livre continuera à exister quand l’auteur et l’éditeur auront disparu de la Terre... C’est aussi un vecteur d’émancipation, de culture et de construction personnelle.</div>
+                </div>
+                {# Fin de la boucle #}
+
+                {# A supprimer quand la boucle et faite #}
+                <div class="interviews-2-block">
+                    <div class="title-interview pb-2">Pour vous, Qu’est-ce que le métier d’éditeur ?</div>
+                    <div class="desc-interview">C’est un intermédiaire important dans la chaîne du livre. Il déniche des talents et les fait éclore en les portant à la connaissance du grand public.</div>
+                </div>
+
+                <div class="interviews-2-block">
+                    <div class="title-interview pb-2">Pour vous, Qu’est-ce que le métier d’éditeur ?</div>
+                    <div class="desc-interview">C’est un intermédiaire important dans la chaîne du livre. Il déniche des talents et les fait éclore en les portant à la connaissance du grand public.</div>
+                </div>
+
+                <div class="interviews-2-block">
+                    <div class="title-interview pb-2">Au nom de l'équipe et de tous les visiteurs et utilisateurs du site, <br>je vous remercie.</div>
+                    <div class="desc-interview float-right">Bonne continuation et à bientôt !</div>
+                </div>
+                {# Fin #}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+

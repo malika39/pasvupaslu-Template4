@@ -1,260 +1,118 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets '<link rel="stylesheet" href="http://pasvupaslu.com/css/6.css">' %}
-
-{% block title 'Auteurs' %}
+{% block title 'Pas Vu pas Lu - Les Auteurs' %}
 
 {% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/authors.png') }});">
+            <span class="illustration-title">Auteurs</span>
+        </div>
 
-    <div class="vbox wb_container" id="wb_main" style="height: 1670px;">
+        <div class="separator"></div>
 
-        <div class="wb_cont_inner">
-            <div id="wb_element_instance253" class="wb_element wb_text_element" style=" line-height: normal;">
-                <h3 class="wb-stl-heading3" style="text-align: center;">
-                    <span style="color:rgba(13,8,13,1);">Auteurs</span>
-                </h3>
+        <div class="bare-author">
+            <div class="color-author" style="background-color: #991b4f">Ils ont besoin de vous pour émerger</div>
+            <div class="color-author" style="background-color: #e0881d">Choisissez un auteur & lisez un extrait de son oeuvre</div>
+            <div class="color-author" style="background-color: #17908a">
+                <img src="{{ asset('assets/images/illustration/success.png') }}" class="hidden-response" style="position: absolute;top: 36%;">
+                Attribuez une note à cet extrait et commentez-la
+                <img src="{{ asset('assets/images/illustration/logo.png') }}" class="hidden-response" style="position: absolute;top: 0;right: 2.8rem;">
             </div>
+            <div class="color-author" style="background-color: #15457c">Grâce à vous des auteurs émergent</div>
+            <div class="color-author" style="background-color: #659934">Suivez-leurs premiers pas sur Pas vu, pas lu</div>
+        </div>
 
-            <div id="wb_element_instance254" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
+        <div class="separator"></div>
 
-            <div id="wb_element_instance255" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;">
-                    <em>
-                        <span style="color:rgba(255,255,255,1);">Ils ont besoin&nbsp;de vous pour émerger&nbsp;</span>
-                    </em>
-                </p>
+        <div class="block-quote pt-3" style="background-color: #0c5366;height: 100%;">
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="{{ path('category') }}" class="nom-category">
+                    Roman
+                </a>
             </div>
-
-            <div id="wb_element_instance256" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><em>Choisissez un auteur dans la catégorie qui vous intéresse&nbsp;</em></p>
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="{{ path('category') }}" class="nom-category">
+                    Thrillers
+                </a>
             </div>
-
-            <div id="wb_element_instance257" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><em>Choisissez un auteur &amp; lisez un extrait de son oeuvre</em></p>
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="{{ path('category') }}" class="nom-category">
+                    Mangas
+                </a>
             </div>
-
-            <div id="wb_element_instance258" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><em>Attribuez une note à&nbsp;cet extrait et commentez-la</em></p>
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="{{ path('category') }}" class="nom-category">
+                    Science-fiction
+                </a>
             </div>
-
-            <div id="wb_element_instance259" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><em>Grâce à vous des auteurs émergent</em></p>
+            <div class="smartphone mb-5">
+                <div class="smartphone-box">
+                    <div class="smartphone-img"></div>
+                    <p class="title">Nouveaux auteurs de la semaine !</p>
+                    <a href="#!" class="link-1 the-reply">
+                        <div class="is-section hasImgReply">
+                            <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
+                        </div>
+                        <div class="is-section hasSettingsReply">
+                            <div class="emailSection pb-0">
+                                <i>Alexandre</i>
+                            </div>
+                            <div class="emailSection">
+                                <span class="addForward">1 livre(s) en ligne</span>
+                            </div>
+                        </div>
+                    </a>
+                    {# supprimer apres la boucle #}
+                    <a href="#!" class="link-1 the-reply">
+                        <div class="is-section hasImgReply">
+                            <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
+                        </div>
+                        <div class="is-section hasSettingsReply">
+                            <div class="emailSection pb-0">
+                                <i>Alexandre</i>
+                            </div>
+                            <div class="emailSection">
+                                <span class="addForward">1 livre(s) en ligne</span>
+                            </div>
+                        </div>
+                    </a>
+                    {# Fin #}
+                    <div class="round mt-5"></div>
+                </div>
             </div>
-
-            <div id="wb_element_instance260" class="wb_element wb_element_picture" title="">
-                <img alt="gallery/regard" src="{{ asset('assets/images/gallery/e69ff87e577716586d3788dbc8ed6728_190x201.png') }}">
-            </div>
-
-            <div id="wb_element_instance261" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><em>Suivez-leurs premiers pas&nbsp;sur Pas vu, pas lu</em></p>
-            </div>
-
-            <div id="wb_element_instance262" class="wb_element wb_element_picture" title="">
-                <img alt="gallery/success-3227625_1920" src="{{ asset('assets/images/gallery/0ed08c0438410384ebf3025e684c9a4f_320x130.png') }}">
-            </div>
-
-            <div id="wb_element_instance263" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance264" class="wb_element wb_element_shape">
-                <a href="Science-fiction/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance265" class="wb_element wb_element_shape">
-                <a href="Romans/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance266" class="wb_element wb_element_shape">
-                <a href="Bandes-dessin%C3%A9es/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance267" class="wb_element wb_element_shape">
-                <a href="Bien-%C3%AAtre-Vie-pratique/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance268" class="wb_element wb_element_shape">
-                <a href="Mangas/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance269" class="wb_element wb_element_shape">
-                <a href="Thrillers/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance270" class="wb_element wb_element_shape">
-                <a href="Essais/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance271" class="wb_element wb_element_shape">
-                <a href="Jeunesse/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance272" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;">
-                    <a data-finalurl="mi:5d14e62b_116/" data-name="Bien-être &amp; Vie pratique" href="Bien-%C3%AAtre-Vie-pratique/">B-E&nbsp;&amp; V P</a>
-                </p>
-            </div>
-
-            <div id="wb_element_instance273" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><a data-finalurl="mi:5d14e62b_101/" data-name="Essais" href="Essais/">Essais</a></p>
-            </div>
-
-            <div id="wb_element_instance274" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance275" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance276" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;">
-                    <a data-finalurl="mi:5d14e62b_113/" data-name="Jeunesse" href="Jeunesse/">Jeunesse</a>
-                </p>
-            </div>
-
-            <div id="wb_element_instance277" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance278" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><a data-finalurl="mi:5d14e62b_100/" data-name="Romans" href="Romans/">Roman</a></p>
-            </div>
-
-            <div id="wb_element_instance279" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance280" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;">
-                    <a data-finalurl="mi:5d14e62b_112/" data-name="Bandes-dessinées" href="Bandes-dessin%C3%A9es/">BD</a>
-                </p>
-            </div>
-
-            <div id="wb_element_instance281" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance282" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance283" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance284" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance285" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;">
-                    <a data-finalurl="mi:5d14e62b_109/" data-name="Mangas" href="Mangas/">Mangas</a>
-                </p>
-            </div>
-
-            <div id="wb_element_instance286" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><a data-finalurl="mi:5d14e62b_102/" data-name="Science-fiction" href="Science-fiction/">S F</a></p>
-            </div>
-
-            <div id="wb_element_instance287" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><a data-finalurl="mi:5d14e62b_103/" data-name="Thrillers" href="Thrillers/">Thrillers</a></p>
-            </div>
-
-            <div id="wb_element_instance288" class="wb_element wb_element_shape">
-                <a href="Po%C3%A9sies/" class="wb_shp"></a>
-            </div>
-
-            <div id="wb_element_instance289" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance290" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;"><a data-finalurl="mi:5d14e62b_104/" data-name="Poésies" href="Po%C3%A9sies/">Poésie</a></p>
-            </div>
-
-            <div id="wb_element_instance291" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance292" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance293" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance294" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance295" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance296" class="wb_element wb-elm-orient-horizontal">
-                <div class="wb-elm-line"></div>
-            </div>
-
-            <div id="wb_element_instance297" class="wb_element wb-elm-orient-horizontal">
-                <div class="wb-elm-line"></div>
-            </div>
-
-            <div id="wb_element_instance298" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance299" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance300" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance301" class="wb_element wb-elm-orient-horizontal">
-                <div class="wb-elm-line"></div>
-            </div>
-
-            <div id="wb_element_instance302" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance303" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-            <div id="wb_element_instance304" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-custom3" style="text-align: center;">
-                    <strong>
-                        <span style="color:rgba(255,255,255,1);"><em>Nouveaux auteurs de la semaine !</em></span>
-                    </strong>
-                </p>
-            </div>
-
-            <div id="wb_element_instance305" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance306" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance307" class="wb_element wb_element_shape">
-                <div class="wb_shp"></div>
-            </div>
-
-            <div id="wb_element_instance308" class="wb_element wb_text_element" style=" line-height: normal;">
-                <p class="wb-stl-normal" style="text-align: center;">
-                    <a data-finalurl="mi:5d14e62b_122/" data-name="Nouvelles" href="Nouvelles/"><strong>NOUVELLES</strong></a>
-                </p>
-            </div>
-
         </div>
     </div>
-
+    <style>
+        .the-reply {
+            background: #d71b61;
+            padding: 1em;
+            margin: .5em 0em 0em 0em;
+            display: flex;
+        }
+        .hasImgReply {
+            max-width: 70px;
+            width: 100%;
+            margin-right: 1em;
+        }
+        .replyImg {
+            width: 100%;
+            max-width: 70px;
+            border-radius: 100%;
+        }
+        .hasSettingsReply .emailSection {
+            padding: 0.5em 0em;
+        }
+        .hasSettingsReply .emailSection {
+            color: white !important;
+            font-size: 80%;
+        }
+        .link-1:hover {
+            text-decoration: none;
+            background: #d71b61c7;
+        }
+        .emailSection {
+            padding: 0.26em 0em;
+            line-height: 1.5;
+        }
+    </style>
 {% endblock %}
-
-
