@@ -1,33 +1,161 @@
 {% extends 'base.html.twig' %}
+
+{% block title 'Pas Vu pas Lu - Les Auteurs' %}
+
 {% block body %}
-    <div class="container">
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/authors.png') }});">
+            <span class="illustration-title">Auteurs</span>
+        </div>
+        <div class="container">
 
-        <div class="row mt-5">
+            <div class="row mt-5">
 
-            {% for user in users %}
+                {% for user in users %}
 
-                {% set membre = "ROLE_MEMBRE" %}
-                {% if membre in user.roles%}
+                    {% set membre = "ROLE_MEMBRE" %}
+                    {% if membre in user.roles%}
 
 
-                    <div class="col-md-3">
-                        <div class="card text-center mb-3" style=" margin-top: 0!important">
-                            <div class="card-body" >
+                        <div class="col-md-3">
+                            <div class="card text-center mb-3" style=" margin-top: 0!important">
+                                <div class="card-body" >
 
-                                <a href="{{ path('profil_auter',{'id': user.id }) }} " class="d-block">
-                                    <img alt="{{ user.auter.pseudo }}" src="{{ asset ('assets/images/profil/'~user.auter.photo) }}" class="mb-2 mx-auto" style="width: 10rem; height: 10rem">
+                                    <a href="{{ path('profil_auter',{'id': user.id }) }} " class="d-block">
+                                        <img alt="{{ user.auter.pseudo }}" src="{{ asset ('assets/images/profil/'~user.auter.photo) }}" class="mb-2 mx-auto" style="width: 10rem; height: 10rem">
+                                    </a>
+
+                                    <a href="{{ path('profil_auter',{'id': user.id }) }} " >
+                                        {{ user.nom }} {{user.prenom }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="separator"></div>
+
+        <div class="bare-author">
+            <div class="color-author" style="background-color: #991b4f">Ils ont besoin de vous pour émerger</div>
+            <div class="color-author" style="background-color: #e0881d">Choisissez un auteur & lisez un extrait de son oeuvre</div>
+            <div class="color-author" style="background-color: #17908a">
+                <img src="{{ asset('assets/images/illustration/success.png') }}" class="hidden-response" style="position: absolute;top: 36%;">
+                Attribuez une note à cet extrait et commentez-la
+                <img src="{{ asset('assets/images/illustration/logo.png') }}" class="hidden-response" style="position: absolute;top: 0;right: 2.8rem;">
+            </div>
+            <div class="color-author" style="background-color: #15457c">Grâce à vous des auteurs émergent</div>
+            <div class="color-author" style="background-color: #659934">Suivez-leurs premiers pas sur Pas vu, pas lu</div>
+        </div>
+
+            <div class="separator"></div>
+        {#<div class="container">#}
+                <div class="block-quote pt-3" style="background-color: #0c5366;height: 100%;">
+                    <div class="col-12">
+                        {% for categorie in categories %}
+                            {% if categorie.id %2 == 1%}
+
+                            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                                <a class="dropdown-item nom-category" href="{{ path('category', {
+                                    'categorie' : categorie.categorie,
+                                }) }}" >{{ categorie.categorie }}</a>
+                            </div>
+                            {% endif %}
+
+                        {% endfor %}
+                        {% for categorie in categories %}
+                            {% if categorie.id %2 == 0 %}
+
+                                <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                                    <a class="dropdown-item nom-category" href="{{ path('category', {
+                                        'categorie' : categorie.categorie,
+                                    }) }}" >{{ categorie.categorie }}</a>
+                                </div>
+
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </div>
+                    {#<div class="col-12">#}
+                        {##}
+                    {#</div>#}
+                    <div class="col-12">
+                        <div class="smartphone mb-5">
+                            <div class="smartphone-box">
+                                <div class="smartphone-img"></div>
+                                <p class="title">Nouveaux auteurs de la semaine !</p>
+                                <a href="#!" class="link-1 the-reply">
+                                <div class="is-section hasImgReply">
+                                <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
+                                </div>
+                                <div class="is-section hasSettingsReply">
+                                <div class="emailSection pb-0">
+                                <i>Alexandre</i>
+                                </div>
+                                <div class="emailSection">
+                                <span class="addForward">1 livre(s) en ligne</span>
+                                </div>
+                                </div>
                                 </a>
-
-                                <a href="{{ path('profil_auter',{'id': user.id }) }} " >
-                                    {{ user.nom }} {{user.prenom }}
+                                 supprimer apres la boucle
+                                <a href="#!" class="link-1 the-reply">
+                                <div class="is-section hasImgReply">
+                                <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
+                                </div>
+                                <div class="is-section hasSettingsReply">
+                                <div class="emailSection pb-0">
+                                <i>Alexandre</i>
+                                </div>
+                                <div class="emailSection">
+                                <span class="addForward">1 livre(s) en ligne</span>
+                                </div>
+                                </div>
                                 </a>
                             </div>
                         </div>
+
                     </div>
-
-                {% endif %}
-            {% endfor %}
-
-        </div>
+                    {# Fin #}
+                    <div class="round mt-5"></div>
+                </div>
+        {#</div>#}
     </div>
+
+    <style>
+        .the-reply {
+            background: #d71b61;
+            padding: 1em;
+            margin: .5em 0em 0em 0em;
+            display: flex;
+        }
+        .hasImgReply {
+            max-width: 70px;
+            width: 100%;
+            margin-right: 1em;
+        }
+        .replyImg {
+            width: 100%;
+            max-width: 70px;
+            border-radius: 100%;
+        }
+        .hasSettingsReply .emailSection {
+            padding: 0.5em 0em;
+        }
+        .hasSettingsReply .emailSection {
+            color: white !important;
+            font-size: 80%;
+        }
+        .link-1:hover {
+            text-decoration: none;
+            background: #d71b61c7;
+        }
+        .emailSection {
+            padding: 0.26em 0em;
+            line-height: 1.5;
+        }
+    </style>
 {% endblock %}
