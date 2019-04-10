@@ -1,10 +1,12 @@
 <?php
 namespace App\Controller;
 
+    use App\Entity\Categories;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Routing\Annotation\Route;
+    use Symfony\Flex\Response;
 
-class HomeController extends AbstractController {
+    class HomeController extends AbstractController {
 
     /**
      * @Route("/", name="home")
@@ -53,7 +55,7 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("livres", name="books")
+     * @Route("livressss", name="books")
      */
     public function books() {
 
@@ -64,21 +66,18 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("livres/nom", name="book_view")
+     * @Route("/categories/{categorie}", name="category",
+     *     methods={"GET"})
+     * @param Categories|null $categories
+     * @return Response
      */
-    public function book_view() {
+    public function categories( Categories $categories=null) {
 
-        return $this->render("pages/book-view.html.twig");
-
-    }
-
-    /**
-     * @Route("categories", name="category")
-     */
-    public function category() {
 
         return $this->render("pages/category.html.twig", [
-            'current_menu' => 'category',
+            'categories' => $categories,
+            'livres' => $categories->getLivre(),
+            'categorie'=>$categories->getCategorie()
         ]);
 
     }
@@ -105,18 +104,18 @@ class HomeController extends AbstractController {
 
     }
 
-    /**
-     * @Route("identification", name="identification")
-     */
-    public function identification() {
+//    /**
+//     * @Route("login", name="login")
+//     */
+//    public function identification() {
+//
+//        return $this->render("pages/identification.html.twig");
+//
+//    }
 
-        return $this->render("pages/identification.html.twig");
-
-    }
-
-    /**
-     * @Route("inscription-auteur", name="registration-author")
-     */
+      /**
+      * @Route("inscription-auteurs", name="registration-authors")
+      */
     public function registration_author() {
 
         return $this->render("pages/registration-author.html.twig");
@@ -191,69 +190,28 @@ class HomeController extends AbstractController {
         return $this->render("pages/add_topic.html.twig");
 
     }
+        /**
+         * @Route("auter", name="auter")
+         */
+        public function auter() {
 
-    /**
-     * @Route("salon-pas-vu-pas-lu", name="salon")
-     */
-    public function salon() {
+            return $this->render("members/profil.html.twig");
 
-        return $this->render("pages/salon.html.twig");
+        }
 
-    }
-
-    /**
-     * @Route("revue-de-presse/", name="blog")
-     */
-    public function blog() {
-
-        return $this->render("pages/blog.html.twig");
-
-    }
-
-    /**
-     * @Route("article", name="article")
-     */
-    public function article() {
-
-        return $this->render("pages/article.html.twig");
-
-    }
-
-    /**
-     * @Route("rendez-vous", name="rendez_vous")
-     */
-    public function rendezvous() {
-
-        return $this->render("pages/rendez-vous.html.twig");
-
-    }
-
-    /**
-     * @Route("un-auteur-emerge", name="emerge")
-     */
-    public function emerge() {
-
-        return $this->render("pages/emerge.html.twig");
-
-    }
-
-    /**
-     * @Route("lecteurs-lu", name="allbooks")
-     */
-    public function allbooks() {
-
-        return $this->render("pages/all-books.html.twig");
-
-    }
-
-    /**
-     * @Route("Informations-legales", name="legal")
-     */
-    public function legal() {
-
-        return $this->render("pages/legal.html.twig");
-
-    }
+        /**
+         * @Route("identification", name="identification")
+         */
+        public function identification() {
+            return $this->render("pages/identification.html.twig");
+        }
 
 
+        /**
+         * @Route("/l_adma", name="admna")
+         */
+        public function loginAdmin()
+        {
+            return $this->render('members/tim.html.twig');
+        }
 }

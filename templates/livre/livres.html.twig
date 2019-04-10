@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+
+
+        {% if livres is not empty %}
+            {#<h3 class="text-center m5">{{ categorie  }}</h3>#}
+
+            <div class="row mt-5">
+
+
+                {% for livre in livres %}
+
+                    <div class="col-md-2 mt-2 mb-3">
+
+                        <div class="card col-12" style="height: 15rem;">
+                            <a href="{{ path('show_livre',{'id': livre.id }) }}" class="">
+
+                                <img alt="{{ livre.titre }}" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="card-img-top; height: 8rem;" />
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ livre.titre }}</h5>
+                                </div>
+                            </a>
+
+                        </div>
+                        <a href="{{ path('register_user_profil',{'id': livre.user.id }) }} " class="btn btn-primary col-12">
+                            {{ livre.user.nom }} {{livre.user.prenom }}
+                        </a>
+                    </div>
+
+
+                    {#<div class="col-md-2 mt-2">#}
+
+                        {#<div class="card" style="width: 18rem;">#}
+                            {#<a href="{{ path('show_livre',{'id': livre.id }) }}" class="">#}
+                                {#<img alt="{{ livre.titre }}" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="card-img-top" />#}
+
+                                {#<div class="card-body">#}
+                                    {#<h5 class="card-title">{{ livre.titre }}</h5>#}
+                                {#</div>#}
+                            {#</a>#}
+                            {#<a href="{{ path('register_user_profil',{'id': livre.user.id }) }} " class="btn btn-primary">#}
+                                {#{{ livre.user.nom }} {{livre.user.prenom }}#}
+                            {#</a>#}
+                        {#</div>#}
+
+                    {#</div>#}
+                    {#<br><br><br><br>#}
+                {% endfor %}
+            </div>
+
+        {% else %}
+
+            <div class="alert alert-danger">
+                <strong>
+                    Aucune publication pour le moment
+                </strong>
+            </div>
+
+        {% endif %}
+    </div>
+
+{% endblock %}

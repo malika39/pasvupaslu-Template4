@@ -1,0 +1,79 @@
+{#{% extends 'layout.html.twig' %}#}
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+    <h3 class ='text-center m-5'>Mon panier</h3>
+    {{dump(app.user.livre.current().titre )}}
+    {% set livres = app.user.livre %}
+
+{{ dump(livres) }}
+    {% for livre in livres %}
+        {{ dump(livre) }}
+
+   {% endfor %}
+
+
+    {#<div class="container">#}
+    {#{% if panier is not empty %}#}
+
+        {#<nav class="navbar navbar-light bg-light d-flex nav_tableau_de_bord">#}
+            {#<a class="bg-light nom_aPanier m-5 flex-grow-1" href="{{ path('security_profil') }}">{{app.user.nom  }} {{app.user.prenom  }}</a>#}
+            {#<a class="bg-light aPanier m-2" href="{{ path('removePanier') }}">Vider le panier</a>#}
+            {#<a class="bg-light aPanier m-2" href="{{ path('page_payment') }}">Finalisez la commande</a>#}
+        {#</nav>#}
+
+        {#<div class="row">#}
+            {#<div class="col-md-12 col-sm-12">#}
+                {#<!--Table-->#}
+                {#<table class="table table-bordered table-striped text-white table-dark table_panier">#}
+                    {#<!--Table head-->#}
+                    {#<tr>#}
+                        {#<th  scope="col">Quantité</th>#}
+                        {#<th  scope="col">Titre</th>#}
+                        {#<th  scope="col">Dimensions</th>#}
+                        {#<th  scope="col">Photo</th>#}
+                        {#<th  scope="col">Prix</th>#}
+                        {#<th  scope="col">Supprimer</th>#}
+                    {#</tr>#}
+                    {#<!--Table body-->#}
+                    {#{% for livre in panier %}#}
+                        {#<tr class="text-center">#}
+                            {#<td>#}
+                                {#1#}
+                            {#</td>#}
+                            {#<td>#}
+                                {#{{ livre.titre }}#}
+                            {#</td>#}
+                            {#<td>#}
+                                {#{{ livre.extract }}#}
+                            {#</td>#}
+                            {#<td>#}
+                                {#<img alt="" src="{{ asset ('assets/images/'~livre.photo) }}" class="post-detail-img-left img-tableau-de-bord" />#}
+                            {#</td>#}
+                            {#<td>#}
+                                {#{{ livre.categorie.categorie }}#}
+                            {#</td>#}
+                            {#<td>#}
+                                {#<a href="{{ path('removeInPanier', {#}
+                                    {#'id': livre.id#}
+                                {#}) }}"><i class="fas fa-trash-alt"></i></a>#}
+                            {#</td>#}
+                        {#</tr>#}
+                    {#{% endfor %}#}
+                {#</table>#}
+            {#</div>#}
+
+        {#</div>#}
+        {#</div>#}
+
+
+    {#{% else %}#}
+        {#<div>#}
+            {#<h3 class="text-center m-5">Votre panier est vide !</h3>#}
+        {#</div>#}
+    {#{% endif %}#}
+    {#</div>#}
+{% endblock %}

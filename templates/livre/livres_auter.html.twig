@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+    <h3 class="text-center m5">Livre</h3>
+
+    {% set livres = app.user.livre %}
+    {#{{ dump(livres) }}#}
+    {#{% for livre in livres %}#}
+        {#{{ dump(livre) }}#}
+
+    {#{% endfor %}#}
+    {% if livres is not empty %}
+
+    <div class="container">
+
+
+        <nav class="navbar navbar-light bg-light d-flex nav_tableau_de_bord">
+            <a class="bg-light nom_aPanier m-5 flex-grow-1" href="{{ path('register_user_profil') }}">{{app.user.nom  }} {{app.user.prenom  }}</a>
+            <a class="bg-light aPanier m-2" href="#">suprimer le livre</a>
+
+        </nav>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <!--Table-->
+                <table class="table table-bordered table-striped text-white table-dark table_panier">
+                    <!--Table head-->
+                    <tr>
+                        <th  scope="col">id</th>
+                        <th  scope="col">Titre</th>
+                        <th  scope="col">Extract</th>
+                        <th  scope="col">Photo</th>
+                        <th  scope="col">Categorie</th>
+                        <th  scope="col">Auteur</th>
+                    </tr>
+                    <!--Table body-->
+                    {% for livre in livres %}
+                        <tr class="text-center">
+                            <td>
+                                {{ livre.id }}
+                            </td>
+                            <td>
+                                {{ livre.titre }}
+                            </td>
+                            <td>
+                                {{ livre.extract }}
+                            </td>
+                            <td>
+                                <img alt="" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="img-fluid" 0 />
+                            </td>
+                            <td>
+                                {{ livre.categorie.categorie }}
+                            </td>
+                            <td>
+                                {{ livre.user.nom }} {{ livre.user.prenom }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+        </div>
+
+
+    {% else %}
+        <div>
+            <h3 class="text-center m-5">Vous n'est pas ajouter livre !</h3>
+        </div>
+    {% endif %}
+    </div>
+
+    {#<div class="row d-flex justify-content-center mt-5">#}
+
+
+        {#<ul>#}
+            {#{% for livre in livres %}#}
+
+                {#<li>#}
+                    {#{{ livre.id }}#}
+                {#</li>#}
+                {#<li>#}
+                    {#{{ livre.titre }}#}
+                {#</li>#}
+
+            {#{% endfor %}#}
+        {#</ul>#}
+    {#</div>#}
+{% endblock %}

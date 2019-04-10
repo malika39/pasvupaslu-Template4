@@ -11,21 +11,33 @@
             <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'authors' %}active{% endif %}" href="{{ path('authors') }}">Auteurs</a>
             <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'readers' %}active{% endif %}" href="{{ path('readers') }}">Lecteurs</a>
             <div class="dropdown show">
-                <a href="{{ path('books') }}" class="droplists {% if current_menu is defined and current_menu == 'books' %}active{% endif %}" id="drop1" aria-haspopup="true" aria-expanded="false">
+                <a href="{{ path('show_livres') }}" class="droplists {% if current_menu is defined and current_menu == 'books' %}active{% endif %}" id="drop1" aria-haspopup="true" aria-expanded="false">
                     Livres
                 </a>
 
                 <div class="dropdown-menu text-center" aria-labelledby="drop1">
-                    <a class="dropdown-item" href="{{ path('category') }}">Nouvelles</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Romans</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Essais</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Science-fiction</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Thrillers</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Poésies</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Mangas</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Bandes-dessinées</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Jeunesse</a>
-                    <a class="dropdown-item" href="{{ path('category') }}">Bien-être Vie pratique</a>
+                    {% for categorie in categories %}
+
+                            <a class="dropdown-item" href="{{ path('category', {
+                                'categorie' : categorie.categorie,
+                            }) }}" >{{ categorie.categorie }}</a>
+
+                    {% endfor %}
+                    <!--
+                                change 27-03-19 by temirlan
+                                -->
+
+
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Nouvelles</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Romans</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Essais</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Science-fiction</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Thrillers</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Poésies</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Mangas</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Bandes-dessinées</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Jeunesse</a>#}
+                    {#<a class="dropdown-item" href="{{ path('category') }}">Bien-être Vie pratique</a>#}
                 </div>
             </div>
             <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'editors' %}active{% endif %}" href="{{ path('editors') }}">Editeurs</a>
@@ -35,8 +47,8 @@
                 </a>
 
                 <div class="dropdown-menu text-center" aria-labelledby="drop1">
-                    <a class="dropdown-item" href="{{ path('interviews_view') }}">Christine Deviers Joncour</a>
-                    <a class="dropdown-item" href="{{ path('interviews_view') }}">Correction Occitane</a>
+                    <a class="dropdown-item" href="#">Christine Deviers Joncour</a>
+                    <a class="dropdown-item" href="#">Correction Occitane</a>
                 </div>
             </div>
             <div class="dropdown show">
@@ -45,13 +57,13 @@
                 </a>
 
                 <div class="dropdown-menu text-center" aria-labelledby="drop1">
-                    <a class="dropdown-item" href="{{ path('salon') }}">Salon Pas Vu, Pas Lu</a>
-                    <a class="dropdown-item" href="{{ path('blog') }}">Revue de presse</a>
-                    <a class="dropdown-item" href="{{ path('emerge') }}">Un auteur émerge !</a>
-                    <a class="dropdown-item" href="{{ path('rendez_vous') }}">Rendez-vous Pas vu, Pas lu</a>
+                    <a class="dropdown-item" href="#">Salon Pas Vu, Pas Lu</a>
+                    <a class="dropdown-item" href="#">Revue de presse</a>
+                    <a class="dropdown-item" href="#">Un auteur émerge !</a>
+                    <a class="dropdown-item" href="#">Rendez-vous Pas vu, Pas lu</a>
                 </div>
             </div>
-            <a class="nav-item nav-link text-nowrap" href="http://terhoma.org/Contact/" target="_blank">Contact</a>
+            <a class="nav-item nav-link text-nowrap" href="#">Contact</a>
         </div>
     </div>
 </nav>

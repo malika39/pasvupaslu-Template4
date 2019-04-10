@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="container">
+
+        <div class="row mt-5">
+
+            {% for user in users %}
+
+                {% set membre = "ROLE_MEMBRE" %}
+                {% if membre in user.roles%}
+
+
+                    <div class="col-md-3">
+                        <div class="card text-center mb-3" style=" margin-top: 0!important">
+                            <div class="card-body" >
+
+                                <a href="{{ path('profil_auter',{'id': user.id }) }} " class="d-block">
+                                    <img alt="{{ user.auter.pseudo }}" src="{{ asset ('assets/images/profil/'~user.auter.photo) }}" class="mb-2 mx-auto" style="width: 10rem; height: 10rem">
+                                </a>
+
+                                <a href="{{ path('profil_auter',{'id': user.id }) }} " >
+                                    {{ user.nom }} {{user.prenom }}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}

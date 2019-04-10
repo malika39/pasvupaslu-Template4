@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous" />
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    {{ dump(app.user ) }}
+    {% set categories = categories_repository.findAll() %}
+    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+    {% if form is defined %}
+        <div class="container pt-5 mt-5">
+            <h3>Ajouter une livre</h3>
+            {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
+
+            {#<div class="row pb-5 pt-5">#}
+                {#<div class="col-12 ">#}
+                    {#<form class="wb_form" method="post" enctype="multipart/form-data">#}
+
+                        {#<div class="row">#}
+                            {#<div class="col-md-6">#}
+                                {#{{ form_row(form.titre) }}#}
+                            {#</div>#}
+                            {#<div class="col-md-6">#}
+                                {#{{ form_row(form.photo) }}#}
+                            {#</div>#}
+
+                            {#<div class="col-md-6">#}
+                                {#{{ form_row(form.extract) }}#}
+                            {#</div>#}
+                            {#<div class="col-md-6">#}
+                                {#{{ form_row(form.categorie) }}#}
+                            {#</div>#}
+
+                        {#</div>#}
+                        {#<div class="row pt-5">#}
+                            {#<div class="col-md-12">#}
+                                {#<button class="btn w-100 submit bg-success ">Ajouter livre</button>#}
+                            {#</div>#}
+                        {#</div>#}
+
+                        {#{{ form_rest(form) }}#}
+                        {#{{ form_end(form) }}#}
+                    {#</form>#}
+                {#</div>#}
+            {#</div>#}
+        </div>
+    {% endif %}
+
+
+{% endblock %}
+{% block final_javascripts %}
+    <script src="//cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+        CKEDITOR.replace( 'form[editor1]' );
+        $('.dropify').dropify({
+            messages: {
+                default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
+                replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
+                remove:  'Supprimer',
+                error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+            }
+        });
+    </script>
+{% endblock %}

@@ -11,10 +11,7 @@
                 {# Menu du header #}
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">
-                            Listes des catégories
-                            <span class="badge badge-primary float-right">Il y a 10 catégorie(s)</span>
-                        </h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Listes des catégories</h6>
                     </div>
                     <div class="card-body">
                         <table class="table">
@@ -28,14 +25,14 @@
                             <tbody>
                             <tr>
                                 <th scope="row">
-                                    <a href="#id_supprime_categorie" class="btn btn-danger btn-circle btn-sm" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet catégorie ?\n');">
+                                    <a href="#" class="btn btn-danger btn-circle btn-sm">
                                         <i class="fas fa-trash"></i>
                                     </a>
-                                    <a href="{{ path('admin_edit_category') }}" class="btn btn-primary btn-circle btn-sm">
+                                    <a href="#" class="btn btn-primary btn-circle btn-sm">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </th>
-                                <td>Romans</td>
+                                <td>Mark</td>
                                 <td><img src="https://lecourrieraustralien.cdnartwhere.eu/wp-content/uploads/2017/03/van-du-livre-cover.jpg" class="position-absolute rounded d-block" style="width: 14%;"></td>
                             </tr>
                             </tbody>
@@ -70,9 +67,9 @@
                                 </div>
                                 <img id='img-upload'/>
                             </div>
-                            <button class="btn btn-primary btn-user btn-block">
+                            <a href="index.html" class="btn btn-primary btn-user btn-block">
                                 Ajouter la categorie
-                            </button>
+                            </a>
                         </form>
                     </div>
                 </div>

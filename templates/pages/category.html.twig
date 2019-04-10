@@ -1,11 +1,56 @@
 {% extends 'base.html.twig' %}
 
-{% block title 'TITRE DE LA CATEGORIE !' %}
+{% block stylesheets '<link rel="stylesheet" href="http://pasvupaslu.com/css/24.css">' %}
+
+{#{% block title 'Categories' %}#}
+{% block title %}
+    {{ categories.categorie }}
+{% endblock %}
 
 {% block body %}
+
+
+    {#<div class="container">#}
+        {#<h3 class="text-center m5">{{ categorie  }}</h3>#}
+
+
+        {#{% if livres is not empty %}#}
+
+
+        {#<div class="row mt-5">#}
+
+
+            {#{% for livre in livres %}#}
+                {#<div class="col-md-2 mt-2">#}
+                    {#<div class="card" style="width: 18rem;">#}
+                        {#<a href="{{ path('show_livre',{'id': livre.id }) }}" class="">#}
+                            {#<img alt="{{ livre.titre }}" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="card-img-top" />#}
+
+                            {#<div class="card-body">#}
+                                {#<h5 class="card-title">{{ livre.titre }}</h5>#}
+                            {#</div>#}
+                        {#</a>#}
+                        {#<a href="{{ path('register_user_profil',{'id': livre.user.id }) }} " class="btn btn-primary">#}
+                            {#{{ livre.user.nom }} {{livre.user.prenom }}#}
+                        {#</a>#}
+                    {#</div>#}
+                {#</div>#}
+            {#{% endfor %}#}
+        {#</div>#}
+        {#{% else %}#}
+
+            {#<div class="alert alert-danger">#}
+                {#<strong>#}
+                    {#Aucune publication pour le moment#}
+                {#</strong>#}
+            {#</div>#}
+
+        {#{% endif %}#}
+    {#</div>#}
     <div class="content">
+
         <div class="illustration" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
-            <span class="illustration-title">Romans</span>
+            <span class="illustration-title">{{ categorie  }}</span>
         </div>
 
         <div class="separator"></div>
@@ -14,88 +59,70 @@
             <div class="col-md-10">
                 Vous êtes l'auteur d'un roman, vous souhaitez donner de la visibilité à votre oeuvre, rendez-vous à la page<br> <a href="">inscription</a> et remplissez le formulaire. Un membre de notre équipe reviendra vers vous.
             </div>
-            <a href="{{ path('registration-author') }}"><img src="{{ asset('assets/images/illustration/btn-register.jpg') }}"></a>
+            <a href="#!"><img src="{{ asset('assets/images/illustration/btn-register.jpg') }}"></a>
         </div>
 
         <div class="container pb-5 pt-5">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card text-center mb-3" style="margin-top: 0!important">
-                        <div class="card-body">
+                {% if livres is not empty %}
+                {% for livre in livres %}
+                    <div class="col-md-2 mt-2 mb-3">
 
-                            <a href="{{ path('book_view') }}" class="d-block">
-                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/45/34/a0/10499141/1507-1/tsp20190201145259/Le-gout-de-la-mort.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
+                        <div class="card col-12" style="height: 15rem;">
+                            <a href="{{ path('show_livre',{'id': livre.id }) }}" class="">
+
+                                <img alt="{{ livre.titre }}" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="card-img-top; height: 8rem;" />
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ livre.titre }}</h5>
+                                </div>
                             </a>
+                            {#<a href="{{ path('show_livre',{'id': livre.id }) }}"><strong>Consulter un extrait</strong></a>#}
 
-                            <h6><a href="{{ path('book_view') }}" class="text-dark">Tome 23 : Le goût de la mort</a></h6>
-
-                            <div class="text-muted small mb-3">
-                                Alyana a réveillé les géants qui parcouraient jadis les terres d’Arran...
-                            </div>
-
-                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
 
                         </div>
+                        <a href="{{ path('profil_auter',{'id': livre.user.id }) }} " class="btn btn-primary col-12">
+                            {{ livre.user.nom }} {{livre.user.prenom }}
+                        </a>
                     </div>
+                {#<div class="col-md-3">#}
+                    {#<div class="card text-center mb-3" style="margin-top: 0!important">#}
+                        {#<div class="card-body">#}
+
+                            {#<a href="{{ path('show_livre',{'id': livre.id }) }}" class="d-block">#}
+                                {#<img alt="{{ livre.titre }}" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="mb-2 mx-auto" style="max-width: 75%; max-height: 200px">#}
+                            {#</a>#}
+
+                            {#<h6><a href="{{ path('show_livre',{'id': livre.id }) }}" class="text-dark">{{ livre.titre }}</a></h6>#}
+
+                            {#<div class="text-muted small mb-3">#}
+                                {#Alyana a réveillé les géants qui parcouraient jadis les terres d’Arran...#}
+                            {#</div>#}
+
+                            {#<a href="{{ path('show_livre',{'id': livre.id }) }}"><strong>Consulter un extrait</strong></a>#}
+                            {#<a href="{{ path('profil_auter',{'id': livre.user.id }) }} " class="btn btn-primary">#}
+                                {#{{ livre.user.nom }} {{livre.user.prenom }}#}
+                            {#</a>#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+                {% endfor %}
+
+
+                {% else %}
+
+                <div class="alert alert-danger">
+                    <strong>
+                        Aucune publication pour le moment
+                    </strong>
                 </div>
-                <div class="col-md-3">
-                    <div class="card text-center mb-3" style="margin-top: 0!important">
-                        <div class="card-body">
 
-                            <a href="{{ path('book_view') }}" class="d-block">
-                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/58/d4/99/10081368/1507-1/tsp20180920112651/La-poie.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
-                            </a>
-
-                            <h6><a href="{{ path('book_view') }}" class="text-dark">Orcs et Gobelins - Tome 5 : La poisse</a></h6>
-
-                            <div class="text-muted small mb-3">
-                                La Poisse attire les coups du sort comme personne. Rien d’étonnant donc...
-                            </div>
-
-                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-center mb-3" style="margin-top: 0!important">
-                        <div class="card-body">
-
-                            <a href="{{ path('book_view') }}" class="d-block">
-                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/b2/97/9f/10459058/1507-1/tsp20181024081614/Zakariel.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
-                            </a>
-
-                            <h6><a href="{{ path('book_view') }}" class="text-dark">Les Maîtres inquisiteurs - Tome 11 : Zakariel</a></h6>
-
-                            <div class="text-muted small mb-3">
-                                Assinya s’est réincarnée et Adrael ne peut se résoudre à l’abandonner à son sort...
-                            </div>
-
-                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card text-center mb-3" style="margin-top: 0!important">
-                        <div class="card-body">
-
-                            <a href="{{ path('book_view') }}" class="d-block">
-                                <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/0f/51/a6/10899727/1507-1/tsp20190306164220/La-vie-secrete-des-ecrivains.jpg" class="mb-2 mx-auto" alt="" style="max-width: 75%; max-height: 200px">
-                            </a>
-
-                            <h6><a href="{{ path('book_view') }}" class="text-dark">La vie secrète des écrivains</a></h6>
-
-                            <div class="text-muted small mb-3">
-                                En 1999, après avoir publié trois romans  devenus cultes, le célèbre écrivain Nathan...
-                            </div>
-
-                            <a href="{{ path('book_view') }}"><strong>Consulter un extrait</strong></a>
-
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
             </div>
         </div>
-    </div>
+
+
+     </div>
+
+
 {% endblock %}
+

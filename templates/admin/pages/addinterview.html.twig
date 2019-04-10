@@ -17,70 +17,25 @@
                         <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle interview</h6>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" class="user field_wrapper form-horizontal">
+                        <form action="" method="POST" class="user">
                             <div class="form-group row m-1 pb-4">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" placeholder="Nom de la personne interviewée">
+                                    <input type="text" class="form-control form-control-user" placeholder="Titre de l'interview">
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" placeholder="Courte description ex : Auteur Ghost Writer & Illustratrice">
+                                    <input type="text" class="form-control form-control-user" placeholder="Tres courte description">
                                 </div>
                             </div>
-                            <div class="form-group row m-1 pb-4">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <div class="form-group">
-                                        <div class="input-group input-file" name="Fichier1">
-                                            <input type="text" class="form-control form-control-user" placeholder='Télécharger une image de profil' />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" placeholder="Lien du site internet (facultatif)">
-                                </div>
-                            </div>
-                            <div class="form-group row m-1 pb-4">
-                                <div class="col-md-6 mb-3 mb-sm-0">
+                            <div class="form-group">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
                                     <textarea name="interview" id="interview" rows="10" cols="80">
-                                        Première biographie
-                                    </textarea>
-                                </div>
-                                <div class="col-md-6 mb-3 mb-sm-0">
-                                    <textarea name="interview-2" id="interview-2" rows="10" cols="80">
-                                        Deuxième biographie
+                                        This is my textarea to be replaced with CKEditor.
                                     </textarea>
                                 </div>
                             </div>
-
-                            <div class="pb-4 bg">
-                                <div class="menu_item">
-                                    <div class="form-group">
-                                        <label class="p-4 control-label">Interview </label>
-                                        <div class="row pb-4 m-1">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" id="titre" class="form-control form-control-user" name="title[0]" placeholder="Titre">
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" id="question" class="form-control form-control-user" name="question[0]" placeholder="Question">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <textarea type="text" id="reponse" class="form-control form-control-user" name="reponse[0]" placeholder="Réponse" style="resize: none"></textarea>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <button type="button" class="btn btn-primary addButton w-100" id="addInput" style="opacity:.79;">
-                                                <i class="fas fa-plus-square"></i>
-                                                Ajouter un nouveau champ
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 mt-5">
-                                <button class="btn btn-primary btn-user btn-block w-50 mx-auto">
-                                    Ajouter l'interview
-                                </button>
-                            </div>
+                            <button class="btn btn-primary btn-user btn-block w-50 mx-auto">
+                                Ajouter l'interview
+                            </button>
                         </form>
                     </div>
                 </div>
@@ -90,22 +45,6 @@
             </div>
         </div>
     </div>
-    <style>
-        .bg {
-            background: #f1f2f5;
-            padding: 1rem;
-            border-radius: .6rem;
-        }
-        .bg .form-group:nth-child(2n) {
-            background: #f8f8f8;
-            border: .19rem solid #4e73df;
-        }
-        .btn-delet {
-            position: absolute;
-            top: .54rem;
-            right: .54rem;
-        }
-    </style>
 {% endblock %}
 
 {% block javascripts %}
@@ -114,111 +53,6 @@
         {# Remplace le textarea par le plugin Ckeditor #}
         CKEDITOR.replace('interview', {
             language: 'fr'
-        });
-        CKEDITOR.replace('interview-2', {
-            language: 'fr'
-        });
-
-        function bs_input_file() {
-        $(".input-file").before(
-            function() {
-                if ( ! $(this).prev().hasClass('input-ghost') ) {
-                    var element = $("<input type='file' class='input-ghost' style='position: absolute;visibility:hidden; height:0'>");
-                    element.attr("name",$(this).attr("name"));
-                    element.change(function(){
-                        element.next(element).find('input').val((element.val()).split('\\').pop());
-                    });
-                    $(this).find("button.btn-choose").click(function(){
-                        element.click();
-                    });
-                    $(this).find("button.btn-reset").click(function(){
-                        element.val(null);
-                        $(this).parents(".input-file").find('input').val('');
-                    });
-                    $(this).find('input').css("cursor","pointer");
-                    $(this).find('input').mousedown(function() {
-                        $(this).parents('.input-file').prev().click();
-                        return false;
-                    });
-                    return element;
-                }
-            }
-        );
-        }
-        $(function() {
-            bs_input_file();
-        });
-
-       // multiple champs
-        $.fn.toggleDisabled = function(obj) {
-            var newState = false;
-            if (obj.textContent == 'Disable') {
-                obj.textContent = 'Active';
-                newState = true;
-            } else {
-                obj.textContent = 'Disable';
-            }
-            return this.each(function (index, element) {
-                element.disabled = newState;
-            });
-        };
-
-
-        $(document).ready(function() {
-
-            //
-            // this is the new event delegated handler
-            //
-            $('.field_wrapper').on('click', '.activate', function(e) {
-                $(this).closest('div.form-group').find('#price, input:text').toggleDisabled(this);
-            });
-
-
-
-            var max_field = 10, //validate for maximum input field
-                wrapper = $(".field_wrapper"),
-                add_button = $(".addButton"),
-                x = 1, //used to increase the input field.
-                index = 0;  //used to increment the 'name' for the input
-
-            //Add button click handler
-            $(add_button).on('click', function (e) {
-                e.preventDefault();
-                if(x < max_field) {
-                    x++;
-                    index++;
-                    var fieldHTML = '<div class="form-group removeGroup bg position-relative">\n'
-                        +'<label class="p-4 control-label">Interview </label>\n'
-                        +'<div class="row pb-4 m-1">\n'
-                        +'<div class="col-md-6 mb-3">\n'
-                        +'<input type="text" id="titre" class="form-control form-control-user" name="title[0]" placeholder="Titre">\n'
-                        +'</div>\n'
-                        +'<div class="col-md-6 mb-3">\n'
-                        +'<input type="text" id="question" class="form-control form-control-user" name="question[0]" placeholder="Question">\n'
-                        +'</div>\n'
-                        +'</div>\n'
-                        +'<div class="col-md-12 mb-3">\n'
-                        +'<textarea type="text" id="reponse" class="form-control form-control-user" name="reponse[0]" placeholder="Réponse" style="resize: none"></textarea>\n'
-                        +'</div>\n'
-                        +'<div class="btn-delet">\n'
-                        +'<button type="button" class="btn btn-danger removeButton"><i class="fas fa-trash-alt"></i></button>\n'
-                        +'</div>\n'
-                        +'</div>';
-
-                    var currentEntry = $(this).parents('.menu_item:first');
-                    $(fieldHTML).appendTo(currentEntry);
-                }
-            });
-
-            //Remove button click handler
-            $(wrapper).on('click', '.removeButton', function(e) {
-                e.preventDefault();
-                var result = confirm("Êtes-vous sûr de bien vouloir supprimer ce champ ?");
-                if (result) {
-                    $(this).closest('.removeGroup').remove();
-                    x--;
-                }
-            });
         });
     </script>
 {% endblock %}

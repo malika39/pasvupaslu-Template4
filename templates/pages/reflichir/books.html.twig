@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Pas vu Pas lu - Livres' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/books.jpg') }});background-size: cover; background-position: center;">
+            <span class="illustration-title">Livres</span>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="title-book">Leur succès dépend de vous !</div>
+        <div class="row mx-auto">
+            <div class="col-md-6 p-0">
+                <div class="books-content" style="background-color: #c40c50;">
+                    <div class="book-title">
+                        Les nouveautés de la semaine
+                        <img src="{{ asset('assets/images/illustration/book-left.png') }}">
+                    </div>
+                    <div class="list-five">
+                        <div class="list-five-info p-4">
+                            <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/8f/ee/a4/10808975/1507-1/tsp20190308174335/Brum-des-errants.jpg">
+                            <div class="list-five-desc-d">
+                                <h1 class="list-five-desc text-truncate">Nains - Tome 14 : Brum des Errants</h1>
+                                <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                <div class="list-five-authors">Éditeur : Terhoma</div>
+                                <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-0">
+                <div class="books-content" style="background-color: #8a0b3c;">
+                    <div class="book-title text-center">
+                        Les mieux notés
+                        <img src="{{ asset('assets/images/illustration/book-right.png') }}">
+                    </div>
+                    <div class="list-five">
+                        <div class="list-five-info p-4">
+                            <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/63/9c/a2/10656867/1507-0/tsp20181105222802/Les-aventures-de-Lucky-Luke-d-apres-Morris-tome-8-Un-cow-boy-a-Paris.jpg">
+                            <div class="list-five-desc-d">
+                                <h1 class="list-five-desc text-truncate">Lucky Luke - Tome 8 : Un Cow-boy à Paris</h1>
+                                <div class="list-five-authors">LA NOTE DE 1 - 10</div>
+                                <div class="list-five-authors"><a href="#!">Abdel Karim</a></div>
+                                <div class="list-five-authors">Éditeur : Terhoma</div>
+                                <div class="list-five-authors">Date de parution : Mars 2019</div>
+                                <div class="list-five-authors pt-3"><a href="#!">Consulter un extrait</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="{{ asset('assets/images/illustration/books.png') }}" class="img-books">
+    </div>
+{% endblock %}
