@@ -4,67 +4,121 @@
     {{ parent() }}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.min.css" integrity="sha256-AWdeVMUYtwLH09F6ZHxNgvJI37p+te8hJuSMo44NVm0=" crossorigin="anonymous" />
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
 {% endblock %}
 
 {% block body %}
-    {{ dump(app.user ) }}
+    {#{{ dump(app.user ) }}#}
     {% set categories = categories_repository.findAll() %}
-    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
+    {#{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}#}
     {% if form is defined %}
-        <div class="container pt-5 mt-5">
-            <h3>Ajouter une livre</h3>
-            {{ form(form, {attr:{novalidate: 'novalidate' }}) }}
+    <div class="container mt-3">
+        <div class="row">
 
-            {#<div class="row pb-5 pt-5">#}
-                {#<div class="col-12 ">#}
-                    {#<form class="wb_form" method="post" enctype="multipart/form-data">#}
+            <div class="col-xl-12 col-lg-12">
 
-                        {#<div class="row">#}
-                            {#<div class="col-md-6">#}
-                                {#{{ form_row(form.titre) }}#}
-                            {#</div>#}
-                            {#<div class="col-md-6">#}
-                                {#{{ form_row(form.photo) }}#}
-                            {#</div>#}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter un livre</h6>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" class="user">
+                            <div class="form-group row m-1 pb-4">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {#<input type="text" class="form-control form-control-user" placeholder="Titre de l'interview">#}
+                                    {{ form_row(form.titre) }}
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {#<input type="text" class="form-control form-control-user" placeholder="Tres courte description">#}
+                                    {{ form_row(form.categorie) }}
 
-                            {#<div class="col-md-6">#}
-                                {#{{ form_row(form.extract) }}#}
-                            {#</div>#}
-                            {#<div class="col-md-6">#}
-                                {#{{ form_row(form.categorie) }}#}
-                            {#</div>#}
+                                </div>
+                            </div>
 
-                        {#</div>#}
-                        {#<div class="row pt-5">#}
-                            {#<div class="col-md-12">#}
-                                {#<button class="btn w-100 submit bg-success ">Ajouter livre</button>#}
-                            {#</div>#}
-                        {#</div>#}
+                            <div class="form-group">
+                                {#<label>Ajouter une image</label>#}
+                                <img id='img-upload' class="rounded mx-auto d-block" style="width: 25%;"/>
+                                {#<div class="input-group">#}
+                                    {#<span class="input-group-btn w-100 position-absolute" style="background: #eaecf4;">#}
+                                        {#<span class="btn btn-default btn-file">#}
+                                            {#Télècharger une image… <input type="file" id="imgInp">#}
+                                            {{ form_row(form.photo) }}
+                                        {#</span>#}
+                                    {#</span>#}
+                                    {#<input type="text" class="form-control invisible" readonly>#}
+                                {#</div>#}
 
-                        {#{{ form_rest(form) }}#}
-                        {#{{ form_end(form) }}#}
-                    {#</form>#}
-                {#</div>#}
-            {#</div>#}
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12 mb-3 mb-sm-0">
+                                    {#<textarea name="interview" id="interview" rows="10" cols="80">#}
+                                        {#This is my textarea to be replaced with CKEditor.#}
+                                    {#</textarea>#}
+                                    {{ form_row(form.extract) }}
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-user btn-block w-50 mx-auto">
+                                Ajouter livre
+                            </button>
+
+                            {{ form_rest(form) }}
+                            {{ form_end(form) }}
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
+    </div>
+
     {% endif %}
 
 
 {% endblock %}
-{% block final_javascripts %}
-    <script src="//cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" integrity="sha256-SUaao5Q7ifr2twwET0iyXVy0OVnuFJhGVi5E/dqEiLU=" crossorigin="anonymous"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+{% block javascripts %}
+    <script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
     <script>
-        CKEDITOR.replace( 'form[editor1]' );
-        $('.dropify').dropify({
-            messages: {
-                default: 'Glissez-d&eacute;posez un fichier ici ou cliquez',
-                replace: 'Glissez-d&eacute;posez un fichier ou cliquez pour remplacer',
-                remove:  'Supprimer',
-                error:   'D&eacute;sol&eacute;, le fichier est trop volumineux'
+        {# Remplace le textarea par le plugin Ckeditor #}
+        CKEDITOR.replace('livre_form[extract]', {
+            language: 'fr'
+        });
+        $(document).on('change', '.btn-file :file', function() {
+            var input = $(this),
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [label]);
+        });
+
+        $('.btn-file :file').on('fileselect', function(event, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = label;
+
+            if( input.length ) {
+                input.val(log);
+            } else {
+                if( log ) alert(log);
             }
+
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#livre_form_photo").change(function(){
+            readURL(this);
         });
     </script>
 {% endblock %}

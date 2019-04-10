@@ -23,7 +23,7 @@ class LivreFormType extends AbstractType
                 'required'=>true,
                 'label'=>"Titre de livre",
                 'attr'=>[
-                    'placeholder'=>"Titre de l'oeuvre",
+                    'placeholder'=>"Titre dde livre",
                     'class' => 'form-control col-md-12'
                 ]
             ])
@@ -38,10 +38,12 @@ class LivreFormType extends AbstractType
 
 
             ->add('photo', FileType::class, [
-                'label'=>"Image",
+                'label'=>'     ',
                 'data_class' => null,
+
                 'attr'=> [
-                    'class'=>'dropify'
+                    'placeholder' => "Ajouter une image"
+
                 ]
             ])
 
@@ -57,9 +59,9 @@ class LivreFormType extends AbstractType
 
             ])
 //            ->add('user')
-            ->add('submit', SubmitType::class, [
-                'label' => 'Publier mon Livre'
-            ])
+//            ->add('submit', SubmitType::class, [
+//                'label' => 'Publier mon Livre'
+//            ])
 
         ;
     }
