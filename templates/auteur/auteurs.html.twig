@@ -3,6 +3,7 @@
 {% block title 'Pas Vu pas Lu - Les Auteurs' %}
 
 {% block body %}
+    {#{{ dump(auters) }}#}
     <div class="content">
         <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/authors.png') }});">
             <span class="illustration-title">Auteurs</span>
@@ -88,33 +89,29 @@
                             <div class="smartphone-box">
                                 <div class="smartphone-img"></div>
                                 <p class="title">Nouveaux auteurs de la semaine !</p>
-                                <a href="#!" class="link-1 the-reply">
-                                <div class="is-section hasImgReply">
-                                <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
-                                </div>
-                                <div class="is-section hasSettingsReply">
-                                <div class="emailSection pb-0">
-                                <i>Alexandre</i>
-                                </div>
-                                <div class="emailSection">
-                                <span class="addForward">1 livre(s) en ligne</span>
-                                </div>
-                                </div>
+
+                                    {% for auter in auters %}
+
+                                        {% set membre = "ROLE_MEMBRE" %}
+                                        {% if membre in auter.roles%}
+
+
+                                <a href="{{ path('profil_auter',{'id': auter.id }) }} " class="link-1 the-reply">
+                                    <div class="is-section hasImgReply">
+                                        <img class="replyImg" src="{{ asset ('assets/images/profil/'~auter.auter.photo) }}" alt="{{ auter.auter.pseudo }}">
+                                    </div>
+                                    <div class="is-section hasSettingsReply">
+                                        <div class="emailSection pb-0">
+                                            <i>{{ auter.nom }}</i>
+                                        </div>
+                                        <div class="emailSection pb-0">
+                                            <i>{{auter.prenom }}</i>
+                                        </div>
+                                    </div>
                                 </a>
-                                 supprimer apres la boucle
-                                <a href="#!" class="link-1 the-reply">
-                                <div class="is-section hasImgReply">
-                                <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
-                                </div>
-                                <div class="is-section hasSettingsReply">
-                                <div class="emailSection pb-0">
-                                <i>Alexandre</i>
-                                </div>
-                                <div class="emailSection">
-                                <span class="addForward">1 livre(s) en ligne</span>
-                                </div>
-                                </div>
-                                </a>
+                                {% endif %}
+                                {% endfor %}
+
                             </div>
                         </div>
 

@@ -2,6 +2,7 @@
 namespace App\Controller;
 
     use App\Entity\Categories;
+    use App\Entity\User;
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\Routing\Annotation\Route;
     use Symfony\Flex\Response;
@@ -36,9 +37,13 @@ namespace App\Controller;
      * @Route("auteurs", name="authors")
      */
     public function authors() {
-
+        # Récupération du Repository
+        $repository = $this->getDoctrine()
+            ->getRepository(User::class);
+        $articles = $repository->findLatestArticles();
         return $this->render("pages/authors.html.twig", [
             'current_menu' => 'authors',
+            'articles' => $articles,
         ]);
 
     }

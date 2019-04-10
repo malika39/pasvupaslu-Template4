@@ -14,6 +14,8 @@ use Symfony\Bridge\Doctrine\RegistryInterface;
  */
 class UserRepository extends ServiceEntityRepository
 {
+    const MAX_RESULTS = 10;
+
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, User::class);
@@ -36,6 +38,18 @@ class UserRepository extends ServiceEntityRepository
     public function saveNewPassword()
     {
         $this->_em->flush();
+    }
+    /**
+     * Récupérer les derniers auteurs
+     */
+    public function findLatestAuteurs()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(self::MAX_RESULTS)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 
     // /**

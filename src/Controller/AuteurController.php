@@ -44,13 +44,15 @@ class AuteurController extends AbstractController
         $repository = $this->getDoctrine()
             ->getRepository(User::class);
             $users = $repository->findBy([],['id'=>'DESC']);
+        # Récupération du Repository
 
-
-//        dump($users);
+        $auters = $repository->findLatestAuteurs();
+        //        dump($users);
 //        die();
         return $this->render('auteur/auteurs.html.twig', [
             'users'=>$users,
 //            'livres'=>$users->$this->getId()
+            'auters' => $auters,
         ]);
 
     }
