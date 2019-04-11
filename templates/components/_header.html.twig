@@ -9,9 +9,28 @@
         <div class="d-sm-inline-block position-absolute text-center block-responsive {% if app.user %}line-user{% endif %}">
             <h3 class="text-spacing header-h3 mb-0">pas vu, pas lu</h3>
             <em><span class="sub-title">Le marque-page des nouveaux talents !</span></em>
-            <a class="btn-default mt-3" href="{{ path('identification') }}">
-                <span>Inscription / Connexion</span>
-            </a>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="btn-default mt-3" href="{{ path('register_user_profil') }}">
+                    <span>Profil</span>
+                </a>
+                <a class="btn-default mt-3" href="{{ path('security_logout') }}">
+                    <span>Déconnexion</span>
+                </a>
+
+            {% else %}
+
+                <a class="btn-default mt-3" href="{{ path('identification') }}">
+                    <span>Inscription / Connexion</span>
+                </a>
+            {% endif %}
+
+            <!--
+            change 27-03-19 by temirlan
+            -->
+            {#<a class="btn-default mt-3" href="{{ path('identification') }}">#}
+                {#<span>Inscription / Connexion</span>#}
+            {#</a>#}
             {# Block à affichier pour les personnes connecter #}
             {#<div class="navbar box-user text-left">#}
                 {#<div class="dropdown show">#}

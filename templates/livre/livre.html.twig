@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    {#{{ dump(livre) }}#}
+    <div class="container mt-5 ">
+
+        <h3 class="text-center mt-2">Livre</h3>
+
+        <div class="row d-flex justify-content-center mt-5">
+
+            <div class="col-12 m-5 p-0 text-center">
+                {#{% for livre in livres %}#}
+                <img alt="{{ livre.titre }}" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="post-detail-img-left" />
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">{{ livre.titre }} </h1>
+                        <p class="lead">{{ livre.extract }}</p>
+                    </div>
+                </div>
+                    {#<p> {{ livre.extract }}<br></p>#}
+                    <p>Categorie : {{ livre.categorie.categorie }} <br></p>
+
+                    <p>Auteur: <strong>{{ livre.user.nom }}</strong></p>
+
+
+                {#{% endfor %}#}
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

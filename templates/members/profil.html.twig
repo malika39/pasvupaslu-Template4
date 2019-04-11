@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {#{{ dump(app.user)}}#}
+
+        {% if app.user.auter is not null %}
+            <h4 class=" mt-4 mt-5 pt-5 text-center ">Bienvenue <strong class="text-uppercase">{{app.user.auter.pseudo }}</strong> </h4>
+           <div class="row mt-5 ">
+
+               <div class="col-md-10 pt-6">
+                   <div class="badge bg-transparent text-wrap col-md-12 mt-4" >
+                       <div class="row">
+                           <div class="col-md-7">
+                               <img class="card-img" style="width: 25rem;" src="{{ asset('assets/images/profil/'~ app.user.auter.photo) }}" alt="{{ app.user.auter.pseudo}}">
+                           </div>
+                           <div class="col-md-5 text-justify ">
+
+                               <h4 class="text-left">Nom: <strong class="text-uppercase">{{app.user.nom }}</strong></h4>
+                               <h4 class="text-left">Prenom: <strong class="text-capitalize">{{app.user.prenom }}</strong></h4>
+                               <h4 class="text-left">Age: <strong>{{app.user.auter.age}}</strong></h4>
+                           </div>
+                       </div>
+                   </div>
+                       <div class="bg-success text-wrap col mt-4 " style="font-size: 1rem;">
+                           {{app.user.auter.presentation }}
+                       </div>
+                   <div class="badge badge-primary bg-primary text-wrap col-md-12 mt-4 mb-5" >
+                     <div class="col-md-4"><h3>Contact:</h3>
+                     </div>
+                     <div class="col-md-8 text-reght">
+                           <h4>Email: <strong>{{app.user.email}}</strong></h4>  <br>
+                             {% if app.user.auter.telephone is not null %}
+                           <h4> Telephon: <strong>{{app.user.auter.telephone}}</strong></h4>
+                             {% endif %}
+                     </div>
+
+                   </div>
+
+
+               </div>
+
+               <div class="col-2">
+                   <button type="button" class="btn btn-primary btn-lg btn-block">Modifier profil</button>
+                   <button type="button" class="btn btn-secondary btn-lg btn-block">Note</button>
+    {% if is_granted('ROLE_MEMBRE') %}
+        <a href="{{ path('ajouter_livre') }}"><button type="button" class="btn btn-primary btn-lg btn-block">Ajouter livre</button></a>
+        <a href="{{ path('show_livres_auteur') }}"><button type="button" class="btn btn-secondary btn-lg btn-block">Livre</button></a>
+
+        {% endif %}
+                   <button type="button" class="btn btn-primary btn-lg btn-block">Livres lu</button>
+                   <button type="button" class="btn btn-secondary btn-lg btn-block">Livres vu</button>
+               </div>
+           </div>
+
+
+
+            {% else %}
+                <div class="col-12 pt-5 mt-5">
+                    <h1>complementer de info</h1>
+
+                    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+                    {{ form_start(form, { 'attr': {'class': 'form-group shadow p-3 mb-5 rounded', 'style':"background-color:#ececec;" , novalidate:'novalidate' } }) }}
+
+                    <div class="col-12">
+                        {{ form_row(form.pseudo) }}
+                    </div>
+                    <div class="col-12">
+                        {{ form_row(form.presentation) }}
+                    </div>
+                    <div class="col-12">
+                        {{ form_row(form.age) }}
+                    </div>
+                    <div class="col-12">
+                        {{ form_row(form.photo) }}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                        {{ form_row(form.adress) }}
+                        </div>
+                        <div class="col-md-6">
+                        {{ form_row(form.ville) }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                        {{ form_row(form.codePostale) }}
+                        </div>
+
+                        <div class="col-md-4">
+                        {{ form_row(form.country) }}
+                        </div>
+                        <div class="col-md-4">
+                        {{ form_row(form.telephone) }}
+                        </div>
+                    </div>
+
+                    <button class="btn w-100 submit bg-success ">Inscription</button>
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+
+
+
+                </div>
+    {% endif %}
+
+{% endblock %}

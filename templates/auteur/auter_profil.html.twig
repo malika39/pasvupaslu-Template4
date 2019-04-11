@@ -1,0 +1,165 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+{#{{ dump(user.id) }}#}
+
+{#{% set user in users %}#}
+    {#{{ dump(user) }}#}
+    {% set livres = user.livre %}
+    {#{{ dump(livres) }}#}
+
+
+    <div class="container">
+        <h1 class="text-center">{{ user.nom }} {{user.prenom }}</h1>
+        <div class="row mt-5">
+
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12 text-center mb-3" >
+                        <img alt="{{ user.auter.pseudo }}" src="{{ asset ('assets/images/profil/'~user.auter.photo) }}" class="rounded float-left" >
+                    </div>
+                    <div class="col-md-12">
+                        <h4>Age: <strong>{{ user.auter.age }} </strong></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">{{ user.auter.pseudo }} </h1>
+                        <p class="lead">{{ user.auter.presentation }}</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-12">
+            <h1> Leur Livres:</h1>
+            </div>
+            {% for livre in livres %}
+
+
+            {% if livre.user.id == user.id %}
+                {#{{ dump(livre) }}#}
+                <div class="col-md-2 mt-2 mb-3">
+
+                    <div class="card" style="height: 15rem;">
+                        <a href="{{ path('show_livre',{'id': livre.id }) }}" class="">
+
+                            <img alt="{{ livre.titre }}" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ livre.titre }}</h5>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+
+
+
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    {#<div class="container">#}
+
+        {#<div class="row mt-5">#}
+
+            {#{% for user in users %}#}
+
+                {#{% set membre = "ROLE_MEMBRE" %}#}
+                {#{% if membre in user.roles%}#}
+
+
+                    {#<div class="col-md-3">#}
+                        {#<div class="card text-center mb-3" style=" margin-top: 0!important">#}
+                            {#<div class="card-body" >#}
+
+                                {#<a href="#" class="d-block">#}
+                                    {#<img alt="{{ user.auter.pseudo }}" src="{{ asset ('assets/images/profil/'~user.auter.photo) }}" class="mb-2 mx-auto" style="width: 10rem; height: 10rem">#}
+                                {#</a>#}
+
+                                {#<a href="{{ path('register_user_profil',{'id': user.id }) }} " >#}
+                                    {#{{ user.nom }} {{user.prenom }}#}
+                                {#</a>#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+
+                {#{% endif %}#}
+            {#{% endfor %}#}
+
+        {#</div>#}
+    {#</div>#}
+
+    {#{% if livres is not empty %}#}
+
+        {#<div class="container">#}
+
+
+            {#<nav class="navbar navbar-light bg-light d-flex nav_tableau_de_bord">#}
+                {#<a class="bg-light nom_aPanier m-5 flex-grow-1" href="{{ path('register_user_profil') }}">{{user.nom  }} {{user.prenom  }}</a>#}
+                {#<a class="bg-light aPanier m-2" href="#">suprimer le livre</a>#}
+
+            {#</nav>#}
+
+            {#<div class="row">#}
+                {#<div class="col-md-12 col-sm-12">#}
+                    {#<!--Table-->#}
+                    {#<table class="table table-bordered table-striped text-white table-dark table_panier">#}
+                        {#<!--Table head-->#}
+                        {#<tr>#}
+                            {#<th  scope="col">id</th>#}
+                            {#<th  scope="col">Titre</th>#}
+                            {#<th  scope="col">Extract</th>#}
+                            {#<th  scope="col">Photo</th>#}
+                            {#<th  scope="col">Categorie</th>#}
+                            {#<th  scope="col">Auteur</th>#}
+                        {#</tr>#}
+                        {#<!--Table body-->#}
+                        {#{% for livre in livres %}#}
+
+
+                            {#{% if livre.user.id == %}#}
+                                {##}
+                            {#{% endif %}#}
+                            {##}
+                            {##}
+                            {##}
+                            {#<tr class="text-center">#}
+                                {#<td>#}
+                                    {#{{ livre.id }}#}
+                                {#</td>#}
+                                {#<td>#}
+                                    {#{{ livre.titre }}#}
+                                {#</td>#}
+                                {#<td>#}
+                                    {#{{ livre.extract }}#}
+                                {#</td>#}
+                                {#<td>#}
+                                    {#<img alt="" src="{{ asset ('assets/images/livre/'~livre.photo) }}" class="img-fluid" 0 />#}
+                                {#</td>#}
+                                {#<td>#}
+                                    {#{{ livre.categorie.categorie }}#}
+                                {#</td>#}
+                                {#<td>#}
+                                    {#{{ user.nom }} {{ user.prenom }}#}
+                                {#</td>#}
+                            {#</tr>#}
+                        {#{% endfor %}#}
+                    {#</table>#}
+                {#</div>#}
+
+            {#</div>#}
+        {#</div>#}
+
+
+    {#{% else %}#}
+        {#<div>#}
+            {#<h3 class="text-center m-5">Vous n'est pas ajouter livre !</h3>#}
+        {#</div>#}
+    {#{% endif %}#}
+    {#</div>#}
+
+{% endblock %}

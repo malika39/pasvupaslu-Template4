@@ -15,21 +15,24 @@
                 <div class="col-md-5 b-tree p-3">
                     <div class="text-login">
                         <div>D E J A&nbsp;&nbsp;M E M B R E</div>
+                        {#<a href="{{ path('security_login') }}">#}
+                            {#C o n n e c t e z - v o u s &nbsp;!#}
+                        {#</a>#}
                         <i>C o n n e c t e z - v o u s&nbsp;!</i>
                     </div>
-                    <form method="POST" action="" class="login">
+
+                    <form method="POST" action="{{ path('security_login') }}" class="login">
                         <div class="form-group">
                             <label for="email">Adresse mail</label>
-                            <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Votre adresse email">
+                            <input type="email" class="form-control" id="email" autocomplete="off" name="_username" placeholder="Votre adresse email">
                         </div>
                         <div class="form-group">
                             <label for="password">Mot de passe</label>
-                            <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Votre mot de passe">
-                            <a href="#!"><small id="emailHelp" class="form-text" data-toggle="modal" data-target="#exampleModal">Mot de passe oublié ?</small></a>
+                            <input type="password" class="form-control" id="password" autocomplete="off" name="_password"  placeholder="Votre mot de passe">
+                            <a href="#!"><small id="emailHelp" class="form-text">Mot de passe oublié ?</small></a>
                         </div>
                         <button type="submit" class="login btn-default">Se connecter</button>
                     </form>
-
                 </div>
                 <div class="col-md-7 p-3">
                     <div class="text-login mb-5">
@@ -43,7 +46,7 @@
                                 <p class="login-register-price">Tarif : 12 euros TTC Annuel *</p>
                                 <img src="{{ asset('assets/images/illustration/left.jpg') }}">
                                 <img src="{{ asset('assets/images/illustration/livre.png') }}" class="auto">
-                                <div class="pb-3"><a href="{{ path('registration-reader') }}" class="btn-default btn-register-1">Cliquer ici</a></div>
+                                <div class="pb-3"><a href="{{ path('register_user1') }}" class="btn-default btn-register-1">Cliquer ici</a></div>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -52,7 +55,7 @@
                                 <p class="login-register-price">Tarif  : 60 euros TTC Annuel *</p>
                                 <img src="{{ asset('assets/images/illustration/right.jpg') }}">
                                 <img src="{{ asset('assets/images/illustration/livre.png') }}" class="auto">
-                                <div class="pb-3"><a href="{{ path('registration-author') }}" class="btn-default btn-register-2">Cliquer ici</a></div>
+                                <div class="pb-3"><a href="{{ path('register_user') }}" class="btn-default btn-register-2">Cliquer ici</a></div>
                             </div>
                         </div>
                         <p class="min-text">
@@ -63,63 +66,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <form method="POST" id="sendPassword" class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Mot de passe oublié ?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group p-0 m-0">
-                        <label for="email">Renseigner votre adresse mail</label>
-                        <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Adresse mail">
-                        <div style="font-size: .82rem; text-align: center;">Vous allez recevoir un mail avec un lien pour réinitialiser votre mot de passe</div>
-                    </div>
-                </div>
-                <div class="feed-error"></div>
-                <div class="passhiden p-4" style="display: none;color: #4CAF50; font-weight: 600; text-align: center;">
-                    Nous venons d'envoyer un mail avec un lien afin de réinitialiser votre mot de passe.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Réinitialiser le mot de passe</button>
-                </div>
-            </div>
-        </form>
-    </div>
-{% endblock %}
-
-{% block javascripts %}
-    <script>
-        $(function() {
-
-            $("#sendPassword").submit(function(e) {
-
-                e.preventDefault();
-
-                const Rex = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-                const Email = $("#email").val();
-
-                if (Rex.test(Email)) {
-
-                    $('.modal-body').hide();
-                    $('.modal-footer').hide();
-                    $('modal-footer').hide();
-                    $('.passhiden').show();
-                    $('.modal-title').html('Mail envoyé avec succès!\n');
-
-                } else {
-
-                    console.log('dsfdsfdsffdsf')
-
-                }
-
-            })
-
-        });
-    </script>
 {% endblock %}

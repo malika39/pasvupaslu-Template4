@@ -1,0 +1,137 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Pas vu Pas lu - Livres' %}
+
+{% block body %}
+    <div class="content">
+
+        <div class="card store__card">
+
+            <div class="card-body">
+                <div class="card__media">
+                    <div class="card__media-icon">
+                        <img src="https://static.fnac-static.com/multimedia/Images/FR/NR/63/9c/a2/10656867/1507-0/tsp20181105222802/Les-aventures-de-Lucky-Luke-d-apres-Morris-tome-8-Un-cow-boy-a-Paris.jpg" alt="" class="d-block">
+                        <div class="text-center mt-2">
+                            <a href="#!" class="btn-default btn-forum  btn-achat">
+                                Acheter
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card__media-body">
+                        <span class="badge badge-warning promo-badge">Prix 25.00 €</span>
+
+                        <div class="truncate">
+                            <h2 class="card-title card__media-title">Un Cow-Boy à Paris</h2>
+                        </div>
+
+                        <p class="card__media-info">
+                            <span><b>Auteur</b> : <a href="#!">AbdelKarim</a></span>
+                            <span><b>Éditeur</b> : Terhoma</span>
+                            <span><b>Date de parution</b> : Mars 2019</span>
+                        </p>
+
+                        <p class="card__media-nav">
+                            <div class="sharebuttons btn-group">
+                                <a href="#!" class="btn btn-twitter"><i class="fab fa-twitter"></i> <span>Twitter</span></a>
+                                <a href="#!" class="btn btn-facebook"><i class="fab fa-facebook"></i> <span>Facebook</span></a>
+                                <a href="#!" class="btn btn-linkedin"><i class="fab fa-linkedin"></i> <span>Linkedin</span></a>
+                                <a href="#!" class="btn btn-pinterest"><i class="fab fa-pinterest-square"></i> <span>Pinterest</span></a>
+                            </div>
+                        </p>
+
+                        <p class="card__media-rating rating-4">
+                            <span class="rating__star">★</span>
+                            <span class="rating__star">★</span>
+                            <span class="rating__star">★</span>
+                            <span class="rating__star">★</span>
+                            <span class="rating__star">★</span>
+                            <span class="rating__count">123</span>
+                        </p>
+
+                        <p class="card__media-desc">
+                            Tagada, tagada, voilà Lucky Luke ! Il est entré dans le hall de notre groupe de presse sur son fameux cheval, Jolly Jumper, cool, comme à son habitude. Puis il est monté dans l’ascenseur qui mène à la rédaction, mâchouillant sa brindille, silencieux mais souriant. Peut-être pensait-il encore à son dernier séjour à Paris, lorsqu’il avait dû venir chercher la statue de la Liberté pour la rapporter en Amérique. Car, pendant ce périple maritime et terrestre, le cow-boy qui tire plus vite que son ombre n’avait pas eu le temps de s’ennuyer.
+                            Traversée houleuse en bateau, installation cocasse dans un hôtel parisien de la Plaine-Monceau, dans le 17e arrondissement, rencontres savoureuses avec madame Bovary (le personnage de Gustave Flaubert), Gustave Eiffel et Victor Hugo. Le cow-boy que rien ne semble jamais déstabiliser va de surprise en étonnement pour son premier séjour en dehors des Etats-Unis.
+                            <a href="#!" class="plus-p">Voir plus</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="block-quote bg-purple p-5 bbox-comments" style="height: auto;">
+                <h3 class="comments">Laisser un commentaire</h3>
+                <form action="" method="POST">
+                    <div class="part-comments">
+                        <div class="comment-main-level">
+                            <div class="comment-avatar">
+                                <img src="http://www.lucky-luke.com/fr-uploadsgoodies/avatar_fb_16GD.jpg" alt="">
+                            </div>
+                            <div class="comment-box">
+                                <div class="comment-content p-0">
+                                    <textarea name="message" cols="30" rows="10" style="resize: none;height: 6rem; width: 100%;padding: .59rem;" placeholder="Tapez votre commentaire ici "></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-left mt-2 stytem-not">
+                        SYSTEME DE NOTATION 1 - 10
+                    </div>
+                    <div class="text-right mt-2">
+                        <a href="#!" class="btn-default btn-forum" style="color: white;background-color: #9d4466c7;">
+                            Envoyer mon commentaire
+                        </a>
+                    </div>
+                </form>
+            </div>
+
+            <div class="separator"></div>
+
+            <div class="block-quote bg-rose p-5 bbox-comments" style="height: auto;">
+                <h3 class="comments">Commentaires</h3>
+                {# debut du commentaire#}
+                <div class="part-comments">
+                    <div class="comment-main-level">
+                        <div class="comment-avatar">
+                            <img src="http://www.lucky-luke.com/fr-uploadsgoodies/avatar_fb_16GD.jpg" alt="">
+                        </div>
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author">
+                                    <a href="#!">Agustin Ortiz</a>
+                                </h6>
+                                <span>hace 20 minutos</span>
+                                <span class="float-right">LA NOTE 1/10</span>
+                            </div>
+                            <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# Fin du commentaire #}
+                {# a supprimer apres la boucle #}
+                <div class="part-comments">
+                    <div class="comment-main-level">
+                        <div class="comment-avatar">
+                            <img src="http://www.lucky-luke.com/fr-uploadsgoodies/avatar_fb_16GD.jpg" alt="">
+                        </div>
+                        <div class="comment-box">
+                            <div class="comment-head">
+                                <h6 class="comment-name by-author">
+                                    <a href="#!">Agustin Ortiz</a>
+                                </h6>
+                                <span>hace 20 minutos</span>
+                                <span class="float-right">LA NOTE 1/10</span>
+                            </div>
+                            <div class="comment-content">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit omnis animi et iure laudantium vitae, praesentium optio, sapiente distinctio illo?
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {# Fin #}
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

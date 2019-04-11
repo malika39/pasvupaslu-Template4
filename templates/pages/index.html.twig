@@ -46,7 +46,9 @@
             <div class="col-md-6 pl-0">
                 <div class="content-block bg-img" style="background-image: url({{ asset('assets/images/illustration/home-register.jpg') }});">
                     <h3 class="content-block-title bg-transparent text-center">Rejoindre les acteurs de  Pas vu, pas lu !</h3>
+                    {% if app.user is null %}
                     <a href="{{ path('identification') }}" class="btn-default btn-register b-1">Inscription</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -70,7 +72,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="box-quote-2">
-                        <a href="#!" class="color-blue">Nouveaux auteurs de la semaine...</a>
+                        <a href="{{ path('recents_auters') }}" class="color-blue">Nouveaux auteurs de la semaine...</a>
                         <a href="#!" class="color-purple pl-3">Un éditeur vous ouvre ses portes</a>
                         <a href="#!" class="color-black pl-5">Prochain Rendez-vous, pas vu, pas lu</a>
                     </div>
@@ -212,21 +214,21 @@
                     <div class="bg-black text-center">
                         <div class="entrevue-title p-2">Interview ! ! !</div>
                         <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
-                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... <a class="link-inter" href="{{ path('interviews_view') }}">(Lire la suite)</a></p>
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
                     </div>
                 </div>
                 <div class="col-md-4 p-0">
                     <div class="bg-black text-center">
                         <div class="entrevue-title p-2">Interview ! ! !</div>
                         <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
-                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... <a class="link-inter" href="{{ path('interviews_view') }}">(Lire la suite)</a></p>
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
                     </div>
                 </div>
                 <div class="col-md-4 p-0">
                     <div class="bg-black text-center">
                         <div class="entrevue-title p-2">Interview ! ! !</div>
                         <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
-                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... <a class="link-inter" href="{{ path('interviews_view') }}">(Lire la suite)</a></p>
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
                     </div>
                 </div>
 
@@ -234,21 +236,21 @@
                     <div class="bg-black text-center">
                         <div class="entrevue-title p-2">Interview ! ! !</div>
                         <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
-                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... <a class="link-inter" href="{{ path('interviews_view') }}">(Lire la suite)</a></p>
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
                     </div>
                 </div>
                 <div class="col-md-4 p-0">
                     <div class="bg-black text-center">
                         <div class="entrevue-title p-2">Interview ! ! !</div>
                         <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
-                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... <a class="link-inter" href="{{ path('interviews_view') }}">(Lire la suite)</a></p>
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
                     </div>
                 </div>
                 <div class="col-md-4 p-0">
                     <div class="bg-black text-center">
                         <div class="entrevue-title p-2">Interview ! ! !</div>
                         <img class="mx-auto" src="{{ asset('assets/images/illustration/news.jpg') }}">
-                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... <a class="link-inter" href="{{ path('interviews_view') }}">(Lire la suite)</a></p>
+                        <p class="entrevue-description p-2">Pas vu, pas lu fait le buzz. Ils ont dit ou écrit... (Lire la suite)</p>
                     </div>
                 </div>
             </div>
