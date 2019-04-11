@@ -77,6 +77,30 @@ class AuteurController extends AbstractController
 //            'livres'=>$users->$this->getId()
         ]);
     }
+    /**
+     *
+     * @Route("/auteurs/recents", name="recents_auters")
+     * @param User $users
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+
+    public function recentsAuters( )
+    {
+        $repository = $this->getDoctrine()
+            ->getRepository(User::class);
+        $users = $repository->findBy([],['id'=>'DESC']);
+        # Récupération du Repository
+
+        $auters = $repository->findLatestAuteurs();
+        //        dump($users);
+//        die();
+        return $this->render('auteur/recents_auteurs.html.twig', [
+            'users'=>$users,
+//            'livres'=>$users->$this->getId()
+            'auters' => $auters,
+        ]);
+
+    }
 
 
 }

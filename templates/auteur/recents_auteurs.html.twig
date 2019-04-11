@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Pas Vu pas Lu - Les Auteurs' %}
+
+{% block body %}
+    {#{{ dump(auters) }}#}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/authors.png') }});">
+            <span class="illustration-title">Auteurs</span>
+        </div>
+        <div class="container">
+            <h1>Nouveaux auteurs de la semaine !</h1>
+            <div class="row mt-5">
+                                    {% for auter in auters %}
+
+                                        {% set membre = "ROLE_MEMBRE" %}
+                                        {% if membre in auter.roles%}
+
+                                <div class="col">
+                                    <a href="{{ path('profil_auter',{'id': auter.id }) }} " class="link-1 the-reply">
+                                        <div class="is-section hasImgReply">
+                                            <img class="replyImg" src="{{ asset ('assets/images/profil/'~auter.auter.photo) }}" alt="{{ auter.auter.pseudo }}">
+                                        </div>
+                                        <div class="is-section hasSettingsReply">
+                                            <div class="emailSection pb-0">
+                                                <i>{{ auter.nom }}</i>
+                                            </div>
+                                            <div class="emailSection pb-0">
+                                                <i>{{auter.prenom }}</i>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                    {% endif %}
+                                {% endfor %}
+
+                    <div class="round mt-5"></div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .the-reply {
+            background: #d71b61;
+            padding: 1em;
+            margin: .5em 0em 0em 0em;
+            display: flex;
+        }
+        .hasImgReply {
+            max-width: 70px;
+            width: 100%;
+            margin-right: 1em;
+        }
+        .replyImg {
+            width: 100%;
+            max-width: 70px;
+            border-radius: 100%;
+        }
+        .hasSettingsReply .emailSection {
+            padding: 0.5em 0em;
+        }
+        .hasSettingsReply .emailSection {
+            color: white !important;
+            font-size: 80%;
+        }
+        .link-1:hover {
+            text-decoration: none;
+            background: #d71b61c7;
+        }
+        .emailSection {
+            padding: 0.26em 0em;
+            line-height: 1.5;
+        }
+    </style>
+{% endblock %}
