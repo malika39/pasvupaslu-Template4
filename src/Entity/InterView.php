@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @property  question
+ * @property DateTime dateCreated
+ * @property DateTime|false deletedAt
  *  @ORM\Table(name="interView",
  *            options={"row_format":"DYNAMIC"},)
  * @ORM\Entity(repositoryClass="App\Repository\InterViewRepository")
@@ -97,7 +101,7 @@ class InterView
 
     /**
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\ImageAdmin",mappedBy="interView", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\ImageAdmin",mappedBy="interView", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      * @Assert\Valid
      */
@@ -126,6 +130,15 @@ class InterView
         $metadata->addPropertyConstraint('postCode', new Assert\NotNull());
 
         ;
+    }
+    public function __construct()
+    {
+        $this->imagesAdmin = new ArrayCollection();
+        $this->questions = new ArrayCollection();
+        $this->dateCreated = new \DateTime();
+        // Null values are ignored by unique constraints
+        $this->deletedAt = date_create('0000-00-00 00:00:00');
+
     }
 
     public function getId(): ?int
@@ -265,7 +278,7 @@ class InterView
     }
     public function addImage(ImageAdmin $imageAdmin)
     {
-        $imageAdmin->setEditeur($this);
+        $imageAdmin->setInterView($this);
 
         $this->imagesAdmin->add($imageAdmin);
     }
@@ -276,7 +289,7 @@ class InterView
     }
     public function addQuestions(Question $question): void
     {
-        $question->setEditeur($this);
+        $question->setInterView($this);
         if (!$this->question->contains($question)) {
             $this->questions->add($question);
         }
@@ -287,7 +300,7 @@ class InterView
         $this->questions->removeElement($question);
     }
 
-    public function getQuestions(): array
+    public function getQuestions()
     {
         return $this->questions;
     }

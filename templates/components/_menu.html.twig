@@ -7,10 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav mx-auto">
             <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'home' %}active{% endif %}" href="{{ path('home') }}">Accueil <span class="sr-only">(current)</span></a>
-
             <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'about' %}active{% endif %}" href="{{ path('about') }}">A propos de nous</a>
             <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'authors' %}active{% endif %}" href="{{ path('authors') }}">Auteurs</a>
             <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'readers' %}active{% endif %}" href="{{ path('readers') }}">Lecteurs</a>
+            <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'admin_home' %}active{% endif %}" href="{{ path('admin_home') }}">AdminHome</a>
+            <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'security_logout' %}active{% endif %}" href="{{ path('security_logout') }}">Deconnexion</a>
+
             <div class="dropdown show">
                 <a href="{{ path('books') }}" class="droplists {% if current_menu is defined and current_menu == 'books' %}active{% endif %}" id="drop1" aria-haspopup="true" aria-expanded="false">
                     Livres
@@ -29,32 +31,42 @@
                     <a class="dropdown-item" href="{{ path('category') }}">Bien-être Vie pratique</a>
                 </div>
             </div>
-            <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'editors' %}active{% endif %}" href="{{ path('editors') }}">Editeurs</a>
+            <!------------------------------- la partie de malika
+            <a class="nav-item nav-link text-nowrap {# {% if current_menu is defined and current_menu == 'editeurs' %}active{% endif %}" href="{{ path('editeurs') }#}}">Editeurs</a>
             <div class="dropdown show">
-                <a class="droplists {% if current_menu is defined and current_menu == 'interviews' %}active{% endif %}" href="{{ path('interviews') }}" role="button" id="drop1" aria-haspopup="true" aria-expanded="false">
+                <a class="droplists {# {% if current_menu is defined and current_menu == 'interViews' %}active{% endif %}" href="{{ path('interViews') #}}}" role="button" id="drop1" aria-haspopup="true" aria-expanded="false">
+                    Interviews
+                </a>
+                ----------------------------fin de ma partie Malika-->
+            <a class="nav-item nav-link text-nowrap {% if current_menu is defined and current_menu == 'editeurs' %}active{% endif %}" href="{{ path('editeurs') }}">Editeurs</a>
+            <div class="dropdown show">
+                <a class="droplists {% if current_menu is defined and current_menu == 'interViews' %}active{% endif %}" href="{{ path('interViews') }}" role="button" id="drop1" aria-haspopup="true" aria-expanded="false">
                     Interviews
                 </a>
 
                 <div class="dropdown-menu text-center" aria-labelledby="drop1">
-                    <a class="dropdown-item" href="#">Christine Deviers Joncour</a>
-                    <a class="dropdown-item" href="#">Correction Occitane</a>
+                    <a class="dropdown-item" href="{{ path('interView_view') }}">Christine Deviers Joncour</a>
+                    <a class="dropdown-item" href="{{ path('interView_view') }}">Correction Occitane</a>
                 </div>
             </div>
+
+
+
+
+
             <div class="dropdown show">
                 <a class="droplists {% if current_menu is defined and current_menu == 'events' %}active{% endif %}" href="{{ path('events') }}" role="button" id="drop1" aria-haspopup="true" aria-expanded="false">
                     Nos Evénements
                 </a>
 
-
                 <div class="dropdown-menu text-center" aria-labelledby="drop1">
-                    <a class="dropdown-item" href="#">Salon Pas Vu, Pas Lu</a>
-                    <a class="dropdown-item" href="#">Revue de presse</a>
-                    <a class="dropdown-item" href="#">Un auteur émerge !</a>
-                    <a class="dropdown-item" href="#">Rendez-vous Pas vu, Pas lu</a>
+                   <!-- <a class="dropdown-item" href="{#{ path('salon') }#}}">Salon Pas Vu, Pas Lu</a>-->
+                   <!-- <a class="dropdown-item" href="{#{ path('blog') }#}}">Revue de presse</a> cette partie c'est les interViews-->
+                    <a class="dropdown-item" href="{{ path('emerge') }}">Un auteur émerge !</a>
+                    <a class="dropdown-item" href="{{ path('rendez_vous') }}">Rendez-vous Pas vu, Pas lu</a>
                 </div>
             </div>
-            <a class="nav-item nav-link text-nowrap" href="#">Contact</a>
+            <a class="nav-item nav-link text-nowrap" href="http://terhoma.org/Contact/" target="_blank">Contact</a>
         </div>
-
     </div>
 </nav>

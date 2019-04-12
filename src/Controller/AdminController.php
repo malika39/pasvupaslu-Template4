@@ -1,10 +1,10 @@
 <?php
-namespace App\Controller\Admin;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AdminOldController extends AbstractController {
+class AdminController extends AbstractController {
 
     /**
      * @Route("/admin", name="admin_home")
@@ -36,6 +36,45 @@ class AdminOldController extends AbstractController {
 
     }
 
+    /**
+     * @Route("/admin/interviews", name="admin_interviews")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function interviews() {
+
+        return $this->render("admin/pages/interviews.html.twig");
+
+    }
+
+    /**
+     * @Route("/admin/add_interview", name="admin_addinterview")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addInterview() {
+
+        return $this->render("admin/pages/addinterview.html.twig");
+
+    }
+
+    /**
+     * @Route("/admin/edotor", name="admin_addeditor")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function addEditor() {
+
+        return $this->render("admin/pages/addeditor.html.twig");
+
+    }
+
+    /**
+     * @Route("/admin/list-edotor", name="admin_listeditor")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function listEditor() {
+
+        return $this->render("admin/pages/listeditor.html.twig");
+
+    }
 
     /**
      * @Route("/admin/article", name="admin_article")

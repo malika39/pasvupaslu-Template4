@@ -4,7 +4,13 @@ namespace App\Form;
 
 
 
+use App\Entity\Editeur;
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,7 +25,24 @@ class EditeurType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, ['label' => false])
-            ->add('lastName', TextareaType::class, ['label' => false])
+            ->add('lastName', TextType::class, ['label' => false])
+            ->add('address', TextType::class, ['label' => false])
+            ->add('city', TextType::class, ['label' => false])
+            ->add('postCode', IntegerType::class, ['label' => false])
+            ->add('phone', TelType::class, ['label' => false])
+            ->add('function', TextareaType::class, ['label' => false])
+            ->add('imagesAdmin', CollectionType::class, [
+                'entry_type' => ImageAdminType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ])
+            ->add('questions', CollectionType::class, [
+                'entry_type' => QuestionType::class,
+                'allow_add' => true,
+                'allow_delete' => true,
+                'by_reference' => false
+            ])
            ;
 
 

@@ -10,6 +10,7 @@
 namespace App\Repository;
 use App\Entity\Editeur;
 use App\Entity\ImageAdmin;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -49,19 +50,7 @@ class EditeurRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
-    public function saveNewEditeur(Editeur $editeur): void
-    {
-        $this->_em->persist($editeur);
-        $this->_em->flush();
-    }
-    public function saveExistingEditeur(): void
-    {
-        try {
-            $this->_em->flush();
-        } catch (OptimisticLockException $e) {
-        } catch (ORMException $e) {
-        }
-    }
+
 
     /**
      * @param Editeur $editeur
@@ -83,4 +72,34 @@ class EditeurRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
        }
+    public function findOneBySlug(string $slug): ?Editeur
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.slug = :slug')
+            ->andWhere('e.deletedAt = 0')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    public function findDuplicateSlug(?int $id, string $slug): ?Editeur
+    {
+        $queryBuilder = $this->createQueryBuilder('e');
+        $queryBuilder
+            ->andWhere('e.deletedAt = 0');
+        if ($id) {
+            $queryBuilder
+                ->andWhere('e.id != :id')
+                ->setParameter('id', $id);
+        }
+        $queryBuilder->andWhere('e.slug = :slug OR e.slug LIKE :alt_with_suffix')
+            ->setParameter('slug', $slug)
+            ->setParameter('alt_with_suffix', $slug . '-%');
+
+        return $queryBuilder
+            ->orderBy('e.slug', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }

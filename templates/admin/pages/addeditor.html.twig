@@ -4,7 +4,7 @@
     <link href="{{ asset('assets/admin/vendor/ckeditor/ckeditor.css') }}" rel="stylesheet">
 {% endblock %}
 
-{% block title 'Ajouter une interview' %}
+{% block title 'Editeurs' %}
 
 {% block body %}
     <div class="container">
@@ -14,119 +14,120 @@
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle interview</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter un nouveau editeur</h6>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" class="user field_wrapper form-horizontal">
+                        <div class="user field_wrapper form-horizontal">
+                            {{ form_start(form) }}
+
+                            {{ form_errors(form) }}
+
                             <div class="form-group row m-1 pb-4">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire le Nom </label>
+                                    <label>Ecrire le Nom de L'éditeur</label>
                                     {{ form_widget(form.name, {'attr': {'class': 'input'}}) }}
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire le PreNom </label>
+                                    <label>Ecrire le PreNom de L'éditeur</label>
                                     {{ form_widget(form.lastName, {'attr': {'class': 'input'}}) }}
                                 </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire l'adresse </label>
-                                    {{ form_widget(form.address, {'attr': {'class': 'input'}}) }}
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire la Ville</label>
-                                    {{ form_widget(form.city, {'attr': {'class': 'input'}}) }}
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire le CodePostale</label>
-                                    {{ form_widget(form.postCode, {'attr': {'class': 'input'}}) }}
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire le Numéro de téléphone </label>
-                                    {{ form_widget(form.phone, {'attr': {'class': 'input'}}) }}
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire la date de démarrage</label>
-                                    {{ form_widget(form.createAt, {'attr': {'class': 'input'}}) }}
-                                </div>
-                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Ecrire la Description et la fonction </label>
-                                    <textarea name="interView" id="interView" rows="10" cols="80">
-                                    {{ form_widget(form.function, {'attr': {'class': 'input'}}) }}
-                                  </textarea>
-                                </div>
+                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                 <label>Ecrire l'adresse de L'éditeur</label>
+                                 {{ form_widget(form.address, {'attr': {'class': 'input'}}) }}
+                             </div>
+                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                 <label>Ecrire la Ville</label>
+                                 {{ form_widget(form.city, {'attr': {'class': 'input'}}) }}
+                             </div>
+                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                 <label>Ecrire le CodePostale</label>
+                                 {{ form_widget(form.postCode, {'attr': {'class': 'input'}}) }}
+                             </div>
+                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                 <label>Ecrire le Numéro de téléphone de L'éditeur</label>
+                                 {{ form_widget(form.phone, {'attr': {'class': 'input'}}) }}
+                             </div>
 
-                            </div>
-                            <!------------------------------------------------------------------------------------------------------------>
-                            <!--Boucle des Images Admin pour l'interView-->
+                             <div class="col-md-12 mt-5">
+                                    <label>Ecrire la Description et la fonction de l'éditeur</label>
+                                   <textarea name="editor" id="editor" rows="10" cols="80">
+                                    {{ form_widget(form.function, {'attr': {'class': 'textarea'}}) }}
+                                  </textarea>
+                             </div>
+
+                        </div>
+   <!------------------------------------------------------------------------------------------------------------>
+    <!--Boucle des Images Admin pour l'édieteur-->
+
                             <div class="form-group row m-1 pb-4">
 
-                                        <div class="input-group input-file" name="Fichier1">
-                                            <div class="input-group input-file" data-prototype="{{ form_widget(form.imagesAdmin.vars.prototype)|e('html_attr') }}">
-                                                <div class="col-sm-6 mb-3 mb-sm-0">
-                                                    <div class="form-group">
+                                <div class="input-group input-file" name="Fichier1">
+                                    <div class="input-group input-file" data-prototype="{{ form_widget(form.imagesAdmin.vars.prototype)|e('html_attr') }}">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            <div class="form-group">
                                                 {% for image in form.imagesAdmin %}
-                                                     <div class="col-md-12">
-                                                      <img src="assets/images/uploads/imageAdmin/{{ image.vars.value.alt }}" alt="{{ image.vars.value.description }}" class="img img-fluid">
-                                                         <div>{{ form_row(image.file, {
-                                                            'label': false,
-                                                            'required': false,
-                                                            'attr': {
-                                                                'accept': 'image/*',
-                                                            }
-                                                        }) }}</div>
+                                                <div class="form-group">
+                                                    {{ form_start(form.image) }}
+                                                    {% include "admin/_imageAdmin_form.html.twig" with {'form.imagesAdmin': form.image}%}
+                                                    {{ form_end(form.image ) }}
 
                                                     {% endfor %}
                                                     {% if form.imagesAdmin|length < 4 %}
-                                                        <div class="col-md-4 add-image-container">
+                                                        <button type="button" class="btn btn-primary addButton w-100" id="addInput" style="opacity:.79;">
+                                                            <i class="fas fa-plus-square"></i>
+                                                            Ajouter une nouvelle image!
+                                                        </button>
+                                                       <!-- <div class="col-md-4 add-image-container">
                                                             <div class="">
                                                                 <i class="far fa-plus-square"></i>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
                                                     {% endif %}
                                                 </div>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                             </div>
 
                             </div>
 
-                            <!--FIN de la Boucle des Images Admin pour l'interView-->
-                            <!------------------------------------------------------------------------------------------------------------>
-                            <!--la boucle du formulaire de question-->
+
+
+      <!--FIN de la Boucle des Images Admin pour l'édieteur-->
+                            {{ form_rest(form) }}
+  <!------------------------------------------------------------------------------------------------------------>
+      <!--la boucle du formulaire de question-->
                             <div class="pb-4 bg">
                                 <div class="menu_item">
+                                    {% for question in form.questions %}
                                     <div class="form-group">
-                                        <div class="row pb-4 m-1">Interview
-                                        <div class="col-md-6 mb-3">
-                                            <input type="text" class="form-control form-control-user" placeholder="Titre de la question" id="titre" name="titre[0]">
-                                        </div>
-                                        <div class="row pb-4 m-1">
-                                            <div class="col-md-6 mb-3">
-                                                <input type="text" id="question" class="form-control form-control-user" name="question[0]" placeholder="Question">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <textarea type="text" id="reponse" class="form-control form-control-user" name="reponse[0]" placeholder="Réponse" style="resize: none"></textarea>
-                                        </div>
+                                        {{ form_start(form.question) }}
+                                        {% include "admin/_question_form.html.twig" with {'form.questions': form.question}%}
+                                        {{ form_end(form.question ) }}
+                                        {% endfor %}
+
                                         <div class="col-sm-12">
                                             <button type="button" class="btn btn-primary addButton w-100" id="addInput" style="opacity:.79;">
                                                 <i class="fas fa-plus-square"></i>
                                                 Ajouter un nouveau champ
                                             </button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                            <!--FIN de la boucle du formulaire de question-->
-                            <!------------------------------------------------------------------------------------------------------------>
+         <!--FIN de la boucle du formulaire de question-->
+ <!------------------------------------------------------------------------------------------------------------>
 
                             <div class="col-md-12 mt-5">
-                                <button class="btn btn-primary btn-user btn-block w-50 mx-auto">
-                                    Ajouter l'interview
+                                <button type="submit" class="btn btn-primary btn-user btn-block w-50 mx-auto">
+                                    Ajouter l'editeur
                                 </button>
                             </div>
-                        </form>
+
+                            {{ form_end(form) }}
+                        </div>
                     </div>
                 </div>
 
@@ -155,13 +156,9 @@
 
 {% block javascripts %}
     <script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('assets/js/imageAdminEditor.js') }}"></script>
     <script>
         {# Remplace le textarea par le plugin Ckeditor #}
-        CKEDITOR.replace('interView', {
-            language: 'fr'
-        });
-        CKEDITOR.replace('interView-2', {
+        CKEDITOR.replace('editor', {
             language: 'fr'
         });
 
@@ -234,7 +231,7 @@
                     x++;
                     index++;
                     var fieldHTML = '<div class="form-group removeGroup bg position-relative">\n'
-                        +'<label class="p-4 control-label">Interview </label>\n'
+                        +'<label class="p-4 control-label">Questions </label>\n'
                         +'<div class="row pb-4 m-1">\n'
                         +'<div class="col-md-6 mb-3">\n'
                         +'<input type="text" id="titre" class="form-control form-control-user" name="title[0]" placeholder="Titre">\n'
@@ -246,6 +243,7 @@
                         +'<div class="col-md-12 mb-3">\n'
                         +'<textarea type="text" id="reponse" class="form-control form-control-user" name="reponse[0]" placeholder="Réponse" style="resize: none"></textarea>\n'
                         +'</div>\n'
+                        +'<button type="submit" class="btn is-primary"></button>\n'
                         +'<div class="btn-delet">\n'
                         +'<button type="button" class="btn btn-danger removeButton"><i class="fas fa-trash-alt"></i></button>\n'
                         +'</div>\n'

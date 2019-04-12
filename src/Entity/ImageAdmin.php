@@ -10,6 +10,7 @@ use App\Services\Uploader;
 
 
 /**
+ * @property  slug
  * @ORM\Table(name="imagesAdmin",options={"row_format":"DYNAMIC"},)
  * @ORM\Entity(repositoryClass="App\Repository\ImageAdminRepository")
  *
@@ -42,28 +43,39 @@ class ImageAdmin
      *
      */
     private $file;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", nullable=true)
+     */
+    private $slug;
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('file', new Assert\Image());
 
         $metadata->addPropertyConstraint('description', new Assert\Type('string'));
-        $metadata->addPropertyConstraint('description', new Assert\NotNull());
+
     }
     /**
      * @var bool
      */
     private $deletedImage;
 
-
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Editeur",inversedBy="imagesAdmin")
+     * @ORM\JoinColumn(name="editeur_id", referencedColumnName="id", onDelete="CASCADE")
      *
      */
     private $editeur;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\InterView",inversedBy="imagesAdmin")
+     * @ORM\JoinColumn(name="interView_id", referencedColumnName="id", onDelete="CASCADE")
      *
      */
     private $interView;
@@ -91,12 +103,12 @@ class ImageAdmin
         return $this;
     }
 
-    public function getAlt(): string
+    public function getAlt()
     {
         return $this->alt;
     }
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $description;
 
@@ -108,7 +120,17 @@ class ImageAdmin
     {
         $this->editeur = $editeur;
     }
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
 
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
     /**
      * @return bool
      */
@@ -144,5 +166,21 @@ class ImageAdmin
     public function setInterView($interView): void
     {
         $this->interView = $interView;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param mixed $deletedAt
+     */
+    public function setDeletedAt($deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 }

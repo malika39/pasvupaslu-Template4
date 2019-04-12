@@ -10,6 +10,8 @@ namespace App\Entity;
 
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -17,6 +19,11 @@ use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @property  question
+ * @property  question
+ *
+ *
+ * @property  question
+ * @property DateTime dateCreated
  * @property  question
  * @ORM\Table(name="editeur",
  *            options={"row_format":"DYNAMIC"},)
@@ -60,12 +67,11 @@ class Editeur
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", unique=true)
      */
-    private $slug;
+    public $slug;
 
     /**
-     * @var DateTime
-     *
-     * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     * @Assert\Date
+     * @var string A "Y-m-d" formatted value
      */
     private $createAt;
 
@@ -93,7 +99,7 @@ class Editeur
     private $phone;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $country;
 
@@ -101,8 +107,8 @@ class Editeur
     /**
      * @var string
      *
-     * @ORM\Column(name="function", type="text")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="text",nullable=true)
+     *
      *
      *
      */
@@ -119,12 +125,17 @@ class Editeur
     /**
      * @var array
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="editeur", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="editeur", cascade={"persist"})
      */
     private $questions;
 
 
 
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
@@ -139,6 +150,15 @@ class Editeur
         $metadata->addPropertyConstraint('postCode', new Assert\NotNull());
 
         ;
+    }
+    public function __construct()
+    {
+        $this->imagesAdmin = new ArrayCollection();
+        $this->questions = new ArrayCollection();
+        $this->dateCreated = new \DateTime();
+        // Null values are ignored by unique constraints
+        $this->deletedAt = date_create('0000-00-00 00:00:00');
+
     }
 
     public function getId(): ?int
@@ -188,7 +208,7 @@ class Editeur
         return $this;
     }
 
-    public function getCreateAt(): ?DateTime
+    public function getCreateAt()
     {
         return $this->createAt;
     }
@@ -287,7 +307,7 @@ class Editeur
     {
         $this->imagesAdmin->remove($imageAdmin);
     }
-    public function addQuestions(Question $question): void
+    public function addQuestion(Question $question): void
     {
         $question->setEditeur($this);
         if (!$this->question->contains($question)) {
@@ -300,11 +320,26 @@ class Editeur
         $this->questions->removeElement($question);
     }
 
-    public function getQuestions(): array
+    public function getQuestions():?Collection
     {
         return $this->questions;
     }
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
 
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): self
+    {
+        $this->deletedAt = $deletedAt;
 
+        return $this;
+    }
 
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
 }

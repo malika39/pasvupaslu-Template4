@@ -1,0 +1,43 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'Le nom de la catégorie' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="mx-auto col-xl-8 col-lg-7">
+
+                {# Menu du header #}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Modifier la catégorie</h6>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" class="user">
+                            <div class="col-sm-12 mb-3 mb-sm-0 mx-auto">
+                                <input type="text" class="form-control form-control-user" value="Nom de la categorie">
+                            </div>
+                            <div class="input-group mt-3">
+                                    <span class="input-group-btn w-100 position-absolute" style="background: #eaecf4;">
+                                        <span class="btn btn-default btn-file w-100">
+                                           Modifier la photo de couverture
+                                            <input type="file" id="imgInp">
+                                        </span>
+                                    </span>
+                                <input type="text" class="form-control invisible" readonly>
+                            </div>
+                            <img id='img-upload' src="http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg" style="height: 15rem;width: 100%;margin-bottom:2rem;">
+                            <button class="btn btn-primary btn-user btn-block w-50 mx-auto">
+                                Mettre un jour la catégorie
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
