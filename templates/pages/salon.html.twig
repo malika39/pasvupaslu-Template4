@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Salon Pas vu Pas lu' %}
+
+{% block body %}
+    <div class="content">
+        <div class="illustration" style="background-image: url({{ asset('assets/images/illustration/salon.jpg') }});">
+            <span class="illustration-title about-title">Salon</span>
+            <a href="http://www.salonpasvupaslu.fr/" target="_blank" class="btn-default btn-blue">Visiter</a>
+            <div class="editors-title hidden-response-2 bn-salon">Terhoma et ses partenaires sont heureux de vous proposer<br>votre nouveau rendez-vous littéraire annuel !</div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="salon-content">
+            <p class="mb-2">Venez faire le plein d'inédits, d'animations, d'ateliers et découvrir de nouveaux auteurs !</p>
+            <img src="{{ asset('assets/images/illustration/salon-2.jpg') }}" class="mx-auto">
+            <a href="http://www.salonpasvupaslu.fr" target="_blank">www.salonpasvupaslu.fr</a>
+            <p class="salon-p">
+                Vous souhaitez exposer, devenir partenaire,
+                <br>
+                vous êtes journaliste et vous souhaitez plus d'information,
+                <br>
+                contactez la direction du salon en cliquant sur le lien ci-dessous :
+            </p>
+            <a href="http://terhoma.org/Contact/" target="_blank"><img src="{{ asset('assets/images/illustration/@.png') }}" class="mx-auto pb-5 mt-5"></a>
+        </div>
+    </div>
+{% endblock %}

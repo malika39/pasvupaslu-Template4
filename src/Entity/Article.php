@@ -132,6 +132,13 @@ class Article
         return $this->createAt;
     }
 
+    public function setQuestions($questions)
+    {
+
+        $this->questions = $questions;
+
+        return $this;
+    }
     public function setContent(?string $content): self
     {
         $this->content = $content;

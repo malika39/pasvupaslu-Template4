@@ -2,18 +2,17 @@
 <header class="row">
 
     <div class="user-header {% if app.user %}user-connect{% endif %}">
+        <div class="d-inline-block img-header">
+            <img src="{{ asset('assets/images/illustration/logo-header.png') }}">
+        </div>
 
         <div class="d-sm-inline-block position-absolute text-center block-responsive {% if app.user %}line-user{% endif %}">
             <h3 class="text-spacing header-h3 mb-0">pas vu, pas lu</h3>
             <em><span class="sub-title">Le marque-page des nouveaux talents !</span></em>
-            <a class="btn-default mt-3" href="{{ path('login') }}">
+            <a class="btn-default mt-3" href="{{ path('identification') }}">
                 <span>Inscription / Connexion</span>
             </a>
             {# Block à affichier pour les personnes connecter #}
-            <div class="d-inline-block img-header">
-                <img src="{{ asset('assets/images/illustration/logo-header.png') }}">
-            </div>
-
             {#<div class="navbar box-user text-left">#}
                 {#<div class="dropdown show">#}
                     {#<a class="droplists" href="#" role="button">#}
@@ -35,19 +34,15 @@
         <div class="d-inline-block position-absolute img-header-2" style="right: -10rem">
             <img src="{{ asset('assets/images/illustration/header-books.png') }}">
         </div>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') and is_granted('ROLE_AUTER') %}
-        {# Block à affichier pour les personnes connecter #}
-        <div class="menu-user">
-            <div class="dropdown-menu text-center">
-                <a class="dropdown-item" href="{{ path('article_new') }}">Ajouter un livre</a>
-                <a class="dropdown-item" href="#">Mon Profil</a>
-                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a class="dropdown-item" href="{{ path('security_logout' )}}">Déconnexion</a>
-                {% endif %}
 
-            </div>
-        </div>
-        {% endif %}
+        {# Block à affichier pour les personnes connecter #}
+        {#<div class="menu-user">#}
+            {#<div class="dropdown-menu text-center">#}
+                {#<a class="dropdown-item" href="#">Ajouter un livre</a>#}
+                {#<a class="dropdown-item" href="#">Mon Profil</a>#}
+                {#<a class="dropdown-item" href="#">Se déconnecter</a>#}
+            {#</div>#}
+        {#</div>#}
         {# FIN - du block #}
 
     </div>

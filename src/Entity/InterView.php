@@ -3,12 +3,19 @@
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
+ * @property  question
+ * @property DateTime dateCreated
+ *
+ * @property  question
+ * @property  question
  *  @ORM\Table(name="interView",
  *            options={"row_format":"DYNAMIC"},)
  * @ORM\Entity(repositoryClass="App\Repository\InterViewRepository")
@@ -52,7 +59,7 @@ class InterView
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     * @ORM\Column(name="create_at", type="datetime", nullable=true)
      */
     private $createAt;
 
@@ -80,7 +87,7 @@ class InterView
     private $phone;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $country;
 
@@ -96,8 +103,8 @@ class InterView
     private $function;
 
     /**
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\ImageAdmin",mappedBy="interView", cascade={"persist", "remove"})
+     *@var ImageAdmin[] || ArrayCollection
+     * @ORM\OneToMany(targetEntity="App\Entity\ImageAdmin",mappedBy="interView", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      * @Assert\Valid
      */
@@ -110,6 +117,10 @@ class InterView
      */
     private $questions;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
 
 
@@ -127,6 +138,21 @@ class InterView
 
         ;
     }
+    public function __construct()
+    {
+        $this->imagesAdmin = new ArrayCollection();
+        $this->questions = new ArrayCollection();
+        $this->dateCreated = new \DateTime();
+        // Null values are ignored by unique constraints
+        $this->deletedAt = date_create('0000-00-00 00:00:00');
+
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
 
     public function getId(): ?int
     {
@@ -138,6 +164,12 @@ class InterView
         return $this->slug;
     }
 
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
     public function setName(?string $name): InterView
     {
         $this->name = $name;
@@ -254,42 +286,106 @@ class InterView
     {
         return $this->function;
     }
+    /**
+     * @return ArrayCollection
+     */
     public function getImagesAdmin()
     {
         return $this->imagesAdmin;
     }
+    /**
+     * @return ArrayCollection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+    /**
+     * @return ArrayCollection
+     */
+    public function getQuestion()
+    {
+        return $this->getQuestions();
+    }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getImageFile()
+    {
+        return $this->getImagesAdmin();
+    }
+
+    public function setQuestions($questions)
+    {
+        $this->questions = $questions;
+    }
+    public function addQuestion(Question $question)
+    {
+        $this->questions->add($question);
+
+        $question->setInterView($this);
+
+    }
+    public function addQuestions(Question $question)
+    {
+        if(!$this->questions->contains($question))
+        {
+            $this->questions->add($question);
+        }
+
+    }
     public function setImagesAdmin($imagesAdmin)
     {
         $this->imagesAdmin = $imagesAdmin;
     }
-    public function addImage(ImageAdmin $imageAdmin)
+    public function addImageFile(ImageAdmin $imageAdmin)
     {
-        $imageAdmin->setEditeur($this);
-
         $this->imagesAdmin->add($imageAdmin);
-    }
 
-    public function removeImage(ImageAdmin $imageAdmin)
-    {
-        $this->imagesAdmin->remove($imageAdmin);
+        $imageAdmin->setInterView($this);
+
     }
-    public function addQuestions(Question $question): void
+    /**
+     * @param UploadedFile
+     */
+    public function addImageAdmin(UploadedFile $imageAdmin)
     {
-        $question->setEditeur($this);
-        if (!$this->question->contains($question)) {
-            $this->questions->add($question);
+        if(!$this->imagesAdmin->contains($imageAdmin))
+        {
+            $this->imagesAdmin->add($imageAdmin);
         }
+
     }
 
-    public function removeQuestion(Question $question): void
+    public function removeImageAdmin(ImageAdmin $imageAdmin)
     {
-        $this->questions->removeElement($question);
+        $this->imagesAdmin->removeElement($imageAdmin);
+    }
+    /**
+     * @param ImageAdmin $imageAdmin
+     */
+    public function removeImageFile(ImageAdmin $imageAdmin)
+    {
+        $this->imagesAdmin->removeElement($imageAdmin);
+
     }
 
-    public function getQuestions(): array
+    public function removeQuestion(Question $question)
     {
-        return $this->questions;
+        $this->questions->remove($question);
     }
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
+
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): self
+    {
+        $this->deletedAt = $deletedAt;
+
+        return $this;
+    }
+
 
 }

@@ -1,8 +1,8 @@
 <?php
 namespace App\Controller;
 
-    use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-    use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController {
 
@@ -64,6 +64,15 @@ class HomeController extends AbstractController {
     }
 
     /**
+     * @Route("livres/nom", name="book_view")
+     */
+    public function book_view() {
+
+        return $this->render("pages/book-view.html.twig");
+
+    }
+
+    /**
      * @Route("categories", name="category")
      */
     public function category() {
@@ -75,12 +84,12 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("editeurs", name="editors")
+     * @Route("editeurs", name="editeurs")
      */
     public function editors() {
 
         return $this->render("pages/editors.html.twig", [
-            'current_menu' => 'editors',
+            'current_menu' => 'editeurs',
         ]);
 
     }
@@ -91,13 +100,13 @@ class HomeController extends AbstractController {
     public function interview_editeurs() {
 
         return $this->render("pages/interview-editors.html.twig", [
-            'current_menu' => 'editors',
+            'current_menu' => 'editeurs',
         ]);
 
     }
 
     /**
-     * @Route("login", name="login")
+     * @Route("identification", name="identification")
      */
     public function identification() {
 
@@ -106,7 +115,7 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("inscription-auteur", name="inscription-auteur")
+     * @Route("inscription-auteur", name="registration-author")
      */
     public function registration_author() {
 
@@ -115,7 +124,7 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("inscription-lecteur", name="inscription-lecteur")
+     * @Route("inscription-lecteur", name="registration-reader")
      */
     public function registration_reader() {
 
@@ -124,30 +133,30 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("interviews", name="interviews")
+     * @Route("interViews", name="interViews")
      */
     public function interviews() {
 
         return $this->render("pages/interviews.html.twig", [
-            'current_menu' => 'interviews',
+            'current_menu' => 'interViews',
         ]);
 
     }
 
     /**
-     * @Route("interviews-view", name="interviews_view")
+     * @Route("interView-view", name="interView_view")
      */
-    public function interviews_view() {
+    public function interView_view() {
 
-        return $this->render("pages/interviews-view.html.twig", [
-            'current_menu' => 'interviews',
+        return $this->render("pages/interview-view.html.twig", [
+            'current_menu' => 'interView',
         ]);
 
     }
 
     /**
-    * @Route("evenements", name="events")
-    */
+     * @Route("evenements", name="events")
+     */
     public function events() {
 
         return $this->render("pages/events.html.twig", [
@@ -180,6 +189,69 @@ class HomeController extends AbstractController {
     public function add_topic() {
 
         return $this->render("pages/add_topic.html.twig");
+
+    }
+
+    /**
+     * @Route("salon-pas-vu-pas-lu", name="salon")
+     */
+    public function salon() {
+
+        return $this->render("pages/salon.html.twig");
+
+    }
+
+    /**
+     * @Route("revue-de-presse/", name="blog")
+     */
+    public function blog() {
+
+        return $this->render("pages/blog.html.twig");
+
+    }
+
+    /**
+     * @Route("article", name="article")
+     */
+    public function article() {
+
+        return $this->render("pages/article.html.twig");
+
+    }
+
+    /**
+     * @Route("rendez-vous", name="rendez_vous")
+     */
+    public function rendezvous() {
+
+        return $this->render("pages/rendez-vous.html.twig");
+
+    }
+
+    /**
+     * @Route("un-auteur-emerge", name="emerge")
+     */
+    public function emerge() {
+
+        return $this->render("pages/emerge.html.twig");
+
+    }
+
+    /**
+     * @Route("lecteurs-lu", name="allbooks")
+     */
+    public function allbooks() {
+
+        return $this->render("pages/all-books.html.twig");
+
+    }
+
+    /**
+     * @Route("Informations-legales", name="legal")
+     */
+    public function legal() {
+
+        return $this->render("pages/legal.html.twig");
 
     }
 

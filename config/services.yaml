@@ -5,9 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'fr'
-    image_articles_coverages_directory: '%kernel.project_dir%/public/uploads/articles/coverages/'
-    image_articles_coverages_display: '/uploads/articles/coverages/'
-    images_Admin_coverages_directory: '%kernel.project_dir%/public/uploads/admin/coverages'
+
+    imagesAdmin_directory: '%kernel.project_dir%/public/assets/images/uploads/imageAdmin/'
+
     itemperpage: 5
     supportedLocales:
         - fr
@@ -23,7 +23,7 @@ services:
         bind:
             $userActionLogger: '@monolog.logger.user_action'
             $itemPerPage: '%itemperpage%'
-            $targetDir: '%image_articles_coverages_directory%'
+            $targetDir: '%imagesAdmin_directory%'
             $supportedLocales: '%supportedLocales%'
             $locale: '%locale%'
 

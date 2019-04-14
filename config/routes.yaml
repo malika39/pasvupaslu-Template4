@@ -1,3 +1,26 @@
 
 security_logout:
   path: /logout
+
+admin-editeur-edit:
+  path: /admin/editeur-edit/{id}
+  controller: App\Controller\Admin\EditeurController::editor
+  defaults: { id: null }
+  requirements:
+    id: '\d+'
+admin-interView-edit:
+  path: /admin/interView-edit/{id}
+  controller: App\Controller\Admin\InterViewController::editor
+  defaults: { id: null }
+  requirements:
+    id: '\d+'
+admin-interView-delete:
+  path: /admin/delete-interView/{id}
+  controller: App\Controller\Admin\InterViewController::delete
+  requirements:
+    id: '\d+'
+admin-editeur-delete:
+  path: /admin/delete-editeur/{id}
+  controller: App\Controller\Admin\EditeurController::delete
+  requirements:
+    id: '\d+'

@@ -2,33 +2,52 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\HelperTrait;
 use App\Entity\InterView;
 use App\Entity\ImageAdmin;
+use App\Entity\Question;
 use App\Form\InterViewType;
-use App\Services\Uploader;
-use App\Services\Slugger;
-use App\Repository\InterViewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class InterViewController extends AbstractController
 {
+    use HelperTrait;
 
     /**
      * @Route("/admin/interViews", name="admin-interViews", methods={"GET"})
      */
-    public function listInterView(InterViewRepository $interViews): Response
+    public function listInterView(Request $req)
+
     {
-        return $this->render('admin/interViews/list.html.twig', [
-            'interViews' => $interViews->findAll(),
+        $form = $this->createFormBuilder()
+            ->add('search', SearchType::class)
+            ->getForm();
+
+        $form->handleRequest($req);
+
+        $maxResults = 10;
+        $firstResult = 1;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $query = $form->getData();
+
+            $interViews = $this->getDoctrine()
+                ->getRepository(InterView::class)
+                ->search($query['search'], $firstResult, $maxResults);
+        } else {
+            $interViews = $this->getDoctrine()
+                ->getRepository(InterView::class);
+        }
+        return $this->render('admin/pages/interViews.html.twig', [
+            'interViews' => $interViews,
+            'form' => $form->createView(),
         ]);
     }
-    /**
-     * @Route("admin/interView/{slug}/edit", name="interView_edit", methods={"GET", "POST"})
-     */
-    public function editor(Request $req, $id, Slugger $slugger,Uploader $file)
+
+    public function editor(Request $req, $id)
     {
         $interView = new InterView();
 
@@ -45,9 +64,8 @@ class InterViewController extends AbstractController
 
             $title = 'Modification d\'un interView';
         } else {
-            $interView->addImage(new ImageAdmin());
-
-
+            $interView->addImageFile(new ImageAdmin());
+            $interView->addQuestions(new Question());
 
         }
 
@@ -58,15 +76,26 @@ class InterViewController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             foreach ($interView->getImagesAdmin() as $image) {
-                if ($file = $image->getFie()) {
-                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
-                    $image->setName($filename);
+                if ($file = $image->getFile()) {
+                    $filename = $this->slugify($interView->getName()).'-'.$image->getAlt().'.'.'jpg';
+                    $image->setAlt($filename);
                     $file->move($this->getParameter('imagesAdmin_directory'), $filename);
                 }
-
+                $interView->addImageFile($image);
             }
 
-            $slug = $slugger->slugify($interView);
+            foreach ($interView->getQuestions() as $questions) {
+                {
+                         if(!$questions){
+                             $questions =$this->getDoctrine()->getManager();
+                         }
+
+
+                }
+
+                $interView->addQuestions($questions);
+            }
+            $slug = $this->slugify($interView->getName());
             $interView->setSlug($slug);
 
             $em = $this->getDoctrine()->getManager();
@@ -75,15 +104,18 @@ class InterViewController extends AbstractController
 
             $this->addFlash('success', 'InterView ajouté');
 
-            return $this->redirect($this->generateUrl('interView_edit', [
+            return $this->redirect($this->generateUrl('admin-interView-edit', [
                 'id' => $interView->getId(),
+
             ]));
         }
-
-        return $this->render('admin/interView_editor.html.twig', [
+        dump($interView);
+        return $this->render('admin/pages/addinterview.html.twig', [
             'form' => $form->createView(),
             'title' => $title,
+            'interView' => $interView,
         ]);
+
     }
 
     public function delete($id)
@@ -101,5 +133,14 @@ class InterViewController extends AbstractController
         return $this->redirectToRoute('admin-home');
     }
 
+    /**
+     * @Route("/interView/{id}", name="interView-show", methods={"GET"})
+     */
+    public function showI(InterView $interView)
+    {
+        return $this->render('pages/interview-view.html.twig', [
+            'interView' => $interView,
+        ]);
+    }
 
 }

@@ -48,80 +48,40 @@
         <div class="separator"></div>
 
         <div class="block-quote bg-purple text-white" style="height: auto;">
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="register mx-auto w-50">
-                {{ form_start(form) }}
-
+            <form method="POST" action="" class="register mx-auto w-50">
                 <div class="form-row">
                     <div class="col">
-
                         <label for="name">Nom</label>
-
-                        <div type="text" class="form-control" id="name">
-                            {{ form_widget(form.lastName, {'attr': {'class': 'input', 'placeholder': 'entrez votre nom'}}) }}
-                        </div>
+                        <input type="text" class="form-control" id="name" autocomplete="off" placeholder="Votre nom">
                     </div>
                     <div class="col">
                         <label for="firstname">Prénom</label>
-                        <div type="text" class="form-control" id="firstname">
-                            {{ form_widget(form.firstName, {'attr': {'class': 'input', 'placeholder': 'entrez votre prenom'}}) }}
-                        </div>
+                        <input type="text" class="form-control" id="firstname" autocomplete="off" placeholder="Votre prénom">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        <label for="pseudo">le pseudo</label>
-                        <div type="text" class="form-control" id="pseudo">
-                            {{ form_widget(form.username, {'attr': {'class': 'input', 'placeholder': 'Pseudo ou nom de Plume'}}) }}
-                        </div>
+                        <label for="pseudo">Pseudo</label>
+                        <input type="text" class="form-control" id="pseudo" autocomplete="off" placeholder="Pseudo ou nom de Plume">
                     </div>
                     <div class="col">
                         <label for="email">Email</label>
-                        <div type="email" class="form-control" id="email">
-                            {{ form_widget(form.email, {'attr': {'class': 'input', 'placeholder': 'test@mail.com'}}) }}
-
-                        </div>
+                        <input type="email" class="form-control" id="email" autocomplete="off" placeholder="Votre adresse email">
                     </div>
                 </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="password">Mot de passe</label>
-                        <div type="password" class="form-control" id="password">
-                            {{ form_widget(form.plainPassword.first, {'attr': {'class': 'input', 'placeholder': 'votre mot de passe'}})}}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Mot de passe Confirmé</label>
-                        <div type="password" class="form-control" id="password">
-                            {{ form_widget(form.plainPassword.second, {'attr': {'class': 'input', 'placeholder': 'ecrire le meme  mot de passe'}})}}
-                        </div>
-
-                    </div>
-                    <div class="help is-danger has-text-left">
-                        {{ form_errors(form.plainPassword.first) }}
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" autocomplete="off" placeholder="Votre mot de passe">
+                </div>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" id="box-3">
+                        <label for="box-3">J’accepte les termes et <a href="#!">conditions de ventes et d'utilisation</a> du site Internet.</label>
                     </div>
                 </div>
-
-                <div class="form-check">
-                    <input type="checkbox" id="box-3">
-                    <label for="box-3">J’accepte les termes et <a href="#!">conditions de ventes et d'utilisation</a> du site Internet.</label>
-                </div>
-
-
-                <div class="form-row">
-
-                        <input type="hidden" name="cmd" value="_s-xclick">
-                        <input type="hidden" name="hosted_button_id" value="TZ7ZMNVD2VUCY">
-                        <input type="image" src="https://www.paypalobjects.com/fr_XC/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-                        <img alt="" border="0" src="https://www.paypalobjects.com/fr_XC/i/scr/pixel.gif" width="1" height="1">
-
-
-
-
-                </div>
-
-                {{ form_end(form) }}
-
+                <div class="text-center">METTEZ LE BUTTON PAYPAL ICI</div>
             </form>
         </div>
 
-        {% endblock %}
+    </div>
+{% endblock %}

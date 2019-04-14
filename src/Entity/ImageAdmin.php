@@ -6,10 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
-use App\Services\Uploader;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 
 /**
+ *
  * @ORM\Table(name="imagesAdmin",options={"row_format":"DYNAMIC"},)
  * @ORM\Entity(repositoryClass="App\Repository\ImageAdminRepository")
  *
@@ -34,36 +35,52 @@ class ImageAdmin
 
     /**
      * @var  [UploadedFile]
+     * @Vich\UploadableField(mapping="imageAdmin", fileNameProperty="alt")
+     * @Assert\File(
+     * maxSize="1000k",
+     * maxSizeMessage="Le fichier excède 1000Ko.",
+     * mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/gif"},
+     * mimeTypesMessage= "formats autorisés: png, jpeg, jpg, gif"
+     * )
      *
-     * @Assert\Image(
-     *     mimeTypes={"image/png", "image/jpeg"},
-     *     mimeTypesMessage="Vérifiez le format de votre image",
-     *     maxSize="2M", maxSizeMessage="Attention, votre image est trop lourde.")
-     *
+
      */
     private $file;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", nullable=true)
+     */
+    private $slug;
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
-        $metadata->addPropertyConstraint('file', new Assert\Image());
+        $metadata->addPropertyConstraint('file', new Assert\File());
 
         $metadata->addPropertyConstraint('description', new Assert\Type('string'));
-        $metadata->addPropertyConstraint('description', new Assert\NotNull());
+
+        $metadata->addPropertyConstraint('file', new Assert\Valid());
+
     }
     /**
      * @var bool
      */
     private $deletedImage;
 
-
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Editeur",inversedBy="imagesAdmin")
+     * @ORM\JoinColumn(name="editeur_id", referencedColumnName="id", onDelete="CASCADE")
      *
      */
     private $editeur;
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\InterView",inversedBy="imagesAdmin")
+     * @ORM\JoinColumn(name="interView_id", referencedColumnName="id", onDelete="CASCADE")
      *
      */
     private $interView;
@@ -91,12 +108,12 @@ class ImageAdmin
         return $this;
     }
 
-    public function getAlt(): string
+    public function getAlt()
     {
         return $this->alt;
     }
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $description;
 
@@ -108,7 +125,17 @@ class ImageAdmin
     {
         $this->editeur = $editeur;
     }
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
 
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
     /**
      * @return bool
      */
@@ -144,5 +171,21 @@ class ImageAdmin
     public function setInterView($interView): void
     {
         $this->interView = $interView;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDeletedAt()
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param mixed $deletedAt
+     */
+    public function setDeletedAt($deletedAt): void
+    {
+        $this->deletedAt = $deletedAt;
     }
 }

@@ -2,33 +2,54 @@
 
 namespace App\Controller\Admin;
 
+use App\Controller\HelperTrait;
 use App\Entity\Editeur;
 use App\Entity\ImageAdmin;
+use App\Entity\Question;
 use App\Form\EditeurType;
-use App\Services\Uploader;
-use App\Services\Slugger;
-use App\Repository\EditeurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class EditeurController extends AbstractController
 {
 
+    use HelperTrait;
+
     /**
-     * @Route("/admin/editeurs", name="admin-editeurs", methods={"GET"})
+     * @Route("/admin/Editeur", name="admin-editeurs", methods={"GET"})
      */
-    public function listEditeur(EditeurRepository $editeurs): Response
+    public function listEditeur(Request $req)
+
     {
-        return $this->render('admin/editeurs/list.html.twig', [
-            'editeurs' => $editeurs->findAll(),
+        $form = $this->createFormBuilder()
+            ->add('search', SearchType::class)
+            ->getForm();
+
+        $form->handleRequest($req);
+
+        $maxResults = 10;
+        $firstResult = 1;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $query = $form->getData();
+
+            $editeurs = $this->getDoctrine()
+                ->getRepository(Editeur::class)
+                ->search($query['search'], $firstResult, $maxResults);
+        } else {
+            $editeurs = $this->getDoctrine()
+                ->getRepository(Editeur::class);
+        }
+        return $this->render('admin/pages/listeditor.html.twig', [
+            'editeurs' => $editeurs,
+            'form' => $form->createView(),
         ]);
     }
-    /**
-     * @Route("admin/editeur/{slug}/edit", name="editeur_edit", methods={"GET", "POST"})
-     */
-    public function editor(Request $req, $id, Slugger $slugger,Uploader $file)
+
+    public function editor(Request $req, $id)
     {
         $editeur = new Editeur();
 
@@ -45,9 +66,8 @@ class EditeurController extends AbstractController
 
             $title = 'Modification d\'un editeur';
         } else {
-            $editeur->addImage(new ImageAdmin());
-
-
+            $editeur->addImageFile(new ImageAdmin());
+            $editeur->addQuestions(new Question());
 
         }
 
@@ -58,15 +78,26 @@ class EditeurController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             foreach ($editeur->getImagesAdmin() as $image) {
-                if ($file = $image->getFie()) {
-                    $filename = time() . '_' . str_replace(' ', '_', $file->getClientOriginalName());
-                    $image->setName($filename);
+                if ($file = $image->getFile()) {
+                    $filename = $this->slugify($editeur->getName()).'-'.$image->getAlt().'.'.'jpg';
+                    $image->setAlt($filename);
                     $file->move($this->getParameter('imagesAdmin_directory'), $filename);
                 }
-
+                $editeur->addImageFile($image);
             }
 
-            $slug = $slugger->slugify($editeur);
+            foreach ($editeur->getQuestions() as $questions) {
+                {
+                    if(!$questions){
+                        $questions =$this->getDoctrine()->getManager();
+                    }
+
+
+                }
+
+                $editeur->addQuestions($questions);
+            }
+            $slug = $this->slugify($editeur->getName());
             $editeur->setSlug($slug);
 
             $em = $this->getDoctrine()->getManager();
@@ -75,17 +106,19 @@ class EditeurController extends AbstractController
 
             $this->addFlash('success', 'Editeur ajouté');
 
-            return $this->redirect($this->generateUrl('editeur_edit', [
+            return $this->redirect($this->generateUrl('admin-editeur-edit', [
                 'id' => $editeur->getId(),
+
             ]));
         }
-
-        return $this->render('admin/editeur_editor.html.twig', [
+        dump($editeur);
+        return $this->render('admin/pages/addeditor.html.twig', [
             'form' => $form->createView(),
             'title' => $title,
+            'editeur' => $editeur,
         ]);
-    }
 
+    }
     public function delete($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -99,6 +132,16 @@ class EditeurController extends AbstractController
         $this->addFlash('success', 'Editeur supprimé');
 
         return $this->redirectToRoute('admin-home');
+    }
+
+    /**
+     * @Route("/editeur/{id}", name="editeur-show", methods={"GET"})
+     */
+    public function showI(Editeur $editeur)
+    {
+        return $this->render('pages/interview-editors.html.twig', [
+            'editeur' => $editeur,
+        ]);
     }
 
 

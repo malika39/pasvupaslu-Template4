@@ -5,6 +5,7 @@ namespace App\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -17,35 +18,12 @@ class ImageAdminType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('file', FileType::class, [
-            'label' => false,
-            'required' => false,
-        ]);
-
-        $builder->addEventListener(
-            FormEvents::PRE_SET_DATA,
-            function (FormEvent $event) {
-                $image = $event->getData();
-
-                if (null == $image) {
-                    return;
-                }
-
-                if (null != $image->getId()) {
-                    $event->getForm()->add('deletedImage', CheckboxType::class, [
-                        'required' => false,
-                        'label' => false,
-                        'attr' => [
-                            'hidden' => true,
-                            'class' => 'delete-img-confirm',
-                        ],
-                    ]);
-                } else {
-                    $event->getForm()->remove('deletedImage');
-                }
-            }
-        );
+        $builder
+            ->add('file', FileType::class)
+            ->add('alt', TextType::class);
     }
+
+
 
     /**
      * {@inheritdoc}

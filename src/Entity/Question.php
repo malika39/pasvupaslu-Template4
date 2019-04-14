@@ -64,7 +64,7 @@ class Question
      * @var Editeur
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Editeur", inversedBy="questions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="editeur_id", referencedColumnName="id", onDelete="CASCADE",nullable=true)
      */
     private $editeur;
 
@@ -72,7 +72,8 @@ class Question
      * @var InterView
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\InterView", inversedBy="questions")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="interView_id", referencedColumnName="id", onDelete="CASCADE",nullable=true)
+     *
      */
     private $interView;
 
@@ -110,18 +111,14 @@ class Question
 
 
 
-    /**
-     * @return string
-     */
-    public function getContent(): string
+
+    public function getContent()
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     */
-    public function setContent(string $content): void
+
+    public function setContent($content): void
     {
         $this->content = $content;
     }

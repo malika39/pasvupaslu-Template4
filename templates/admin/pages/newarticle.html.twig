@@ -1,0 +1,67 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'Créer un nouveau article' %}
+
+{% block body %}
+    <div class="container">
+        <form action="" method="POST" class="row user">
+
+            <div class="col-xl-8 col-lg-7">
+
+                {# Menu du header #}
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter un article</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="col-sm-12 mb-3 mb-sm-0 mx-auto">
+                            <input type="text" class="form-control form-control-user" value="Titre de l'article">
+                        </div>
+                        <div class="mt-5">
+                            <textarea name="article" id="article" rows="10" cols="80"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="col-xl-4 col-lg-5">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Ajouter une image de couverture</h6>
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="input-group mt-3">
+                            <span class="input-group-btn w-100 position-absolute" style="background: #eaecf4;">
+                                <span class="btn btn-default btn-file w-100">
+                                   Télècharger une photo de couverture
+                                    <input type="file" id="imgInp">
+                                </span>
+                            </span>
+                            <input type="text" class="form-control invisible" readonly>
+                        </div>
+                        <img id='img-upload'>
+                        <button class="btn btn-primary btn-user btn-block mt-3">
+                            Publier l'article
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
+    <script>
+        {# Remplace le textarea par le plugin Ckeditor #}
+        CKEDITOR.replace('article', {
+            language: 'fr'
+        });
+    </script>
+{% endblock %}
+

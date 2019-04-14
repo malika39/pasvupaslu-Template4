@@ -1,0 +1,42 @@
+
+{{ form_start(form, {'action': path('questionE_new' ) })}}
+{{ form_errors(form) }}
+
+
+
+    <!--la boucle du formulaire de question-->
+    <div class="pb-4 bg">
+        <div class="menu_item">
+            <div class="form-group">
+
+                    <div class="col-sm-6 mb-3 mb-sm-0">
+                        <label>Ecrire le titre de cette question</label>
+                        <textarea name="titre[0]" id="titre" rows="10" cols="80" class="form-control form-control-user">
+                        {{ form_widget(form.question.name, {'attr': {'class': 'textarea'}}) }}
+                             </textarea>
+                    </div>
+
+                    <div class="col-md-12 mb-3">
+                        <label>Ecrire la question</label>
+                        <textarea name="question[0]" id="question" rows="10" cols="80" class="form-control form-control-user">
+                                                 {{ form_widget(form.question.content, {'attr': {'class': 'textarea'}}) }}
+                                                </textarea>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label>Ecrire la reponse</label>
+                        <textarea name="response[0]" id="response" rows="10" cols="80" class="form-control form-control-user">
+                                                 {{ form_widget(form.question.response, {'attr': {'class': 'textarea'}}) }}
+                                                </textarea>
+                    </div>
+                <div class="col-sm-6 mb-3 mb-sm-0">
+
+                    {{ form_rest(form) }}
+                    <button type="submit" class="button is-primary">valider la question</button>
+
+            </div>
+        </div>
+    </div>
+    <!--FIN de la boucle du formulaire de question-->
+
+
+{{ form_end(form) }}

@@ -26,32 +26,93 @@
 
         <div class="block-quote pt-3" style="background-color: #0c5366;height: 100%;">
             <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
-                <a href="#!" class="nom-category">
+                <a href="{{ path('category') }}" class="nom-category">
                     Roman
                 </a>
             </div>
-            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/7d995b89b261a76da2ea46c07f5291bd.jpg);">
-                <a href="#!" class="nom-category">
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="{{ path('category') }}" class="nom-category">
                     Thrillers
                 </a>
             </div>
-            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/805c33fcfdd07bd84b33080acd154ec9.jpg);">
-                <a href="#!" class="nom-category">
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="{{ path('category') }}" class="nom-category">
                     Mangas
                 </a>
             </div>
-            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/872aaecd4930690d181720ffbea348fc.jpg);">
-                <a href="#!" class="nom-category">
+            <div class="category" style="background-image: url(http://pasvupaslu.com/gallery_gen/2c2bc19f27256551b4de4793cb7ba389.jpg);">
+                <a href="{{ path('category') }}" class="nom-category">
                     Science-fiction
                 </a>
             </div>
-            <div class="smartphone">
+            <div class="smartphone mb-5">
                 <div class="smartphone-box">
                     <div class="smartphone-img"></div>
                     <p class="title">Nouveaux auteurs de la semaine !</p>
-                    <div class="round"></div>
+                    <a href="#!" class="link-1 the-reply">
+                        <div class="is-section hasImgReply">
+                            <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
+                        </div>
+                        <div class="is-section hasSettingsReply">
+                            <div class="emailSection pb-0">
+                                <i>Alexandre</i>
+                            </div>
+                            <div class="emailSection">
+                                <span class="addForward">1 livre(s) en ligne</span>
+                            </div>
+                        </div>
+                    </a>
+                    {# supprimer apres la boucle #}
+                    <a href="#!" class="link-1 the-reply">
+                        <div class="is-section hasImgReply">
+                            <img class="replyImg" src="https://gmailapp.surge.sh/assets/images/userimg.jpg" alt="">
+                        </div>
+                        <div class="is-section hasSettingsReply">
+                            <div class="emailSection pb-0">
+                                <i>Alexandre</i>
+                            </div>
+                            <div class="emailSection">
+                                <span class="addForward">1 livre(s) en ligne</span>
+                            </div>
+                        </div>
+                    </a>
+                    {# Fin #}
+                    <div class="round mt-5"></div>
                 </div>
             </div>
         </div>
     </div>
+    <style>
+        .the-reply {
+            background: #d71b61;
+            padding: 1em;
+            margin: .5em 0em 0em 0em;
+            display: flex;
+        }
+        .hasImgReply {
+            max-width: 70px;
+            width: 100%;
+            margin-right: 1em;
+        }
+        .replyImg {
+            width: 100%;
+            max-width: 70px;
+            border-radius: 100%;
+        }
+        .hasSettingsReply .emailSection {
+            padding: 0.5em 0em;
+        }
+        .hasSettingsReply .emailSection {
+            color: white !important;
+            font-size: 80%;
+        }
+        .link-1:hover {
+            text-decoration: none;
+            background: #d71b61c7;
+        }
+        .emailSection {
+            padding: 0.26em 0em;
+            line-height: 1.5;
+        }
+    </style>
 {% endblock %}

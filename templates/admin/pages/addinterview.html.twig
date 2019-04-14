@@ -9,6 +9,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
+            {% dump interView %}
 
             <div class="col-xl-12 col-lg-12">
 
@@ -17,26 +18,132 @@
                         <h6 class="m-0 font-weight-bold text-primary">Ajouter une nouvelle interview</h6>
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST" class="user">
+                        <div  class="user field_wrapper form-horizontal">
+                            {{ form_start(form) }}
+
+                            {{ form_errors(form) }}
                             <div class="form-group row m-1 pb-4">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" placeholder="Titre de l'interview">
+                                    <label>Ecrire le Nom </label>
+                                    {{ form_widget(form.name, {'attr': {'class': 'input'}}) }}
                                 </div>
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="text" class="form-control form-control-user" placeholder="Tres courte description">
+                                    <label>Ecrire le PreNom </label>
+                                    {{ form_widget(form.lastName, {'attr': {'class': 'input'}}) }}
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Ecrire l'adresse </label>
+                                    {{ form_widget(form.address, {'attr': {'class': 'input'}}) }}
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Ecrire la Ville</label>
+                                    {{ form_widget(form.city, {'attr': {'class': 'input'}}) }}
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Ecrire le CodePostale</label>
+                                    {{ form_widget(form.postCode, {'attr': {'class': 'input'}}) }}
+                                </div>
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Ecrire le Numéro de téléphone </label>
+                                    {{ form_widget(form.phone, {'attr': {'class': 'input'}}) }}
+                                </div>
+
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Ecrire la Description et la fonction </label>
+
+                                      {{ form_row(form.function,{'label':false, 'required': false}) }}
+
+                                </div>
+
+                            </div>
+                            <!------------------------------------------------------------------------------------------------------------>
+                            <!--Boucle des Images Admin pour l'interView-->
+                            <div class="form-group row m-1 pb-4">
+
+                                        <div class="input-group input-file" name="Fichier">
+                                            <div class="input-group input-file" data-prototype="{{ form_widget(form.imagesAdmin.vars.prototype)|e('html_attr') }}">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <div class="form-group">
+                                                {% for image in form.imagesAdmin %}
+                                                     <div class="col-md-12">
+                                                         <div>
+                                                             <label>Ecrire nom de l'image</label>
+                                                             {{ form_row(image.alt, {'label':false, 'required': false})}}
+                                                         </div>
+                                                         <div>{{ form_row(image.file, {
+                                                            'label': false,
+                                                            'required': false,
+                                                            'multiple':true,
+                                                            'attr': {
+                                                                'accept': 'image/*',
+                                                            }
+                                                        }) }}</div>
+
+
+                                                    {% endfor %}
+                                                    {% if form.imagesAdmin|length < 10 %}
+
+
+                                                            <div class="col-sm-12">
+                                                                <button type="button" class="btn btn-primary addButton w-100" id="addInput" style="opacity:.79;">
+                                                                    <i class="fas fa-plus-square"></i>
+                                                                    Ajouter une nouvelle image
+                                                                </button>
+                                                            </div>
+
+
+                                                    {% endif %}
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+
+                            </div>
+
+                            <!--FIN de la Boucle des Images Admin pour l'interView-->
+
+                            <!------------------------------------------------------------------------------------------------------------>
+                            <!--la boucle du formulaire de question-->
+                            <div class="pb-4 bg">
+                                <div class="menu_item">
+                                    <div class="form-group">
+
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+                                            {% for question in form.questions %}
+                                                {% dump question %}
+
+                                                {{ form_row(question.name)}}
+
+                                                {{ form_row(question.content)}}
+                                                {{ form_row(question.response)}}
+                                            {% endfor %}
+                                            {% if form.questions|length < 10 %}
+                                            <div class="col-sm-12">
+                                                <button type="button" class="btn btn-primary addButton w-100" id="addInput" style="opacity:.79;">
+                                                    <i class="fas fa-plus-square"></i>
+                                                    Ajouter une nouvelle Question
+                                                </button>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-sm-12 mb-3 mb-sm-0">
-                                    <textarea name="interview" id="interview" rows="10" cols="80">
-                                        This is my textarea to be replaced with CKEditor.
-                                    </textarea>
-                                </div>
+                            <!--FIN de la boucle du formulaire de question-->
+                            <!------------------------------------------------------------------------------------------------------------>
+
+                            <div class="col-md-12 mt-5">
+                                <button type="submit" class="btn btn-primary btn-user btn-block w-50 mx-auto">
+                                    Ajouter l'editeur
+                                </button>
                             </div>
-                            <button class="btn btn-primary btn-user btn-block w-50 mx-auto">
-                                Ajouter l'interview
-                            </button>
-                        </form>
+
+
+                            {{ form_end(form) }}
+
+
                     </div>
                 </div>
 
@@ -45,14 +152,136 @@
             </div>
         </div>
     </div>
+    <style>
+        .bg {
+            background: #f1f2f5;
+            padding: 1rem;
+            border-radius: .6rem;
+        }
+        .bg .form-group:nth-child(2n) {
+            background: #f8f8f8;
+            border: .19rem solid #4e73df;
+        }
+        .btn-delet {
+            position: absolute;
+            top: .54rem;
+            right: .54rem;
+        }
+    </style>
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('assets/admin/vendor/ckeditor/ckeditor.js') }}"></script>
+
     <script>
         {# Remplace le textarea par le plugin Ckeditor #}
-        CKEDITOR.replace('interview', {
+        CKEDITOR.replace('interView', {
             language: 'fr'
+        });
+        CKEDITOR.replace('interView-2', {
+            language: 'fr'
+        });
+
+        function bs_input_file() {
+        $(".input-file").before(
+            function() {
+                if ( ! $(this).prev().hasClass('input-ghost') ) {
+                    var element = $("<input type='file' class='input-ghost' style='position: absolute;visibility:hidden; height:0'>");
+                    element.attr("name",$(this).attr("name"));
+                    element.change(function(){
+                        element.next(element).find('input').val((element.val()).split('\\').pop());
+                    });
+                    $(this).find("button.btn-choose").click(function(){
+                        element.click();
+                    });
+                    $(this).find("button.btn-reset").click(function(){
+                        element.val(null);
+                        $(this).parents(".input-file").find('input').val('');
+                    });
+                    $(this).find('input').css("cursor","pointer");
+                    $(this).find('input').mousedown(function() {
+                        $(this).parents('.input-file').prev().click();
+                        return false;
+                    });
+                    return element;
+                }
+            }
+        );
+        }
+        $(function() {
+            bs_input_file();
+        });
+
+       // multiple champs
+        $.fn.toggleDisabled = function(obj) {
+            var newState = false;
+            if (obj.textContent == 'Disable') {
+                obj.textContent = 'Active';
+                newState = true;
+            } else {
+                obj.textContent = 'Disable';
+            }
+            return this.each(function (index, element) {
+                element.disabled = newState;
+            });
+        };
+
+
+        $(document).ready(function() {
+
+            //
+            // this is the new event delegated handler
+            //
+            $('.field_wrapper').on('click', '.activate', function(e) {
+                $(this).closest('div.form-group').find('#price, input:text').toggleDisabled(this);
+            });
+
+
+
+            var max_field = 10, //validate for maximum input field
+                wrapper = $(".field_wrapper"),
+                add_button = $(".addButton"),
+                x = 1, //used to increase the input field.
+                index = 0;  //used to increment the 'name' for the input
+
+            //Add button click handler
+            $(add_button).on('click', function (e) {
+                e.preventDefault();
+                if(x < max_field) {
+                    x++;
+                    index++;
+                    var fieldHTML = '<div class="form-group removeGroup bg position-relative">\n'
+                        +'<label class="p-4 control-label">Interview </label>\n'
+                        +'<div class="row pb-4 m-1">\n'
+                        +'<div class="col-md-6 mb-3">\n'
+                        +'<input type="text" id="titre" class="form-control form-control-user" name="title[0]" placeholder="Titre">\n'
+                        +'</div>\n'
+                        +'<div class="col-md-6 mb-3">\n'
+                        +'<input type="text" id="question" class="form-control form-control-user" name="question[0]" placeholder="Question">\n'
+                        +'</div>\n'
+                        +'</div>\n'
+                        +'<div class="col-md-12 mb-3">\n'
+                        +'<textarea type="text" id="reponse" class="form-control form-control-user" name="reponse[0]" placeholder="Réponse" style="resize: none"></textarea>\n'
+                        +'</div>\n'
+                        +'<div class="btn-delet">\n'
+                        +'<button type="button" class="btn btn-danger removeButton"><i class="fas fa-trash-alt"></i></button>\n'
+                        +'</div>\n'
+                        +'</div>';
+
+                    var currentEntry = $(this).parents('.menu_item:first');
+                    $(fieldHTML).appendTo(currentEntry);
+                }
+            });
+
+            //Remove button click handler
+            $(wrapper).on('click', '.removeButton', function(e) {
+                e.preventDefault();
+                var result = confirm("Êtes-vous sûr de bien vouloir supprimer ce champ ?");
+                if (result) {
+                    $(this).closest('.removeGroup').remove();
+                    x--;
+                }
+            });
         });
     </script>
 {% endblock %}

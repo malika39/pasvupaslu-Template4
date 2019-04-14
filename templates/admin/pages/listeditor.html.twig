@@ -1,0 +1,71 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'liste des editeurs' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% dump editeurs %}
+            <div class="col-xl-12 col-lg-12">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Liste d'interviews des editeurs
+                            <span class="badge badge-primary float-right">Il y a {{ editeurs.countEditeurs }}  Editeur(s)</span>
+
+                        </h6>
+                    </div>
+                    <div class="row">
+  {% if editeurs is not empty %}
+           {% for editeur in editeurs.findAll %}
+
+                           {{ dump(editeur) }}
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <div class="card text-white border-primary bg-primary p-1 mb-3 text-center">
+                                    <div class="card-body">
+                                        <h2 class="card-title">{{ editeur.name }}</h2>
+                                        <p class="card-text"><img src="http://localhost:8000/assets/images/uploads/logo-2.png" alt=""></p>
+                                        <a href="{{path( 'admin-editeur-delete',{'id': editeur.id }) }}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet interview ?\n');">
+                                            <i class="fas fa-trash"></i>
+                                            Supprimer
+                                        </a>
+
+                                        <a href="{{ path('admin-editeur-edit',{'id': editeur.id }) }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                            Modifier
+                                        </a>
+                                        <a href="{{ path('editeur-show',{'id': editeur.id }) }}" class="btn btn-primary btn-sm">
+                                            <i class="far fa-eye"></i>
+                                            Voir l'editeur
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+           {% endfor %}
+  {% else %}
+<div class="col-md-6">
+    <div class="card-body">
+        <div class="card text-white border-primary bg-primary p-1 mb-3 text-center">
+            <div class="card-body">
+          <h2 class="card-title">Aucun résultat</h2>
+            </div>
+        </div>
+    </div>
+</div>
+  {% endif %}
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+{% endblock %}

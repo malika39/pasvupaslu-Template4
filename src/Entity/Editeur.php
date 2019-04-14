@@ -10,13 +10,21 @@ namespace App\Entity;
 
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @property  question
+ * @property  question
+ *
+ *
+ * @property  question
+ * @property DateTime dateCreated
  * @property  question
  * @ORM\Table(name="editeur",
  *            options={"row_format":"DYNAMIC"},)
@@ -60,12 +68,12 @@ class Editeur
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", unique=true)
      */
-    private $slug;
+    public $slug;
 
     /**
      * @var DateTime
      *
-     * @ORM\Column(name="create_at", type="datetime", nullable=false)
+     * @ORM\Column(name="create_at", type="datetime", nullable=true)
      */
     private $createAt;
 
@@ -93,7 +101,7 @@ class Editeur
     private $phone;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string",nullable=true)
      */
     private $country;
 
@@ -101,8 +109,8 @@ class Editeur
     /**
      * @var string
      *
-     * @ORM\Column(name="function", type="text")
-     * @Assert\NotBlank()
+     * @ORM\Column(type="text",nullable=true)
+     *
      *
      *
      */
@@ -119,12 +127,17 @@ class Editeur
     /**
      * @var array
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="editeur", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="editeur", cascade={"persist"})
      */
     private $questions;
 
 
 
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $deletedAt;
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
@@ -140,6 +153,21 @@ class Editeur
 
         ;
     }
+    public function __construct()
+    {
+        $this->imagesAdmin = new ArrayCollection();
+        $this->questions = new ArrayCollection();
+        $this->dateCreated = new \DateTime();
+        // Null values are ignored by unique constraints
+        $this->deletedAt = date_create('0000-00-00 00:00:00');
+
+    }
+
+    public function setId(int $id)
+    {
+        $this->id = $id;
+    }
+
 
     public function getId(): ?int
     {
@@ -151,6 +179,12 @@ class Editeur
         return $this->slug;
     }
 
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
     public function setName(?string $name): Editeur
     {
         $this->name = $name;
@@ -267,44 +301,104 @@ class Editeur
     {
         return $this->function;
     }
+    /**
+     * @return ArrayCollection
+     */
     public function getImagesAdmin()
     {
         return $this->imagesAdmin;
     }
+    /**
+     * @return ArrayCollection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+    /**
+     * @return ArrayCollection
+     */
+    public function getQuestion()
+    {
+        return $this->getQuestions();
+    }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getImageFile()
+    {
+        return $this->getImagesAdmin();
+    }
+
+    public function setQuestions($questions)
+    {
+        $this->questions = $questions;
+    }
+    public function addQuestion(Question $question)
+    {
+        $this->questions->add($question);
+
+        $question->setEditeur($this);
+
+    }
+    public function addQuestions(Question $question)
+    {
+        if(!$this->questions->contains($question))
+        {
+            $this->questions->add($question);
+        }
+
+    }
     public function setImagesAdmin($imagesAdmin)
     {
         $this->imagesAdmin = $imagesAdmin;
     }
-    public function addImage(ImageAdmin $imageAdmin)
+    public function addImageFile(ImageAdmin $imageAdmin)
     {
+        $this->imagesAdmin->add($imageAdmin);
+
         $imageAdmin->setEditeur($this);
 
-        $this->imagesAdmin->add($imageAdmin);
     }
-
-    public function removeImage(ImageAdmin $imageAdmin)
+    /**
+     * @param UploadedFile
+     */
+    public function addImageAdmin(UploadedFile $imageAdmin)
     {
-        $this->imagesAdmin->remove($imageAdmin);
-    }
-    public function addQuestions(Question $question): void
-    {
-        $question->setEditeur($this);
-        if (!$this->question->contains($question)) {
-            $this->questions->add($question);
+        if(!$this->imagesAdmin->contains($imageAdmin))
+        {
+            $this->imagesAdmin->add($imageAdmin);
         }
+
     }
 
-    public function removeQuestion(Question $question): void
+    public function removeImageAdmin(ImageAdmin $imageAdmin)
     {
-        $this->questions->removeElement($question);
+        $this->imagesAdmin->removeElement($imageAdmin);
     }
-
-    public function getQuestions(): array
+    /**
+     * @param ImageAdmin $imageAdmin
+     */
+    public function removeImageFile(ImageAdmin $imageAdmin)
     {
-        return $this->questions;
+        $this->imagesAdmin->removeElement($imageAdmin);
+
     }
 
+    public function removeQuestion(Question $question)
+    {
+        $this->questions->remove($question);
+    }
+    public function getDeletedAt(): ?\DateTimeInterface
+    {
+        return $this->deletedAt;
+    }
 
+    public function setDeletedAt(?\DateTimeInterface $deletedAt): self
+    {
+        $this->deletedAt = $deletedAt;
 
+        return $this;
+    }
 }

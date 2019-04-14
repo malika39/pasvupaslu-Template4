@@ -1,0 +1,72 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title 'liste des interviews' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+
+            <div class="col-xl-12 col-lg-12">
+
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Liste des interviews
+                            <span class="badge badge-primary float-right">Il y a {{ interViews.countInterViews }}  interview(s)</span>
+                        </h6>
+                    </div>
+                    <div class="row">
+
+{% if interViews is not empty %}
+
+                        {% for interView in interViews.findAll %}
+
+
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <div class="card text-white border-primary bg-primary p-1 mb-3 text-center">
+                                    <div class="card-body">
+                                        <h2 class="card-title">{{ interView.name }}</h2>
+                                        <p class="card-text"> Ecrivain publique, correcteur... </p>
+
+                                        <a href="{{ path('admin-interView-delete', {'id': interView.id })}}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de bien vouloir supprimer cet interview ?\n');">
+                                            <i class="fas fa-trash"></i>
+                                            Supprimer
+                                        </a>
+
+                                        <a href="{{ path('admin-interView-edit',{'id': interView.id }) }}" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                            Modifier
+                                        </a>
+                                        <a href="{{ path('interView_view') }}" class="btn btn-primary btn-sm">
+                                            <i class="far fa-eye"></i>
+                                            Voir l'interview
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+{% endfor %}
+ {% else %}
+     <div class="col-md-6">
+         <div class="card-body">
+             <div class="card text-white border-primary bg-primary p-1 mb-3 text-center">
+                 <div class="card-body">
+                     <h2 class="card-title">Aucun résultat</h2>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+
+{% endif %}
+
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

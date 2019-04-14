@@ -10,6 +10,7 @@
 namespace App\Repository;
 use App\Entity\Editeur;
 use App\Entity\ImageAdmin;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -25,19 +26,19 @@ class EditeurRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, ImageAdmin::class);
+        parent::__construct($registry, Editeur::class);
     }
     /**
      * List all object with paginator.
      */
     public function paginator(int $page, int $maxResults): Paginator
     {
-        $qb = $this->createQueryBuilder('p');
+        $qb = $this->createQueryBuilder('e');
 
         $qb
             ->setFirstResult(($page - 1) * $maxResults)
             ->setMaxResults($maxResults)
-            ->orderBy('p.createAt', 'DESC');
+            ->orderBy('e.createAt', 'DESC');
 
         return new Paginator($qb);
     }
@@ -49,19 +50,7 @@ class EditeurRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
-    public function saveNewEditeur(Editeur $editeur): void
-    {
-        $this->_em->persist($editeur);
-        $this->_em->flush();
-    }
-    public function saveExistingEditeur(): void
-    {
-        try {
-            $this->_em->flush();
-        } catch (OptimisticLockException $e) {
-        } catch (ORMException $e) {
-        }
-    }
+
 
     /**
      * @param Editeur $editeur
@@ -83,4 +72,71 @@ class EditeurRepository extends ServiceEntityRepository
         ->getQuery()
         ->getResult();
        }
+    public function findOneBySlug(string $slug): ?Editeur
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.slug = :slug')
+            ->andWhere('e.deletedAt = 0')
+            ->setParameter('slug', $slug)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    public function findDuplicateSlug(?int $id, string $slug): ?Editeur
+    {
+        $queryBuilder = $this->createQueryBuilder('e');
+        $queryBuilder
+            ->andWhere('e.deletedAt = 0');
+        if ($id) {
+            $queryBuilder
+                ->andWhere('e.id != :id')
+                ->setParameter('id', $id);
+        }
+        $queryBuilder->andWhere('e.slug = :slug OR e.slug LIKE :alt_with_suffix')
+            ->setParameter('slug', $slug)
+            ->setParameter('alt_with_suffix', $slug . '-%');
+
+        return $queryBuilder
+            ->orderBy('e.slug', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+    public function findLatest(int $maxResults): array
+    {
+        return $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.deletedAt = 0')
+            ->orderBy('e.dateCreated', 'DESC')
+            ->setMaxResults($maxResults)
+            ->getQuery()
+            ->getResult();
+    }
+    public function findAllWithDeleted()
+    {
+        return $this->createQueryBuilder('e')
+            ->getQuery()
+            ->getResult();
+    }
+    public function search(?string $query, int $firstResult = 0, int $maxResults = 10)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->where('e.name LIKE :query')
+            ->andWhere('e.deletedAt = 0')
+            ->setFirstResult($firstResult)
+            ->setMaxResults($maxResults)
+            ->setParameter('query', '%'.addcslashes($query, '%_').'%');
+
+        return new Paginator($query);
+    }
+    public function getPaginated(int $firstResult = 0, int $maxResults = 10)
+    {
+        $query = $this->createQueryBuilder('e')
+            ->select('e')
+            ->where('e.deletedAt = 0')
+            ->orderBy('e.dateCreated', 'DESC')
+            ->setFirstResult($firstResult)
+            ->setMaxResults($maxResults);
+
+        return new Paginator($query);
+    }
 }

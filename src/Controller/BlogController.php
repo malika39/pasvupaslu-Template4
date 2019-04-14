@@ -7,6 +7,7 @@ use App\Entity\Comment;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
 use App\Repository\EditeurRepository;
+use App\Repository\InterViewRepository;
 use App\Services\Paginator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -21,16 +22,18 @@ class BlogController extends AbstractController
      * @Route("/", name="home", methods={"GET"})
      * @Cache(smaxage="5")
      */
-    public function index(Paginator $paginator, ArticleRepository $articleRepository,EditeurRepository $editeurRepository): Response
+    public function index(Paginator $paginator, ArticleRepository $articleRepository,EditeurRepository $editeurRepository,InterViewRepository $interViewRepository): Response
     {
         $page = $paginator->getPage();
         $articles = $paginator->getItemList($articleRepository, $page);
         $editeurs = $paginator->getItemList($editeurRepository, $page);
+        $interViews = $paginator->getItemList($interViewRepository, $page);
         $nbPages = $paginator->countPage($articles);
 
         return $this->render('pages/index.html.twig', [
             'articles' => $articles,
             'editeurs' => $editeurs,
+            'interViews' => $interViews,
             'nbPages' => $nbPages,
             'page' => $page,
         ]);
