@@ -22,7 +22,6 @@ class EditeurController extends AbstractController
      * @Route("/admin/Editeur", name="admin-editeurs", methods={"GET"})
      */
     public function listEditeur(Request $req)
-
     {
         $form = $this->createFormBuilder()
             ->add('search', SearchType::class)
@@ -143,6 +142,7 @@ class EditeurController extends AbstractController
             'editeur' => $editeur,
         ]);
     }
+
 
 
 }

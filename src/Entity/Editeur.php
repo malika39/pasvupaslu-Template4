@@ -222,7 +222,7 @@ class Editeur
         return $this;
     }
 
-    public function getCreateAt(): ?DateTime
+    public function getCreateAt()
     {
         return $this->createAt;
     }
@@ -385,20 +385,24 @@ class Editeur
         $this->imagesAdmin->removeElement($imageAdmin);
 
     }
-
-    public function removeQuestion(Question $question)
-    {
-        $this->questions->remove($question);
-    }
     public function getDeletedAt(): ?\DateTimeInterface
     {
         return $this->deletedAt;
     }
 
+    
+
+    public function removeQuestion(Question $question)
+    {
+        $this->questions->remove($question);
+    }
+    
+
     public function setDeletedAt(?\DateTimeInterface $deletedAt): self
     {
         $this->deletedAt = $deletedAt;
-
         return $this;
     }
+
+    
 }

@@ -8,8 +8,8 @@
 
 
 namespace App\Repository;
-
 use App\Entity\InterView;
+use App\Entity\ImageAdmin;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\ORMException;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -25,7 +25,21 @@ class InterViewRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, InterView::class);
+        parent::__construct($registry, ImageAdmin::class);
+    }
+    /**
+     * List all object with paginator.
+     */
+    public function paginator(int $page, int $maxResults): Paginator
+    {
+        $qb = $this->createQueryBuilder('p');
+
+        $qb
+            ->setFirstResult(($page - 1) * $maxResults)
+            ->setMaxResults($maxResults)
+            ->orderBy('p.createAt', 'DESC');
+
+        return new Paginator($qb);
     }
     /**
      * List all object with paginator.
